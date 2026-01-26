@@ -1,0 +1,383 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GENIE.AI Framework Configuration",
+  "description": "Configuration file for customizing the GENIE.AI chatbot framework with a darker light blue theme inspired by ITU website banner",
+  "type": "object",
+  "properties": {
+    "app": {
+      "type": "object",
+      "description": "General application settings",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Main application title displayed in the UI",
+          "default": "GENIE.AI"
+        },
+        "icon": {
+          "type": "object",
+          "description": "Application icon configuration (SVG)",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "file",
+                "inline"
+              ],
+              "description": "Type of icon source",
+              "default": "file"
+            },
+            "value": {
+              "type": "string",
+              "description": "Path to SVG file (for 'file') or inline SVG content (for 'inline')"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "icon"
+      ]
+    },
+    "theme": {
+      "type": "object",
+      "description": "UI theme and color scheme settings",
+      "properties": {
+        "primaryColor": {
+          "type": "string",
+          "description": "Primary color for buttons and accents",
+          "default": "#4E97D1"
+        },
+        "secondaryColor": {
+          "type": "string",
+          "description": "Secondary color for accents and highlights",
+          "default": "#2C5F8A"
+        },
+        "backgroundColor": {
+          "type": "string",
+          "description": "Background color for main content area",
+          "default": "#f5f7fa"
+        },
+        "textColor": {
+          "type": "string",
+          "description": "Primary text color",
+          "default": "#333333"
+        },
+        "navbar": {
+          "type": "object",
+          "description": "Navbar-specific styling",
+          "properties": {
+            "gradientStart": {
+              "type": "string",
+              "description": "Start color for navbar gradient",
+              "default": "#4E97D1"
+            },
+            "gradientEnd": {
+              "type": "string",
+              "description": "End color for navbar gradient",
+              "default": "#2C5F8A"
+            },
+            "textColor": {
+              "type": "string",
+              "description": "Navbar text/icon color",
+              "default": "#ffffff"
+            }
+          }
+        }
+      },
+      "required": [
+        "primaryColor",
+        "secondaryColor",
+        "navbar"
+      ]
+    },
+    "features": {
+      "type": "object",
+      "description": "Feature toggles and configurations",
+      "properties": {
+        "chat": {
+          "type": "object",
+          "description": "Chat-specific settings",
+          "properties": {
+            "welcomeMessage": {
+              "type": "string",
+              "description": "Custom welcome message for the chatbot",
+              "default": "Welcome to GENIE.AI!"
+            },
+            "botName": {
+              "type": "string",
+              "description": "Name of the chatbot",
+              "default": "Genie"
+            },
+            "quickHelp": {
+              "type": "object",
+              "description": "Quick Help button configurations",
+              "properties": {
+                "buttons": {
+                  "type": "array",
+                  "description": "List of Quick Help buttons",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the button"
+                      },
+                      "title": {
+                        "type": "string",
+                        "description": "i18n key for button label"
+                      },
+                      "icon": {
+                        "type": "object",
+                        "description": "Button icon configuration",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "file",
+                              "inline"
+                            ],
+                            "description": "Type of icon source"
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "Path to SVG file or inline SVG content"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "value"
+                        ]
+                      },
+                      "category": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "description": "Category ID for the button (null for general)"
+                      },
+                      "prompt": {
+                        "type": "string",
+                        "description": "i18n key for the prompt to send when clicked"
+                      },
+                      "styles": {
+                        "type": "object",
+                        "description": "Custom styles for the button",
+                        "properties": {
+                          "backgroundColor": {
+                            "type": "string",
+                            "description": "Background color"
+                          },
+                          "hoverColor": {
+                            "type": "string",
+                            "description": "Hover background color"
+                          },
+                          "outlineColor": {
+                            "type": "string",
+                            "description": "Border/outline color"
+                          }
+                        },
+                        "required": [
+                          "backgroundColor",
+                          "hoverColor",
+                          "outlineColor"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "icon",
+                      "category",
+                      "prompt",
+                      "styles"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "buttons"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "custom": {
+      "type": "object",
+      "description": "Custom key-value pairs for use case-specific configurations",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "app",
+    "theme"
+  ],
+  "app": {
+    "title": "GENIE.AI",
+    "icon": {
+      "type": "file",
+      "value": "/config/genie-ai-icon-light.svg"
+    }
+  },
+  "theme": {
+    "primaryColor": "#4682B4",
+    "secondaryColor": "#5F9EA0",
+    "backgroundColor": "#D3E0EA",
+    "textColor": "#1C2526",
+    "navbar": {
+      "gradientStart": "#4682B4",
+      "gradientEnd": "#5F9EA0",
+      "textColor": "#F0F8FF"
+    }
+  },
+  "features": {
+    "chat": {
+      "welcomeMessage": "Welcome to GENIE.AI, for Global Empowerment, Intelligence and Equity",
+      "botName": "GENIE.AI",
+      "quickHelp": {
+        "buttons": [
+          {
+            "id": "just-chat",
+            "title": "quickhelp.justChat",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/just-chat.svg"
+            },
+            "category": null,
+            "prompt": "quickhelp.justChatPrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          },
+          {
+            "id": "identity-civil",
+            "title": "quickhelp.applyForID",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/identity-civil.svg"
+            },
+            "category": "1",
+            "prompt": "quickhelp.applyForIDPrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          },
+          {
+            "id": "taxes-revenue",
+            "title": "quickhelp.payTaxes",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/taxes-revenue.svg"
+            },
+            "category": "5",
+            "prompt": "quickhelp.payTaxesPrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          },
+          {
+            "id": "business-trade",
+            "title": "quickhelp.startBusiness",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/business-trade.svg"
+            },
+            "category": "8",
+            "prompt": "quickhelp.startBusinessPrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          },
+          {
+            "id": "healthcare-social",
+            "title": "quickhelp.findHealthcare",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/healthcare-social.svg"
+            },
+            "category": "2",
+            "prompt": "quickhelp.findHealthcarePrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          },
+          {
+            "id": "education-learning",
+            "title": "quickhelp.educationServices",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/education-learning.svg"
+            },
+            "category": "3",
+            "prompt": "quickhelp.educationServicesPrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          },
+          {
+            "id": "transportation-mobility",
+            "title": "quickhelp.transportLicenses",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/transportation-mobility.svg"
+            },
+            "category": "7",
+            "prompt": "quickhelp.transportLicensesPrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          },
+          {
+            "id": "housing-urban",
+            "title": "quickhelp.housingPrograms",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/housing-urban.svg"
+            },
+            "category": "9",
+            "prompt": "quickhelp.housingProgramsPrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          },
+          {
+            "id": "employment-labor",
+            "title": "quickhelp.findJobs",
+            "icon": {
+              "type": "file",
+              "value": "/config/quickhelp/employment-labor.svg"
+            },
+            "category": "4",
+            "prompt": "quickhelp.findJobsPrompt",
+            "styles": {
+              "backgroundColor": "#D3E0EA",
+              "hoverColor": "#A3BFFA",
+              "outlineColor": "#87CEEB"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "custom": {}
+}

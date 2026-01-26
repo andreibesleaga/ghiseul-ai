@@ -1,0 +1,36 @@
+# Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+include:
+  - ../../../third_parties/whisper/deployment/docker_compose/compose.yaml
+
+services:
+  asr:
+    image: ${REGISTRY:-opea}/asr:${TAG:-latest}
+    container_name: asr-service
+    ports:
+      - ${ASR_PORT:-9099}:9099
+    ipc: host
+    environment:
+      ASR_ENDPOINT: ${ASR_ENDPOINT}
+      ASR_COMPONENT_NAME: ${ASR_COMPONENT_NAME:-OPEA_WHISPER_ASR}
+  asr-whisper:
+    extends: asr
+    container_name: asr-whisper-service
+    environment:
+      ASR_COMPONENT_NAME: ${ASR_COMPONENT_NAME:-OPEA_WHISPER_ASR}
+    depends_on:
+      whisper-service:
+        condition: service_healthy
+  asr-whisper-gaudi:
+    extends: asr
+    container_name: asr-whisper-gaudi-service
+    environment:
+      ASR_COMPONENT_NAME: ${ASR_COMPONENT_NAME:-OPEA_WHISPER_ASR}
+    depends_on:
+      whisper-gaudi-service:
+        condition: service_healthy
+
+networks:
+  default:
+    driver: bridge

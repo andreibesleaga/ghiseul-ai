@@ -1,0 +1,47 @@
+# Kong database config
+POSTGRES_USER=kong
+POSTGRES_DB=kong
+POSTGRES_PASSWORD=k1ngk0ng
+
+#Kong configuration
+KONG_DATABASE=postgres
+KONG_PG_HOST=kong-database
+KONG_PG_USER=kong
+KONG_PG_PASSWORD=k1ngk0ng
+KONG_PROXY_ACCESS_LOG=/dev/stdout
+KONG_ADMIN_ACCESS_LOG=/dev/stdout
+KONG_PROXY_ERROR_LOG=/dev/stderr
+KONG_ADMIN_ERROR_LOG=/dev/stderr
+KONG_ADMIN_LISTEN="0.0.0.0:8001, 0.0.0.0:8444 ssl"
+
+# Konga admin console configuration
+NODE_ENV=production
+TOKEN_SECRET=ef7a351c6f1c7f673af0cf3755498884b5e8b13656767a08120e2b2c524fc6f8
+DB_ADAPTER=mongo
+DB_HOST=mongo
+DB_PORT=27017
+DB_DATABASE=konga
+# --- Note leave blank fro no auth
+DB_USER=
+DB_PASSWORD=
+KONGA_HOOK_TIMEOUT=120000
+KONG_ADMIN_URL=http://kong:8001
+KONGA_LOG_LEVEL=debug
+
+# Keycloak configuration
+KC_DB=postgres
+KC_DB_URL_HOST=keycloak-db
+KC_DB_URL_DATABASE=keycloak
+KC_BOOTSTRAP_ADMIN_USERNAME=admin
+KC_BOOTSTRAP_ADMIN_PASSWORD=adminpassword
+KC_DB_USERNAME=keycloak
+KC_DB_PASSWORD=keycloakpassword
+KC_HTTP_ENABLED=true
+KC_HOSTNAME=localhost
+KC_HTTP_PORT=8080
+
+# Keycloak Database configuration
+POSTGRES_DB=keycloak
+POSTGRES_USER=keycloak
+POSTGRES_PASSWORD=keycloakpassword
+

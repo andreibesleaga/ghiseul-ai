@@ -1,0 +1,59 @@
+# ======== Stage 1: The OPEA Base ========
+# This stage is identical and will be cached by Docker
+ARG OPEA_REPO_URL="https://github.com/opea-project/GenAIComps.git"
+ARG OPEA_VERSION="v1.3"
+FROM alpine/git:latest AS opea_base
+
+ARG OPEA_REPO_URL
+ARG OPEA_VERSION
+
+WORKDIR /src
+RUN git clone --depth 1 --branch ${OPEA_VERSION} ${OPEA_REPO_URL} .
+
+# ======== Final Stage: Assembly ========
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Add /app (for 'comps'), the retriever 'src' (for entrypoint),
+# and 'proto' (for api_protocol) to PYTHONPATH
+ENV PYTHONPATH="${PYTHONPATH}:/app:/app/comps/retrievers/src:/app/comps/cores/proto"
+
+# Step A: Copy the entire OPEA 'comps' directory from the clone
+COPY --from=opea_base /src/comps/ /app/comps/
+
+# Define the path to the requirements file for easier reference
+ARG REQ_PATH=/app/comps/retrievers/src/requirements.txt
+
+# Step B: Copy and Run the Dependency Patch
+COPY genie-ai-overlay/build-patches/fix_dependencies.sh /app/fix_dependencies.sh
+RUN chmod +x /app/fix_dependencies.sh
+# Run the patch script on the requirements file at its new location
+RUN ./fix_dependencies.sh ${REQ_PATH}
+
+# Step C: Install *fixed* dependencies
+# This installs the *real* 'docarray' package
+RUN pip install --no-cache-dir -r ${REQ_PATH}
+
+# Step D: Fix docarray circular import
+# Reverting to the original, correct "rename hack".
+# 1. Rename the conflicting local file to avoid name collision.
+# 2. Update imports to point to the new, non-conflicting filename.
+RUN mv /app/comps/cores/proto/docarray.py /app/comps/cores/proto/opea_docarray.py && \
+    sed -i 's/from comps.cores.proto.docarray import/from comps.cores.proto.opea_docarray import/' /app/comps/__init__.py && \
+    sed -i 's/from \.\.proto.docarray import/from \.\.proto.opea_docarray import/' /app/comps/cores/mega/orchestrator.py && \
+    sed -i 's/from \.\.proto.docarray import/from \.\.proto.opea_docarray import/' /app/comps/cores/mega/micro_service.py
+
+# Step E: "Overlay" our custom GENIE-AI files
+# Copy overlay files to their correct new locations within /app/comps/
+COPY genie-ai-overlay/retriever/genieai_retriever_arangodb.py /app/comps/retrievers/src/integrations/genieai_retriever_arangodb.py
+# Add the custom config.py from the overlay to fix the ImportError
+COPY genie-ai-overlay/retriever/config.py /app/comps/retrievers/src/integrations/config.py
+COPY genie-ai-overlay/retriever/genieai_retriever_microservice.py /app/comps/retrievers/src/genieai_retriever_microservice.py
+
+# This path remains correct as it's relative to /app/comps/
+COPY genie-ai-overlay/core/genieai_api_protocol.py /app/comps/cores/proto/genieai_api_protocol.py
+
+# Step F: Run the new GENIE-AI entry point from its new location
+# The extensive PYTHONPATH should handle all import resolution
+CMD ["python", "comps/retrievers/src/genieai_retriever_microservice.py"]

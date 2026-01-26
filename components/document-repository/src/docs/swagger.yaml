@@ -1,0 +1,710 @@
+openapi: 3.0.0
+info:
+  title: Document Repository Service API
+  description: API for managing document uploads and processing
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: http://localhost:3000/api
+    description: Development server
+
+components:
+  schemas:
+    FileUploadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: File uploaded successfully
+        data:
+          type: object
+          properties:
+            file_id:
+              type: string
+              example: "550e8400-e29b-41d4-a716-446655440000"
+            file_name:
+              type: string
+              example: "document.pdf"
+            file_size:
+              type: integer
+              example: 1024
+            file_type:
+              type: string
+              example: "application/pdf"
+            storage_path:
+              type: string
+              example: "/uploads/document.pdf"
+            file_hash:
+              type: string
+              example: "d41d8cd98f00b204e9800998ecf8427e"
+            labels:
+              type: array
+              items:
+                type: string
+              example: ["important", "finance"]
+            author:
+              type: string
+              example: "John Doe"
+            upload_date:
+              type: string
+              format: date-time
+              example: "2024-03-20T10:30:00Z"
+            create_date:
+              type: string
+              format: date-time
+              example: "2024-03-20T10:30:00Z"
+            crawl_date:
+              type: string
+              format: date-time
+              nullable: true
+              example: "2024-03-20T10:30:00Z"
+            source_url:
+              type: string
+              example: "https://example.com/document.pdf"
+            language:
+              type: string
+              example: "en"
+            chunk_count:
+              type: integer
+              example: 0
+            dataprep:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [pending, processing, completed, failed]
+                  example: "pending"
+                ingest_date:
+                  type: string
+                  format: date-time
+                  example: ""
+                retract_date:
+                  type: string
+                  format: date-time
+                  example: ""
+
+    MultipleFileUploadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Files uploaded successfully
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              file_id:
+                type: string
+                example: "550e8400-e29b-41d4-a716-446655440000"
+              file_name:
+                type: string
+                example: "document1.pdf"
+              file_size:
+                type: integer
+                example: 1024
+              file_type:
+                type: string
+                example: "application/pdf"
+              storage_path:
+                type: string
+                example: "/uploads/document1.pdf"
+              file_hash:
+                type: string
+                example: "d41d8cd98f00b204e9800998ecf8427e"
+              labels:
+                type: array
+                items:
+                  type: string
+                example: ["important", "finance"]
+              author:
+                type: string
+                example: "John Doe"
+              upload_date:
+                type: string
+                format: date-time
+                example: "2024-03-20T10:30:00Z"
+              creat_date:
+                type: string
+                format: date-time
+                example: "2024-03-20T10:30:00Z"
+              crawl_date:
+                type: string
+                format: date-time
+                nullable: true
+                example: "2024-03-20T10:30:00Z"
+              source_url:
+                type: string
+                example: "https://example.com/document1.pdf"
+              language:
+                type: string
+                example: "en"
+              chunk_count:
+                type: integer
+                example: 0
+              dataprep:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [pending, processing, completed, failed]
+                    example: "pending"
+                  ingest_date:
+                    type: string
+                    format: date-time
+                    example: ""
+                  retract_date:
+                    type: string
+                    format: date-time
+                    example: ""
+
+    GetFilesResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Files retrieved successfully
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                example: "550e8400-e29b-41d4-a716-446655440000"
+              originalName:
+                type: string
+                example: "document.pdf"
+              mimeType:
+                type: string
+                example: "application/pdf"
+              size:
+                type: integer
+                example: 1024
+              uploadedAt:
+                type: string
+                format: date-time
+                example: "2024-03-20T10:30:00Z"
+              category:
+                type: string
+                enum: [general, data, reports, documents]
+                example: "documents"
+              description:
+                type: string
+                example: "Important document"
+              tags:
+                type: array
+                items:
+                  type: string
+                example: ["important", "finance"]
+              status:
+                type: string
+                example: "uploaded"
+        pagination:
+          type: object
+          properties:
+            currentPage:
+              type: integer
+              example: 1
+            totalPages:
+              type: integer
+              example: 5
+            totalFiles:
+              type: integer
+              example: 50
+            limit:
+              type: integer
+              example: 10
+  
+    GetFileByIdResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: File retrieved successfully
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "550e8400-e29b-41d4-a716-446655440000"
+            originalName:
+              type: string
+              example: "document.pdf"
+            mimeType:
+              type: string
+              example: "application/pdf"
+            size:
+              type: integer
+              example: 1024
+            uploadedAt:
+              type: string
+              format: date-time
+              example: "2024-03-20T10:30:00Z"
+            category:
+              type: string
+              enum: [general, data, reports, documents]
+              example: "documents"
+            description:
+              type: string
+              example: "Important document"
+            tags:
+              type: array
+              items:
+                type: string
+              example: ["important", "finance"]
+            status:
+              type: string
+              example: "uploaded"
+
+    GetFileAsBase64Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: File retrieved successfully
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "550e8400-e29b-41d4-a716-446655440000"
+            originalName:
+              type: string
+              example: "document.pdf"
+            mimeType:
+              type: string
+              example: "application/pdf"
+            base64:
+              type: string
+              description: Base64 encoded file content
+              example: "JVBERi0xLjcKJeLjz9MKN..."
+
+paths:
+  /files:
+    get:
+      tags:
+        - Files
+      summary: Get all files
+      description: Retrieve all files with pagination, filtering, and search capabilities
+      operationId: getFiles
+      parameters:
+        - name: page
+          in: query
+          description: Page number for pagination (optional, defaults to 1)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          in: query
+          description: Number of items per page (optional, defaults to 10, max 50)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 10
+        - name: category
+          in: query
+          description: Filter files by category (optional, e.g., general, data, reports, documents)
+          required: false
+          schema:
+            type: string
+            enum: [general, data, reports, documents]
+        - name: mimeType
+          in: query
+          description: Filter files by MIME type (optional, e.g., application/pdf, image/jpeg)
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Search term to filter files by name or description (optional, max 100 chars)
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+      responses:
+        '200':
+          description: Files retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFilesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalidPage:
+                  value:
+                    success: false
+                    error: "Validation error"
+                    message: "page must be greater than or equal to 1"
+                invalidLimit:
+                  value:
+                    success: false
+                    error: "Validation error"
+                    message: "limit must be less than or equal to 50"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+
+  /files/upload:
+    post:
+      tags:
+        - Files
+      summary: Upload a file
+      description: Upload a single file with optional metadata
+      operationId: uploadFile
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The file to upload
+                author:
+                  type: string
+                  description: Author of the document
+                  maxLength: 200
+                labels:
+                  type: array
+                  items:
+                    type: string
+                    maxLength: 50
+                  maxItems: 10
+                  default: ["general"]
+                  description: Labels/tags for the document
+                crawlDate:
+                  type: string
+                  format: date-time
+                  description: Date when the document was crawled/collected
+                sourceUrl:
+                  type: string
+                  format: uri
+                  description: Source URL of the document
+      responses:
+        '201':
+          description: File uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileUploadResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                noFile:
+                  value:
+                    success: false
+                    error: "No file uploaded"
+                    message: "Please select a file to upload"
+                invalidFileType:
+                  value:
+                    success: false
+                    error: "Invalid file type"
+                    message: "File type application/exe is not allowed"
+                fileTooLarge:
+                  value:
+                    success: false
+                    error: "File too large"
+                    message: "File size exceeds maximum allowed size of 52428800 bytes"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+
+  /files/uploads:
+    post:
+      tags:
+        - Files
+      summary: Upload multiple files
+      description: Upload up to 10 files with shared metadata
+      operationId: uploadMultipleFiles
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: Array of files to upload (maximum 10 files)
+                author:
+                  type: string
+                  description: Author of the documents
+                  maxLength: 200
+                labels:
+                  type: array
+                  items:
+                    type: string
+                    maxLength: 50
+                  maxItems: 10
+                  default: ["general"]
+                  description: Labels/tags for the documents
+                crawlDate:
+                  type: string
+                  format: date-time
+                  description: Date when the documents were crawled/collected
+                sourceUrl:
+                  type: string
+                  format: uri
+                  description: Source URL of the documents
+      responses:
+        '201':
+          description: Files uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleFileUploadResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                noFiles:
+                  value:
+                    success: false
+                    error: "No files uploaded"
+                    message: "Please select at least one file to upload"
+                tooManyFiles:
+                  value:
+                    success: false
+                    error: "Too many files"
+                    message: "Maximum 5 files allowed per request"
+                invalidFileType:
+                  value:
+                    success: false
+                    error: "Invalid file type"
+                    message: "File type application/exe is not allowed"
+                fileTooLarge:
+                  value:
+                    success: false
+                    error: "File too large"
+                    message: "File size exceeds maximum allowed size of 52428800 bytes"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+
+  /files/{id}:
+    get:
+      tags:
+        - Files
+      summary: Get file by ID
+      description: Retrieve file metadata by its ID
+      operationId: getFileById
+      parameters:
+        - name: id
+          in: path
+          description: File ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: File retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFileByIdResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                missingId:
+                  value:
+                    success: false
+                    error: "Missing file ID"
+                    message: "File ID is required"
+        '404':
+          description: File not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                notFound:
+                  value:
+                    success: false
+                    error: "File not found"
+                    message: "The requested file does not exist"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+
+  /files/{id}/download:
+    get:
+      tags:
+        - Files
+      summary: Download file by ID
+      description: Download a file by its ID
+      operationId: downloadFile
+      parameters:
+        - name: id
+          in: path
+          description: File ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: File downloaded successfully
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                missingId:
+                  value:
+                    success: false
+                    error: "Missing file ID"
+                    message: "File ID is required"
+        '404':
+          description: File not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                notFound:
+                  value:
+                    success: false
+                    error: "File not found"
+                    message: "The physical file does not exist"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+
+  /files/{id}/view:
+    get:
+      tags:
+        - Files
+      summary: Get file as base64
+      description: Retrieve file content as base64 string
+      operationId: getFileAsBase64
+      parameters:
+        - name: id
+          in: path
+          description: File ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: File retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFileAsBase64Response'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                missingId:
+                  value:
+                    success: false
+                    error: "Missing file ID"
+                    message: "File ID is required"
+        '404':
+          description: File not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                notFound:
+                  value:
+                    success: false
+                    error: "File not found"
+                    message: "The physical file does not exist"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+
+# components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 

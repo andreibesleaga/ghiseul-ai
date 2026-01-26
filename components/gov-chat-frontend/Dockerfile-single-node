@@ -1,0 +1,39 @@
+FROM node:22.14.0-alpine AS build
+
+ARG VUE_APP_API_URL
+ENV VUE_APP_API_URL=$VUE_APP_API_URL
+
+ARG VUE_APP_CSP_CONNECT_SRC
+ENV VUE_APP_CSP_CONNECT_SRC=$VUE_APP_CSP_CONNECT_SRC
+
+ARG VUE_PROXY_HOST
+ENV VUE_PROXY_HOST=$VUE_PROXY_HOST
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build  # Builds to /app/dist
+
+# Production stage with http-server
+FROM node:22.14.0-alpine
+
+# Redeclare ARG for runtime
+ARG VUE_APP_CSP_CONNECT_SRC
+ENV VUE_APP_CSP_CONNECT_SRC=$VUE_APP_CSP_CONNECT_SRC
+
+WORKDIR /app
+
+RUN npm install -g http-server
+
+COPY --from=build /app/dist /app/dist
+
+# This is just metadata; the CMD determines the real port
+EXPOSE 8090
+
+# --- UPDATED THIS CMD ---
+# Replaced the hardcoded "-p 8090" with "${PORT:-8090}"
+# It now uses the PORT environment variable you pass from docker-compose
+CMD ["sh", "-c", "http-server /app/dist -p ${PORT:-8090} --proxy http://kong:8010? -H \"X-Test-Header: test-value\" -H \"Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src $VUE_APP_CSP_CONNECT_SRC; font-src 'self' https://cdnjs.cloudflare.com data:; img-src 'self' data:;\""]

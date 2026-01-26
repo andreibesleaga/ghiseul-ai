@@ -1,0 +1,36 @@
+/* text-fix.css */
+/* Global text color fixes */
+
+/* General heading fixes */
+h1, h2, h3, h4, h5, h6,
+.modal-header h3,
+.analytics-dashboard h2,
+.analytics-dashboard h3,
+.period-selector label,
+.dashboard-header h2 {
+  color: #000 !important;
+  font-weight: 600 !important;
+}
+
+/* Metric values */
+.metric-value,
+[class*="metric"] [class*="value"],
+.metrics-summary .metric-value,
+.metric-card .metric-value {
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+
+/* Dialog content */
+.modal-content h3,
+.modal-content p,
+.modal-body p,
+.modal-header h3 {
+  color: #000 !important;
+  font-weight: normal !important;
+}
+
+/* Chart text */
+svg text {
+  fill: #000 !important;
+}

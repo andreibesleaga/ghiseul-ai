@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40">
+    <defs>
+      <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4E97D1" />
+        <stop offset="100%" stop-color="#2C5F8A" />
+      </linearGradient>
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      </filter>
+    </defs>
+    <circle cx="50" cy="50" r="30" fill="#f0f9ff" class="logo-base" />
+    <rect x="25" y="65" width="50" height="5" fill="#2C5F8A" class="logo-steps" />
+    <rect x="30" y="60" width="40" height="5" fill="#3A7DA0" class="logo-steps" />
+    <rect x="35" y="55" width="30" height="5" fill="#4E97D1" class="logo-steps" />
+    <rect x="38" y="30" width="6" height="25" fill="#2C5F8A" class="logo-pillars" />
+    <rect x="47" y="30" width="6" height="25" fill="#3A7DA0" class="logo-pillars" />
+    <rect x="56" y="30" width="6" height="25" fill="#2C5F8A" class="logo-pillars" />
+    <path d="M32 30 L68 30 L50 18 Z" fill="#4E97D1" class="logo-roof" />
+    <g class="logo-star" filter="url(#glow)">
+      <path d="M50 12 L52 17 L58 17 L53 21 L55 26 L50 22 L45 26 L47 21 L42 17 L48 17 Z" fill="#FFD700" />
+    </g>
+    <circle cx="50" cy="50" r="31" fill="none" stroke="#4E97D1" stroke-width="1.5" opacity="0.5" class="logo-glow" />
+    <path d="M32 30 L68 30 L50 18 Z M38 30 L38 55 M47 30 L47 55 M56 30 L56 55" fill="none" stroke="white" stroke-width="1.2" class="logo-outline" />
+  </svg>

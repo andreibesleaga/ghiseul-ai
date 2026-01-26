@@ -1,0 +1,79 @@
+{
+  "message": "Query document does not match schema",
+  "level": "moderate",
+  "type": "json",
+  "rule": {
+    "type": "object",
+    "properties": {
+      "_key": {
+        "type": "string"
+      },
+      "userId": {
+        "type": "string"
+      },
+      "sessionId": {
+        "type": "string"
+      },
+      "text": {
+        "type": "string"
+      },
+      "timestamp": {
+        "type": "string"
+      },
+      "responseTime": {
+        "type": "number"
+      },
+      "categoryId": {
+        "type": "string",
+        "optional": true
+      },
+      "serviceId": {
+        "type": "string",
+        "optional": true
+      },
+      "isAnswered": {
+        "type": "boolean"
+      },
+      "userFeedback": {
+        "type": "object",
+        "optional": true,
+        "properties": {
+          "rating": {
+            "type": "number"
+          },
+          "comment": {
+            "type": "string",
+            "optional": true
+          },
+          "providedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "metadata": {
+        "type": "object",
+        "optional": true,
+        "properties": {
+          "criteria": {
+            "type": "string",
+            "optional": true
+          },
+          "tags": {
+            "type": "array",
+            "optional": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "userId",
+      "sessionId",
+      "text",
+      "timestamp",
+      "isAnswered"
+    ]
+  }
+}

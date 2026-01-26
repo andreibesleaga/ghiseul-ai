@@ -1,0 +1,788 @@
+{
+  "metadata": {
+    "exportDate": "2025-06-18T11:38:02.393Z",
+    "sourceDatabase": "node-services",
+    "sourceUrl": "http://localhost:8529",
+    "collections": [
+      "serviceCategories",
+      "services"
+    ],
+    "documentCounts": {
+      "serviceCategories": 13,
+      "services": 53
+    },
+    "totalDocuments": 66,
+    "includeSystemFields": false,
+    "exportVersion": "2.0"
+  },
+  "schemas": {
+    "serviceCategories": {
+      "type": "object",
+      "properties": {
+        "_key": {
+          "type": "string"
+        },
+        "nameEN": {
+          "type": "string"
+        },
+        "nameFR": {
+          "type": "string",
+          "optional": true
+        },
+        "nameSW": {
+          "type": "string",
+          "optional": true
+        },
+        "order": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "_key",
+        "nameEN",
+        "order"
+      ]
+    },
+    "services": {
+      "type": "object",
+      "properties": {
+        "_key": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "nameEN": {
+          "type": "string"
+        },
+        "nameFR": {
+          "type": "string",
+          "optional": true
+        },
+        "nameSW": {
+          "type": "string",
+          "optional": true
+        },
+        "description": {
+          "type": "string",
+          "optional": true
+        },
+        "order": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "_key",
+        "categoryId",
+        "nameEN",
+        "order"
+      ]
+    }
+  },
+  "data": {
+    "serviceCategories": [
+      {
+        "_key": "1",
+        "nameEN": "Identity & Civil Registration",
+        "nameFR": "Identité et état civil",
+        "nameSW": "Utambulisho na Usajili wa Raia",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "2",
+        "nameEN": "Healthcare & Social Services",
+        "nameFR": "Santé et services sociaux",
+        "nameSW": "Afya na Huduma za Kijamii",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "3",
+        "nameEN": "Education & Learning",
+        "nameFR": "Éducation et apprentissage",
+        "nameSW": "Elimu na Mafunzo",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "4",
+        "nameEN": "Employment & Labor Services",
+        "nameFR": "Emploi et services du travail",
+        "nameSW": "Ajira na Huduma za Kazi",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "5",
+        "nameEN": "Taxes & Revenue",
+        "nameFR": "Impôts et revenus",
+        "nameSW": "Kodi na Mapato",
+        "order": 5,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "6",
+        "nameEN": "Public Safety & Justice",
+        "nameFR": "Sécurité publique et justice",
+        "nameSW": "Usalama wa Umma na Haki",
+        "order": 6,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "7",
+        "nameEN": "Transportation & Mobility",
+        "nameFR": "Transport et mobilité",
+        "nameSW": "Usafiri na Usafiri",
+        "order": 7,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "8",
+        "nameEN": "Business & Trade",
+        "nameFR": "Affaires et commerce",
+        "nameSW": "Biashara na Biashara",
+        "order": 8,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "9",
+        "nameEN": "Housing & Urban Development",
+        "nameFR": "Logement et développement urbain",
+        "nameSW": "Nyumba na Maendeleo ya Mjini",
+        "order": 9,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "10",
+        "nameEN": "Utilities & Environment",
+        "nameFR": "Services publics et environnement",
+        "nameSW": "Huduma na Mazingira",
+        "order": 10,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "11",
+        "nameEN": "Culture & Recreation",
+        "nameFR": "Culture et loisirs",
+        "nameSW": "Utamaduni na Burudani",
+        "order": 11,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "12",
+        "nameEN": "Immigration & Citizenship",
+        "nameFR": "Immigration et citoyenneté",
+        "nameSW": "Uhamiaji na Uraia",
+        "order": 12,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "13",
+        "nameEN": "Social Security & Pensions",
+        "nameFR": "Sécurité sociale et retraites",
+        "nameSW": "Hifadhi ya Jamii na Pensheni",
+        "order": 13,
+        "createdAt": null,
+        "updatedAt": null
+      }
+    ],
+    "services": [
+      {
+        "_key": "1",
+        "categoryId": "serviceCategories/1",
+        "nameEN": "Birth Registration",
+        "nameFR": "Enregistrement des naissances",
+        "nameSW": "Usajili wa Kuzaliwa",
+        "description": "Birth Registration service under Identity & Civil Registration category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "3",
+        "categoryId": "serviceCategories/1",
+        "nameEN": "National ID Cards",
+        "nameFR": "Cartes d'identité nationale",
+        "nameSW": "Vitambulisho vya Kitaifa",
+        "description": "National ID Cards service under Identity & Civil Registration category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "5",
+        "categoryId": "serviceCategories/1",
+        "nameEN": "Passport Services",
+        "nameFR": "Services de passeport",
+        "nameSW": "Huduma za Pasipoti",
+        "description": "Passport Services service under Identity & Civil Registration category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "7",
+        "categoryId": "serviceCategories/1",
+        "nameEN": "Vital Records",
+        "nameFR": "État civil",
+        "nameSW": "Kumbukumbu za Muhimu",
+        "description": "Vital Records service under Identity & Civil Registration category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "73",
+        "categoryId": "serviceCategories/10",
+        "nameEN": "Natural Resources",
+        "nameFR": "Ressources naturelles",
+        "nameSW": "Rasilimali za Asili",
+        "description": "Natural Resources service under Utilities & Environment category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "75",
+        "categoryId": "serviceCategories/10",
+        "nameEN": "Environmental Protection",
+        "nameFR": "Protection de l'environnement",
+        "nameSW": "Uhifadhi wa Mazingira",
+        "description": "Environmental Protection service under Utilities & Environment category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "77",
+        "categoryId": "serviceCategories/10",
+        "nameEN": "Parks & Recreation",
+        "nameFR": "Parcs et loisirs",
+        "nameSW": "Mbuga na Burudani",
+        "description": "Parks & Recreation service under Utilities & Environment category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "79",
+        "categoryId": "serviceCategories/10",
+        "nameEN": "Wildlife",
+        "nameFR": "Faune",
+        "nameSW": "Wanyamapori",
+        "description": "Wildlife service under Utilities & Environment category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "81",
+        "categoryId": "serviceCategories/11",
+        "nameEN": "Arts & Culture",
+        "nameFR": "Arts et culture",
+        "nameSW": "Sanaa na Utamaduni",
+        "description": "Arts & Culture service under Culture & Recreation category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "83",
+        "categoryId": "serviceCategories/11",
+        "nameEN": "Heritage",
+        "nameFR": "Patrimoine",
+        "nameSW": "Urithi",
+        "description": "Heritage service under Culture & Recreation category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "85",
+        "categoryId": "serviceCategories/11",
+        "nameEN": "Sports & Recreation",
+        "nameFR": "Sports et loisirs",
+        "nameSW": "Michezo na Burudani",
+        "description": "Sports & Recreation service under Culture & Recreation category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "87",
+        "categoryId": "serviceCategories/11",
+        "nameEN": "Tourism",
+        "nameFR": "Tourisme",
+        "nameSW": "Utalii",
+        "description": "Tourism service under Culture & Recreation category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "89",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Immigration Services",
+        "nameFR": "Services d'immigration",
+        "nameSW": "Huduma za Uhamiaji",
+        "description": "Immigration Services service under Immigration & Citizenship category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "91",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Citizenship Applications",
+        "nameFR": "Demandes de citoyenneté",
+        "nameSW": "Maombi ya Uraia",
+        "description": "Citizenship Applications service under Immigration & Citizenship category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "93",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Visas",
+        "nameFR": "Visas",
+        "nameSW": "Visa",
+        "description": "Visas service under Immigration & Citizenship category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "95",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Refugee Programs",
+        "nameFR": "Programmes pour réfugiés",
+        "nameSW": "Programu za Wakimbizi",
+        "description": "Refugee Programs service under Immigration & Citizenship category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "97",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Elections and Voting",
+        "nameFR": "Élections et vote",
+        "nameSW": "Uchaguzi na Kupiga Kura",
+        "description": "Elections and Voting service under Immigration & Citizenship category",
+        "order": 5,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "99",
+        "categoryId": "serviceCategories/13",
+        "nameEN": "Retirement benefits",
+        "nameFR": "Allocations de retraite",
+        "nameSW": "Manufaa ya kustaafu",
+        "description": "Retirement benefits service under Social Security & Pensions category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "101",
+        "categoryId": "serviceCategories/13",
+        "nameEN": "Pension fund management",
+        "nameFR": "Gestion des fonds de pension",
+        "nameSW": "Usimamizi wa mfuko wa pensheni",
+        "description": "Pension fund management service under Social Security & Pensions category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "103",
+        "categoryId": "serviceCategories/13",
+        "nameEN": "Survivor benefits",
+        "nameFR": "Allocations de survivant",
+        "nameSW": "Manufaa ya warithi",
+        "description": "Survivor benefits service under Social Security & Pensions category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "105",
+        "categoryId": "serviceCategories/13",
+        "nameEN": "Disability pensions",
+        "nameFR": "Pensions pour invalidité",
+        "nameSW": "Pensheni za ulemavu",
+        "description": "Disability pensions service under Social Security & Pensions category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "9",
+        "categoryId": "serviceCategories/2",
+        "nameEN": "Medical Services",
+        "nameFR": "Services médicaux",
+        "nameSW": "Huduma za Matibabu",
+        "description": "Medical Services service under Healthcare & Social Services category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "11",
+        "categoryId": "serviceCategories/2",
+        "nameEN": "Social Assistance",
+        "nameFR": "Aide sociale",
+        "nameSW": "Msaada wa Kijamii",
+        "description": "Social Assistance service under Healthcare & Social Services category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "13",
+        "categoryId": "serviceCategories/2",
+        "nameEN": "Healthcare Programs",
+        "nameFR": "Programmes de santé",
+        "nameSW": "Programu za Afya",
+        "description": "Healthcare Programs service under Healthcare & Social Services category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "15",
+        "categoryId": "serviceCategories/2",
+        "nameEN": "Mental Health",
+        "nameFR": "Santé mentale",
+        "nameSW": "Afya ya Akili",
+        "description": "Mental Health service under Healthcare & Social Services category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "17",
+        "categoryId": "serviceCategories/3",
+        "nameEN": "K-12 Schools",
+        "nameFR": "Écoles K-12",
+        "nameSW": "Shule za K-12",
+        "description": "K-12 Schools service under Education & Learning category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "19",
+        "categoryId": "serviceCategories/3",
+        "nameEN": "Higher Education",
+        "nameFR": "Enseignement supérieur",
+        "nameSW": "Elimu ya Juu",
+        "description": "Higher Education service under Education & Learning category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "21",
+        "categoryId": "serviceCategories/3",
+        "nameEN": "Adult Learning",
+        "nameFR": "Formation des adultes",
+        "nameSW": "Mafunzo ya Watu Wazima",
+        "description": "Adult Learning service under Education & Learning category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "23",
+        "categoryId": "serviceCategories/3",
+        "nameEN": "Educational Resources",
+        "nameFR": "Ressources éducatives",
+        "nameSW": "Rasilimali za Elimu",
+        "description": "Educational Resources service under Education & Learning category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "25",
+        "categoryId": "serviceCategories/4",
+        "nameEN": "Job Search",
+        "nameFR": "Recherche d'emploi",
+        "nameSW": "Utafutaji wa Kazi",
+        "description": "Job Search service under Employment & Labor Services category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "27",
+        "categoryId": "serviceCategories/4",
+        "nameEN": "Labor Rights",
+        "nameFR": "Droits du travail",
+        "nameSW": "Haki za Wafanyakazi",
+        "description": "Labor Rights service under Employment & Labor Services category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "29",
+        "categoryId": "serviceCategories/4",
+        "nameEN": "Workplace Safety",
+        "nameFR": "Sécurité au travail",
+        "nameSW": "Usalama Kazini",
+        "description": "Workplace Safety service under Employment & Labor Services category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "31",
+        "categoryId": "serviceCategories/4",
+        "nameEN": "Career Development",
+        "nameFR": "Développement de carrière",
+        "nameSW": "Maendeleo ya Kazi",
+        "description": "Career Development service under Employment & Labor Services category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "33",
+        "categoryId": "serviceCategories/5",
+        "nameEN": "Income Tax",
+        "nameFR": "Impôt sur le revenu",
+        "nameSW": "Kodi ya Mapato",
+        "description": "Income Tax service under Taxes & Revenue category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "35",
+        "categoryId": "serviceCategories/5",
+        "nameEN": "Sales Tax",
+        "nameFR": "Taxe de vente",
+        "nameSW": "Kodi ya Mauzo",
+        "description": "Sales Tax service under Taxes & Revenue category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "37",
+        "categoryId": "serviceCategories/5",
+        "nameEN": "Property Tax",
+        "nameFR": "Impôt foncier",
+        "nameSW": "Kodi ya Mali",
+        "description": "Property Tax service under Taxes & Revenue category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "39",
+        "categoryId": "serviceCategories/5",
+        "nameEN": "Tax Credits",
+        "nameFR": "Crédits d'impôt",
+        "nameSW": "Punguzo za Kodi",
+        "description": "Tax Credits service under Taxes & Revenue category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "41",
+        "categoryId": "serviceCategories/6",
+        "nameEN": "Police Services",
+        "nameFR": "Services de police",
+        "nameSW": "Huduma za Polisi",
+        "description": "Police Services service under Public Safety & Justice category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "43",
+        "categoryId": "serviceCategories/6",
+        "nameEN": "Courts",
+        "nameFR": "Tribunaux",
+        "nameSW": "Mahakama",
+        "description": "Courts service under Public Safety & Justice category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "45",
+        "categoryId": "serviceCategories/6",
+        "nameEN": "Legal Services",
+        "nameFR": "Services juridiques",
+        "nameSW": "Huduma za Kisheria",
+        "description": "Legal Services service under Public Safety & Justice category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "47",
+        "categoryId": "serviceCategories/6",
+        "nameEN": "Emergency Services",
+        "nameFR": "Services d'urgence",
+        "nameSW": "Huduma za Dharura",
+        "description": "Emergency Services service under Public Safety & Justice category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "49",
+        "categoryId": "serviceCategories/7",
+        "nameEN": "Driver Services",
+        "nameFR": "Services aux conducteurs",
+        "nameSW": "Huduma za Dereva",
+        "description": "Driver Services service under Transportation & Mobility category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "51",
+        "categoryId": "serviceCategories/7",
+        "nameEN": "Public Transit",
+        "nameFR": "Transport en commun",
+        "nameSW": "Usafiri wa Umma",
+        "description": "Public Transit service under Transportation & Mobility category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "53",
+        "categoryId": "serviceCategories/7",
+        "nameEN": "Roads & Highways",
+        "nameFR": "Routes et autoroutes",
+        "nameSW": "Barabara na Barabara Kuu",
+        "description": "Roads & Highways service under Transportation & Mobility category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "55",
+        "categoryId": "serviceCategories/7",
+        "nameEN": "Aviation",
+        "nameFR": "Aviation",
+        "nameSW": "Usafiri wa Anga",
+        "description": "Aviation service under Transportation & Mobility category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "57",
+        "categoryId": "serviceCategories/8",
+        "nameEN": "Business Registration",
+        "nameFR": "Enregistrement d'entreprise",
+        "nameSW": "Usajili wa Biashara",
+        "description": "Business Registration service under Business & Trade category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "59",
+        "categoryId": "serviceCategories/8",
+        "nameEN": "Economic Development",
+        "nameFR": "Développement économique",
+        "nameSW": "Maendeleo ya Kiuchumi",
+        "description": "Economic Development service under Business & Trade category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "61",
+        "categoryId": "serviceCategories/8",
+        "nameEN": "Trade",
+        "nameFR": "Commerce",
+        "nameSW": "Biashara",
+        "description": "Trade service under Business & Trade category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "63",
+        "categoryId": "serviceCategories/8",
+        "nameEN": "Small Business Support",
+        "nameFR": "Soutien aux petites entreprises",
+        "nameSW": "Msaada wa Biashara Ndogo",
+        "description": "Small Business Support service under Business & Trade category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "65",
+        "categoryId": "serviceCategories/9",
+        "nameEN": "Housing Programs",
+        "nameFR": "Programmes de logement",
+        "nameSW": "Programu za Nyumba",
+        "description": "Housing Programs service under Housing & Urban Development category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "67",
+        "categoryId": "serviceCategories/9",
+        "nameEN": "Property Assessment",
+        "nameFR": "Évaluation des propriétés",
+        "nameSW": "Tathmini ya Mali",
+        "description": "Property Assessment service under Housing & Urban Development category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "69",
+        "categoryId": "serviceCategories/9",
+        "nameEN": "Rental Assistance",
+        "nameFR": "Aide à la location",
+        "nameSW": "Msaada wa Kukodi",
+        "description": "Rental Assistance service under Housing & Urban Development category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "71",
+        "categoryId": "serviceCategories/9",
+        "nameEN": "Homeownership",
+        "nameFR": "Accession à la propriété",
+        "nameSW": "Umiliki wa Nyumba",
+        "description": "Homeownership service under Housing & Urban Development category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,155 @@
+
+# Ports Overview:
+# 8000 - vllm (external)
+# 9000 - textgen
+# 7000 - tei (embedding)
+# 6000 - embedding wrapper
+# 7100 - tei_reranker
+# 6100 - reranker wrapper
+
+services:
+  vllm:
+    container_name: vllm-vllm-2
+    image: vllm/vllm-openai:latest
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    ports:
+      - "8000:8000"
+    command: >
+      --model ibm-granite/granite-3.2-2b-instruct
+      --gpu_memory_utilization 0.5
+      --served-model-name granite-3.2-2b-instruct
+      --max_model_len 8192
+      --dtype=half
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+    volumes:
+      - /root/.cache/huggingface:/root/.cache/huggingface
+    networks:
+      - llm_network
+    ipc: "host"
+    restart: unless-stopped
+
+  textgen:
+    container_name: llm-textgen
+    build:
+      context: ./GenAIComps
+      dockerfile: comps/llms/src/text-generation/Dockerfile
+    environment:
+      - LLM_ENDPOINT=http://vllm:8000
+      - LLM_MODEL_ID=granite-3.2-2b-instruct
+    ports:
+      - "9000:9000"
+    ipc: "host"
+    networks:
+      - llm_network
+    restart: unless-stopped
+
+  tei:
+    image: ghcr.io/huggingface/text-embeddings-inference:turing-1.7
+    container_name: tei-embedding-serving
+    entrypoint: /bin/sh -c "text-embeddings-router --json-output --model-id ${EMBEDDING_MODEL_ID}"
+    runtime: nvidia
+    ports:
+      - "7000:80"
+    volumes:
+      - "${DATA_PATH:-./data}:/data"
+      # Add exact path to libcuda.so.1 - needs to be located and mapped
+      - /usr/lib/x86_64-linux-gnu/libcuda.so.1:/usr/lib/x86_64-linux-gnu/libcuda.so.1
+      - /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1
+      - /usr/lib/x86_64-linux-gnu/libcudart.so.11.0:/usr/lib/x86_64-linux-gnu/libcudart.so.11.0
+    shm_size: 2g
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+      - RUST_BACKTRACE=1
+      - NVIDIA_VISIBLE_DEVICES=all
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 10s
+      timeout: 6s
+      retries: 48
+    networks:
+      - llm_network
+    restart: unless-stopped
+
+  embedding:
+    container_name: embedding
+    build:
+      context: ./GenAIComps
+      dockerfile: comps/embeddings/src/Dockerfile
+    environment:
+      - EMBEDDING_MODEL_ENDPOINT=http://tei:80
+      - TEI_EMBEDDING_ENDPOINT=http://tei:80
+      - EMBEDDING_MODEL_ID=bge-m3
+    ports:
+      - "6000:6000"
+    ipc: "host"
+    networks:
+      - llm_network
+    restart: unless-stopped
+
+  #Adding reranker microservice
+  tei_reranker:
+    image: ghcr.io/huggingface/text-embeddings-inference:turing-1.7
+    container_name: tei-reranker-serving
+    entrypoint: /bin/sh -c "text-embeddings-router --json-output --model-id ${RERANKER_MODEL_ID}"
+    runtime: nvidia
+    ports:
+      - "7100:80"
+    volumes:
+      - "${DATA_PATH:-./data}:/data"
+      - /usr/lib/x86_64-linux-gnu/libcuda.so.1:/usr/lib/x86_64-linux-gnu/libcuda.so.1
+      - /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1
+      - /usr/lib/x86_64-linux-gnu/libcudart.so.11.0:/usr/lib/x86_64-linux-gnu/libcudart.so.11.0
+    shm_size: 2g
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+      - RUST_BACKTRACE=1
+      - NVIDIA_VISIBLE_DEVICES=all
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 10s
+      timeout: 6s
+      retries: 48
+    networks:
+      - llm_network
+    restart: unless-stopped
+
+  reranker:
+    container_name: reranker
+    build:
+      context: ./GenAIComps
+      dockerfile: comps/rerankings/src/Dockerfile
+    environment:
+      - RERANKER_MODEL_ENDPOINT=http://tei_reranker:80
+      - TEI_RERANKING_ENDPOINT=http://tei_reranker:80
+      - RERANKER_MODEL_ID=bge-reranker-large
+    ports:
+      - "6100:8000"
+    ipc: "host"
+    networks:
+      - llm_network
+    restart: unless-stopped
+
+networks:
+  llm_network:
+    driver: bridge

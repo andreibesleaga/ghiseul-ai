@@ -1,0 +1,78 @@
+<!-- brand-logo.svg -->
+<svg 
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    width="300"
+    height="80"
+    viewBox="0 0 300 80"
+>
+  <!-- Background is transparent. Dimensions can be changed. -->
+
+  <!-- Symbol: A stylized government building + chat bubble shape -->
+  <g transform="translate(20, 15)">
+    <!-- Chat bubble shape -->
+    <path 
+      d="M10 10 
+         h 50 
+         a 10 10 0 0 1 10 10 
+         v 20 
+         a 10 10 0 0 1 -10 10 
+         h -10 
+         l -8 8 
+         l -3 -8 
+         h -29 
+         a 10 10 0 0 1 -10 -10 
+         v -20 
+         a 10 10 0 0 1 10 -10 
+         z"
+      fill="#4E97D1"
+    />
+    
+    <!-- Government building silhouette (3 columns + roof) -->
+    <path
+      d="M28 15 
+         l 7 -5 
+         l 7 5 
+         v 3 
+         h -14 
+         z
+         M26 18 
+         h 18 
+         v 18 
+         h -4 
+         v -10 
+         h -2 
+         v 10 
+         h -4 
+         v -10 
+         h -2 
+         v 10 
+         h -4 
+         z"
+      fill="#fff"
+    />
+  </g>
+
+  <!-- Text: "GovChat" (You can rename it) -->
+  <text
+    x="90"
+    y="38"
+    fill="#333"
+    font-family="Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="600"
+  >
+    GovChat
+  </text>
+
+  <!-- Tagline or subtext (optional) -->
+  <text
+    x="90"
+    y="58"
+    fill="#666"
+    font-family="Segoe UI, sans-serif"
+    font-size="14"
+  >
+    Government Services Chatbot
+  </text>
+</svg>

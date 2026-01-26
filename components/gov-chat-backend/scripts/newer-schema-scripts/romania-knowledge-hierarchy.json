@@ -1,0 +1,253 @@
+[
+    {
+        "category": "Identity & Civil Registration",
+        "categoryRO": "Identitate și Înregistrări Civile",
+        "categoryFR": "Identité et état civil",
+        "services": [
+            "Birth certificates",
+            "National ID cards",
+            "Passports",
+            "Marriage and death certificates",
+            "Voter registration"
+        ],
+        "servicesRO": [
+            "Certificate de naștere",
+            "Cărți de identitate",
+            "Pașapoarte",
+            "Certificate de căsătorie și deces",
+            "Înregistrare alegători"
+        ]
+    },
+    {
+        "category": "Healthcare & Social Services",
+        "categoryRO": "Sănătate și Servicii Sociale",
+        "categoryFR": "Santé et services sociaux",
+        "services": [
+            "Public healthcare access",
+            "Vaccination programs",
+            "Health insurance (CNAS)",
+            "Disability benefits",
+            "Welfare and food assistance"
+        ],
+        "servicesRO": [
+            "Acces la sănătate publică",
+            "Programe de vaccinare",
+            "Asigurări de sănătate (CNAS)",
+            "Beneficii pentru dizabilități",
+            "Asistență socială și alimentară"
+        ]
+    },
+    {
+        "category": "Education & Learning",
+        "categoryRO": "Educație și Învățare",
+        "categoryFR": "Éducation et apprentissage",
+        "services": [
+            "Public schools and universities",
+            "Scholarships and student loans",
+            "Adult education programs",
+            "Online learning resources",
+            "Diploma recognition and equivalence"
+        ],
+        "servicesRO": [
+            "Școli și universități publice",
+            "Burse și împrumuturi pentru studenți",
+            "Programe de educație pentru adulți",
+            "Resurse de învățare online",
+            "Recunoaștere și echivalare diplome"
+        ]
+    },
+    {
+        "category": "Employment & Labor Services",
+        "categoryRO": "Ocuparea Forței de Muncă",
+        "categoryFR": "Emploi et services du travail",
+        "services": [
+            "Job search and unemployment benefits (ANOFM)",
+            "Worker protections and labor rights",
+            "Workplace safety regulations (ITM)",
+            "Skills training and apprenticeships",
+            "Work permits for foreigners"
+        ],
+        "servicesRO": [
+            "Căutare loc de muncă și șomaj (ANOFM)",
+            "Protecția drepturilor muncitorilor",
+            "Regulamente de siguranță la locul de muncă (ITM)",
+            "Formare profesională și ucenicie",
+            "Permise de muncă pentru străini"
+        ]
+    },
+    {
+        "category": "Taxes & Revenue",
+        "categoryRO": "Taxe și Impozite",
+        "categoryFR": "Impôts et revenus",
+        "services": [
+            "Income tax filing and refunds (ANAF)",
+            "Property tax payments",
+            "Business tax compliance",
+            "VAT and customs duties",
+            "Tax payment plans and deferrals"
+        ],
+        "servicesRO": [
+            "Declarații și restituiri impozit pe venit (ANAF)",
+            "Plăți impozit pe proprietate",
+            "Conformitate fiscală pentru afaceri",
+            "TVA și taxe vamale",
+            "Planuri de plată și amânări taxe"
+        ]
+    },
+    {
+        "category": "Public Safety & Justice",
+        "categoryRO": "Siguranță Publică și Justiție",
+        "categoryFR": "Sécurité publique et justice",
+        "services": [
+            "Police and emergency services (112)",
+            "Court and legal aid services",
+            "Crime reporting",
+            "Consumer protection laws (ANPC)",
+            "Criminal record certificates"
+        ],
+        "servicesRO": [
+            "Poliție și servicii de urgență (112)",
+            "Instanțe și asistență juridică",
+            "Raportare infracțiuni",
+            "Legi de protecție a consumatorului (ANPC)",
+            "Certificate de cazier judiciar"
+        ]
+    },
+    {
+        "category": "Transportation & Mobility",
+        "categoryRO": "Transport și Mobilitate",
+        "categoryFR": "Transport et mobilité",
+        "services": [
+            "Driver's licenses (DRPCIV)",
+            "Vehicle registration",
+            "Public transit information",
+            "Traffic violations and fines",
+            "Road safety programs",
+            "Vehicle inspection (ITP)"
+        ],
+        "servicesRO": [
+            "Permise de conducere (DRPCIV)",
+            "Înmatriculare vehicule",
+            "Informații transport public",
+            "Încălcări de trafic și amenzi",
+            "Programe de siguranță rutieră",
+            "Inspecție tehnică periodică (ITP)"
+        ]
+    },
+    {
+        "category": "Business & Trade",
+        "categoryRO": "Afaceri și Comerț",
+        "categoryFR": "Affaires et commerce",
+        "services": [
+            "Business registration (ONRC)",
+            "Trade regulations and permits",
+            "Small business grants and incentives",
+            "E-commerce and digital business support",
+            "Import/export licenses",
+            "Company financial reporting"
+        ],
+        "servicesRO": [
+            "Înregistrare firme (ONRC)",
+            "Reglementări și permise comerciale",
+            "Granturi și stimulente pentru IMM-uri",
+            "Suport pentru comerț electronic",
+            "Licențe import/export",
+            "Raportare financiară companii"
+        ]
+    },
+    {
+        "category": "Housing & Urban Development",
+        "categoryRO": "Locuințe și Dezvoltare Urbană",
+        "categoryFR": "Logement et développement urbain",
+        "services": [
+            "Public housing assistance (ANL)",
+            "Property registration (Cadastru)",
+            "Housing loans (Prima Casă, Noua Casă)",
+            "Zoning and building permits",
+            "Rental assistance programs"
+        ],
+        "servicesRO": [
+            "Asistență locuințe sociale (ANL)",
+            "Înregistrare proprietăți (Cadastru)",
+            "Credite locuințe (Prima Casă, Noua Casă)",
+            "Autorizații de zonare și construcție",
+            "Programe de asistență chirie"
+        ]
+    },
+    {
+        "category": "Utilities & Environment",
+        "categoryRO": "Utilități și Mediu",
+        "categoryFR": "Services publics et environnement",
+        "services": [
+            "Water and electricity services",
+            "Waste management and recycling",
+            "Environmental regulations",
+            "Renewable energy incentives",
+            "Energy efficiency programs"
+        ],
+        "servicesRO": [
+            "Servicii de apă și electricitate",
+            "Gestionare deșeuri și reciclare",
+            "Reglementări de mediu",
+            "Stimulente energie regenerabilă",
+            "Programe eficiență energetică"
+        ]
+    },
+    {
+        "category": "Culture & Recreation",
+        "categoryRO": "Cultură și Recreere",
+        "categoryFR": "Culture et loisirs",
+        "services": [
+            "Cultural events and festivals",
+            "Museum and heritage access",
+            "Sports and recreation programs",
+            "Library services",
+            "Arts grants and funding"
+        ],
+        "servicesRO": [
+            "Evenimente și festivaluri culturale",
+            "Acces muzee și patrimoniu",
+            "Programe sport și recreere",
+            "Servicii bibliotecă",
+            "Granturi și finanțări pentru artă"
+        ]
+    },
+    {
+        "category": "Immigration & Citizenship",
+        "categoryRO": "Imigrare și Cetățenie",
+        "categoryFR": "Immigration et citoyenneté",
+        "services": [
+            "Visa applications",
+            "Residence permits",
+            "Citizenship naturalization",
+            "Asylum and refugee services",
+            "EU citizen registration"
+        ],
+        "servicesRO": [
+            "Cereri de viză",
+            "Permise de ședere",
+            "Naturalizare cetățenie",
+            "Servicii azil și refugiați",
+            "Înregistrare cetățeni UE"
+        ]
+    },
+    {
+        "category": "Social Security & Pensions",
+        "categoryRO": "Securitate Socială și Pensii",
+        "categoryFR": "Sécurité sociale et retraites",
+        "services": [
+            "Retirement benefits (Casa de Pensii)",
+            "Pension fund management",
+            "Survivor benefits",
+            "Disability pensions",
+            "Child benefits and allowances"
+        ],
+        "servicesRO": [
+            "Beneficii de pensionare (Casa de Pensii)",
+            "Administrare fonduri de pensii",
+            "Beneficii pentru urmași",
+            "Pensii de invaliditate",
+            "Beneficii și alocații pentru copii"
+        ]
+    }
+]

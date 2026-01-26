@@ -1,0 +1,155 @@
+version: "3.8"
+
+networks:
+  kong-net:
+    driver: bridge
+
+volumes:
+  kong_data:
+  keycloak_data:
+  mongo_data:
+  nginx_certs:
+  nginx_conf:
+  zap_data:
+
+services:
+  kong-database:
+    image: postgres:13
+    restart: unless-stopped
+    networks:
+      - kong-net
+    command: postgres -c hba_file=/etc/postgresql/pg_hba.conf
+    environment:
+      POSTGRES_USER: kong
+      POSTGRES_DB: kong
+      POSTGRES_PASSWORD: k1ngk0ng
+    ports:
+      - "5432:5432"
+    volumes:
+      - kong_data:/var/lib/postgresql/data
+      - ./pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "kong"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  kong:
+    image: kong:latest
+    restart: unless-stopped
+    networks:
+      - kong-net
+    depends_on:
+      kong-database:
+        condition: service_healthy
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-database
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: k1ngk0ng
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001, 0.0.0.0:8444 ssl
+    ports:
+      - "8000:8000"
+      - "8443:8443"
+      - "8001:8001"
+
+  konga:
+    image: pantsel/konga:0.14.9
+    restart: unless-stopped
+    networks:
+      - kong-net
+    depends_on:
+      - kong
+      - mongo
+    environment:
+      NODE_ENV: production
+      TOKEN_SECRET: ef7a351c6f1c7f673af0cf3755498884b5e8b13656767a08120e2b2c524fc6f8 
+      DB_ADAPTER: mongo
+      DB_DATABASE: konga
+      DB_URI: mongodb://mongo:27017/konga
+      KONGA_HOOK_TIMEOUT: 120000
+      KONG_ADMIN_URL: http://kong:8001
+    ports:
+      - "1337:1337"
+
+  mongo:
+    image: mongo:4.4
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - kong-net
+    ports:
+      - "27017:27017"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    restart: unless-stopped
+    container_name: keycloak
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - "/opt/keycloak/bin/kc.sh build && /opt/keycloak/bin/kc.sh start --optimized"
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: keycloak-db
+      KC_DB_URL_DATABASE: keycloak
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: adminpassword
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloakpassword
+      KC_HTTP_ENABLED: true
+      KC_HOSTNAME: localhost
+      KC_HTTP_PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - keycloak-db
+    networks:
+      - kong-net
+
+  keycloak-db:
+    image: postgres:15
+    container_name: keycloak-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloakpassword
+    volumes:
+      - keycloak_data:/var/lib/postgresql/data
+    networks:
+      - kong-net
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/certs:/etc/nginx/certs
+      - nginx_conf:/etc/nginx
+      - nginx_certs:/etc/ssl/private
+    networks:
+      - kong-net
+    depends_on:
+      - kong
+
+  # OWASP ZAP service with alternative ports
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    container_name: zap
+    restart: unless-stopped
+    ports:
+      - "8095:8080"
+    volumes:
+      - zap_data:/zap/wrk
+    command: zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.disablekey=true
+    networks:
+      - kong-net

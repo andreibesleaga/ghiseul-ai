@@ -1,0 +1,34 @@
+FROM python:3.11-slim
+
+ENV LANG=C.UTF-8
+
+RUN apt-get update -y && apt-get install -y --no-install-recommends --fix-missing \
+    build-essential \
+    wget curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user (same as dataprep)
+RUN useradd -m -s /bin/bash user && \
+    mkdir -p /home/user && \
+    chown -R user /home/user/
+
+# Copy the custom service code into /home/user/comps/third_parties/httpservices for consistency
+COPY genie-ai-overlay/http-service/ /home/user/comps/third_parties/httpservices/
+
+# Install Python deps
+RUN pip install --no-cache-dir --upgrade pip setuptools && \
+    pip install --no-cache-dir -r /home/user/comps/third_parties/httpservices/requirements.txt
+
+# Install GENIE-AI specific dependencies if not in requirements.txt (e.g., for auth calls)
+RUN pip install --no-cache-dir aiohttp
+
+# Switch to non-root user
+USER user
+
+# Workdir inside comps (consistent pattern)
+WORKDIR /home/user/comps/third_parties/httpservices
+
+EXPOSE 6666
+
+# Run the FastAPI service
+ENTRYPOINT ["uvicorn", "test:app", "--host", "0.0.0.0", "--port", "6666"]

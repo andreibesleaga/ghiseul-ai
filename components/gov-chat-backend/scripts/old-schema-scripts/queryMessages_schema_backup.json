@@ -1,0 +1,32 @@
+{
+  "message": "Query-Message edge does not match schema",
+  "level": "moderate",
+  "type": "json",
+  "rule": {
+    "type": "object",
+    "properties": {
+      "_from": {
+        "type": "string"
+      },
+      "_to": {
+        "type": "string"
+      },
+      "responseType": {
+        "type": "string"
+      },
+      "confidenceScore": {
+        "type": "number",
+        "optional": true
+      },
+      "createdAt": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "_from",
+      "_to",
+      "responseType",
+      "createdAt"
+    ]
+  }
+}

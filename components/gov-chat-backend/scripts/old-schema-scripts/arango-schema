@@ -1,0 +1,387 @@
+// ArangoDB Schema Definition
+
+// 1. Users Collection - MODIFIED to include loginName, accessToken, and encPassword
+/*
+  Stores user profile information from all the tabs in the UserProfileComponent.
+  Each document represents a unique user with comprehensive profile data.
+  Now includes authentication information for the Vue.js application.
+*/
+const usersCollection = {
+  name: "users",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _key: { type: "string" },  // Unique identifier for the user
+        loginName: { type: "string" }, // Added for authentication
+        accessToken: { type: "string", optional: true }, // Added for authentication
+        encPassword: { type: "string" }, // Added for encrypted password storage
+        email: { type: "string" }, // Added as seen in the document screenshot
+        personalIdentification: {
+          type: "object",
+          properties: {
+            fullName: { type: "string" },
+            dob: { type: "string" },
+            gender: { type: "string" },
+            nationality: { type: "string" },
+            maritalStatus: { type: "string" },
+            photoUrl: { type: "string", optional: true },
+            biometricUrl: { type: "string", optional: true }
+          }
+        },
+        civilRegistration: {
+          type: "object",
+          properties: {
+            birthCertUrl: { type: "string", optional: true },
+            deathCertUrl: { type: "string", optional: true },
+            marriageDivorceUrl: { type: "string", optional: true },
+            adoptionUrl: { type: "string", optional: true },
+            citizenshipUrl: { type: "string", optional: true },
+            immigrationUrl: { type: "string", optional: true }
+          }
+        },
+        addressResidency: {
+          type: "object",
+          properties: {
+            currentAddress: { type: "string" },
+            previousAddresses: { type: "string", optional: true },
+            homeOrRental: { type: "string", optional: true },
+            utilityBillsUrl: { type: "string", optional: true },
+            landRecordsUrl: { type: "string", optional: true }
+          }
+        },
+        identityTravel: {
+          type: "object",
+          properties: {
+            idCard: { type: "string", optional: true },
+            passport: { type: "string", optional: true },
+            driversLicense: { type: "string", optional: true },
+            voterId: { type: "string", optional: true },
+            ssn: { type: "string", optional: true },
+            militaryRecordsUrl: { type: "string", optional: true }
+          }
+        },
+        healthMedical: {
+          type: "object",
+          properties: {
+            medicalHistory: { type: "string", optional: true },
+            vaccinationsUrl: { type: "string", optional: true },
+            insuranceDetails: { type: "string", optional: true },
+            disability: { type: "string", optional: true },
+            organDonor: { type: "string", optional: true },
+            prescriptions: { type: "string", optional: true },
+            mentalHealth: { type: "string", optional: true }
+          }
+        },
+        employment: {
+          type: "object",
+          properties: {
+            eHistory: { type: "string", optional: true },
+            currentEmployer: { type: "string", optional: true },
+            workPermitsUrl: { type: "string", optional: true },
+            certificationsUrl: { type: "string", optional: true },
+            unemployment: { type: "string", optional: true },
+            tin: { type: "string", optional: true },
+            businessAffiliations: { type: "string", optional: true }
+          }
+        },
+        education: {
+          type: "object",
+          properties: {
+            schools: { type: "string", optional: true },
+            diplomas: { type: "string", optional: true },
+            performance: { type: "string", optional: true },
+            scholarships: { type: "string", optional: true }
+          }
+        },
+        financialTax: {
+          type: "object",
+          properties: {
+            incomeTaxUrl: { type: "string", optional: true },
+            bankAccounts: { type: "string", optional: true },
+            propertyTaxUrl: { type: "string", optional: true },
+            businessTaxUrl: { type: "string", optional: true },
+            pensionContribUrl: { type: "string", optional: true },
+            loanAidUrl: { type: "string", optional: true }
+          }
+        },
+        socialSecurity: {
+          type: "object",
+          properties: {
+            pensionStatus: { type: "string", optional: true },
+            unemployment: { type: "string", optional: true },
+            disability: { type: "string", optional: true },
+            childcare: { type: "string", optional: true },
+            foodAssistance: { type: "string", optional: true },
+            housingAssistance: { type: "string", optional: true }
+          }
+        },
+        criminalLegal: {
+          type: "object",
+          properties: {
+            policeRecordsUrl: { type: "string", optional: true },
+            courtCasesUrl: { type: "string", optional: true },
+            finesPenaltiesUrl: { type: "string", optional: true },
+            paroleProbation: { type: "string", optional: true },
+            citizenshipRevocation: { type: "string", optional: true }
+          }
+        },
+        transportation: {
+          type: "object",
+          properties: {
+            vehicleReg: { type: "string", optional: true },
+            trafficViolationsUrl: { type: "string", optional: true },
+            licenseHistory: { type: "string", optional: true },
+            publicTransportCard: { type: "string", optional: true }
+          }
+        },
+        civicParticipation: {
+          type: "object",
+          properties: {
+            voterRegistration: { type: "string", optional: true },
+            electionHistory: { type: "string", optional: true },
+            partyMembership: { type: "string", optional: true },
+            militaryStatus: { type: "string", optional: true },
+            publicServiceRoles: { type: "string", optional: true }
+          }
+        },
+        createdAt: { type: "string" },
+        updatedAt: { type: "string" }
+      },
+      required: ["_key", "loginName", "email", "encPassword", "personalIdentification", "addressResidency"]
+    },
+    level: "moderate",
+    message: "User profile document does not match schema"
+  }
+};
+
+// The rest of the collections remain unchanged
+// 2. Sessions Collection
+const sessionsCollection = {
+  name: "sessions",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _key: { type: "string" },  // Session ID
+        userId: { type: "string" }, // Reference to users collection
+        startTime: { type: "string" }, // ISO date string
+        endTime: { type: "string", optional: true }, // ISO date string
+        deviceInfo: { type: "object", optional: true },
+        ipAddress: { type: "string", optional: true },
+        active: { type: "boolean" }
+      },
+      required: ["_key", "userId", "startTime", "active"]
+    },
+    level: "moderate",
+    message: "Session document does not match schema"
+  }
+};
+
+// 3. ServiceCategories Collection
+const serviceCategoriesCollection = {
+  name: "serviceCategories",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _key: { type: "string" }, // e.g., "cat1", "cat2"
+        nameEN: { type: "string" }, // English name
+        nameFR: { type: "string", optional: true }, // French name
+        nameSW: { type: "string", optional: true }, // Swahili name
+        // Add more languages as needed
+        order: { type: "number" } // For sorting categories
+      },
+      required: ["_key", "nameEN", "order"]
+    },
+    level: "moderate",
+    message: "Service category document does not match schema"
+  }
+};
+
+// 4. Services Collection
+const servicesCollection = {
+  name: "services",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _key: { type: "string" },
+        categoryId: { type: "string" }, // Reference to serviceCategories
+        nameEN: { type: "string" },
+        nameFR: { type: "string", optional: true },
+        nameSW: { type: "string", optional: true },
+        // Add more languages as needed
+        description: { type: "string", optional: true },
+        order: { type: "number" } // For sorting services within a category
+      },
+      required: ["_key", "categoryId", "nameEN", "order"]
+    },
+    level: "moderate",
+    message: "Service document does not match schema"
+  }
+};
+
+// 5. Queries Collection
+const queriesCollection = {
+  name: "queries",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _key: { type: "string" },
+        userId: { type: "string" }, // Reference to users collection
+        sessionId: { type: "string" }, // Reference to sessions collection
+        text: { type: "string" }, // The actual query text
+        timestamp: { type: "string" }, // ISO date string
+        responseTime: { type: "number" }, // Response time in milliseconds
+        categoryId: { type: "string", optional: true }, // Reference to serviceCategories
+        serviceId: { type: "string", optional: true }, // Reference to services
+        isAnswered: { type: "boolean" },
+        userFeedback: {
+          type: "object",
+          optional: true,
+          properties: {
+            rating: { type: "number" }, // e.g., 1-5 scale
+            comment: { type: "string", optional: true },
+            providedAt: { type: "string" } // ISO date string
+          }
+        },
+        metadata: { 
+          type: "object", 
+          optional: true,
+          properties: {
+            criteria: { type: "string", optional: true }, // Additional search criteria
+            tags: { type: "array", optional: true, items: { type: "string" } }
+          }
+        }
+      },
+      required: ["_key", "userId", "sessionId", "text", "timestamp", "isAnswered"]
+    },
+    level: "moderate",
+    message: "Query document does not match schema"
+  }
+};
+
+// 6. Analytics Collection
+const analyticsCollection = {
+  name: "analytics",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _key: { type: "string" }, // e.g., "daily-2025-03-08", "monthly-2025-03", etc.
+        period: { type: "string" }, // "daily", "weekly", "monthly", "all-time"
+        startDate: { type: "string" }, // ISO date string
+        endDate: { type: "string" }, // ISO date string
+        totalQueries: { type: "number" },
+        uniqueUsers: { type: "number" },
+        averageResponseTime: { type: "number" },
+        satisfactionRate: { type: "number" }, // Average of user feedback ratings
+        queryDistribution: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              categoryId: { type: "string" },
+              count: { type: "number" }
+            }
+          }
+        },
+        topQueries: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              text: { type: "string" },
+              count: { type: "number" }
+            }
+          }
+        },
+        lastUpdated: { type: "string" } // ISO date string
+      },
+      required: ["_key", "period", "startDate", "endDate", "totalQueries", "lastUpdated"]
+    },
+    level: "moderate",
+    message: "Analytics document does not match schema"
+  }
+};
+
+// Edge Collections remain unchanged
+const userSessionsEdgeCollection = {
+  name: "userSessions",
+  type: "edge",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _from: { type: "string" }, // users/user123
+        _to: { type: "string" }, // sessions/session456
+        createdAt: { type: "string" }
+      },
+      required: ["_from", "_to", "createdAt"]
+    }
+  }
+};
+
+const sessionQueriesEdgeCollection = {
+  name: "sessionQueries",
+  type: "edge",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _from: { type: "string" }, // sessions/session456
+        _to: { type: "string" }, // queries/query789
+        createdAt: { type: "string" }
+      },
+      required: ["_from", "_to", "createdAt"]
+    }
+  }
+};
+
+const categoryServicesEdgeCollection = {
+  name: "categoryServices",
+  type: "edge",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _from: { type: "string" }, // serviceCategories/cat1
+        _to: { type: "string" }, // services/service123
+        order: { type: "number" } // For sorting services within a category
+      },
+      required: ["_from", "_to"]
+    }
+  }
+};
+
+const queryCategoriesEdgeCollection = {
+  name: "queryCategories",
+  type: "edge",
+  schema: {
+    rule: {
+      type: "object",
+      properties: {
+        _from: { type: "string" }, // queries/query789
+        _to: { type: "string" }, // serviceCategories/cat1
+        confidence: { type: "number", optional: true } // AI confidence in categorization
+      },
+      required: ["_from", "_to"]
+    }
+  }
+};
+
+// Export all collection schemas
+module.exports = {
+  usersCollection,
+  sessionsCollection,
+  serviceCategoriesCollection,
+  servicesCollection,
+  queriesCollection,
+  analyticsCollection,
+  userSessionsEdgeCollection,
+  sessionQueriesEdgeCollection,
+  categoryServicesEdgeCollection,
+  queryCategoriesEdgeCollection
+};

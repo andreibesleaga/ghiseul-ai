@@ -1,0 +1,783 @@
+{
+  "database": "genie-ai",
+  "collections": [
+    {
+      "name": "serviceCategories",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "catCode",
+            "order"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612865425408",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "conversationCategories",
+      "type": "edge",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "edge",
+          "fields": [
+            "_from",
+            "_to"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": false,
+          "name": "edge",
+          "selectivityEstimate": 1,
+          "estimates": false,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        },
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612799365120",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "userSessions",
+      "type": "edge",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "edge",
+          "fields": [
+            "_from",
+            "_to"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": false,
+          "name": "edge",
+          "selectivityEstimate": 1,
+          "estimates": false,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        },
+        {
+          "type": "hash",
+          "fields": [
+            "userId",
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612879056896",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "sessions",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "hash",
+          "fields": [
+            "userId",
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612792025088",
+          "selectivityEstimate": 0.5,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "categoryServices",
+      "type": "edge",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": {
+          "message": "Category-Service edge does not match schema",
+          "level": "none",
+          "type": "json",
+          "rule": {
+            "type": "object",
+            "properties": {
+              "_from": {
+                "type": "string"
+              },
+              "_to": {
+                "type": "string"
+              },
+              "order": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "_from",
+              "_to"
+            ]
+          }
+        },
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "edge",
+          "fields": [
+            "_from",
+            "_to"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": false,
+          "name": "edge",
+          "selectivityEstimate": 0.6,
+          "estimates": false,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        },
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612755324928",
+          "selectivityEstimate": 0.04,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "passwordResetTokens",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612891639808",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "userConversations",
+      "type": "edge",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "edge",
+          "fields": [
+            "_from",
+            "_to"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": false,
+          "name": "edge",
+          "selectivityEstimate": 1,
+          "estimates": false,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        },
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612830822400",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "userFolders",
+      "type": "edge",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": {
+          "message": "User-Folder edge does not match schema",
+          "level": "none",
+          "type": "json",
+          "rule": {
+            "type": "object",
+            "properties": {
+              "_from": {
+                "type": "string"
+              },
+              "_to": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              },
+              "sharedBy": {
+                "type": "string"
+              },
+              "sharedAt": {
+                "type": "string"
+              },
+              "lastAccessedAt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "_from",
+              "_to",
+              "role"
+            ]
+          }
+        },
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "edge",
+          "fields": [
+            "_from",
+            "_to"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": false,
+          "name": "edge",
+          "selectivityEstimate": 1,
+          "estimates": false,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        },
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612859133952",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "services",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "hash",
+          "fields": [
+            "categoryId",
+            "order"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612806705152",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "serviceTranslationsEdge",
+      "type": "edge",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "edge",
+          "fields": [
+            "_from",
+            "_to"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": false,
+          "name": "edge",
+          "selectivityEstimate": 1,
+          "estimates": false,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        },
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612844453888",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "events",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612778393600",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "queries",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612812996608",
+          "selectivityEstimate": 0.25,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "serviceTranslations",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612822433792",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "analytics",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612786782208",
+          "selectivityEstimate": 0.125,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "verificationTokens",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612763713536",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "folderConversations",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612771053568",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "hash",
+          "fields": [
+            "email"
+          ],
+          "unique": true,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612885348352",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        },
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612887445504",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "messages",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612849696768",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "folders",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612870668288",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "serviceCategoryTranslations",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": [
+        {
+          "type": "skiplist",
+          "fields": [
+            "createdAt"
+          ],
+          "unique": false,
+          "sparse": false,
+          "deduplicate": true,
+          "name": "idx_1855036612837113856",
+          "selectivityEstimate": 1,
+          "estimates": true,
+          "geoJson": false,
+          "constraint": false,
+          "cacheEnabled": false,
+          "storedValues": [],
+          "inBackground": false
+        }
+      ]
+    },
+    {
+      "name": "files",
+      "type": "document",
+      "properties": {
+        "waitForSync": false,
+        "keyOptions": {},
+        "schema": null,
+        "computedValues": []
+      },
+      "indexes": []
+    }
+  ],
+  "graphs": [],
+  "views": [],
+  "analyzers": [],
+  "functions": []
+}

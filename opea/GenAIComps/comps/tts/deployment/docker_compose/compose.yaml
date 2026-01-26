@@ -1,0 +1,46 @@
+# Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+include:
+  - ../../../third_parties/speecht5/deployment/docker_compose/compose.yaml
+  - ../../../third_parties/gpt-sovits/deployment/docker_compose/compose.yaml
+
+services:
+  tts:
+    image: ${REGISTRY:-opea}/tts:${TAG:-latest}
+    container_name: tts-service
+    ports:
+      - ${TTS_PORT:-9088}:9088
+    ipc: host
+    environment:
+      TTS_ENDPOINT: ${TTS_ENDPOINT}
+      TTS_COMPONENT_NAME: ${TTS_COMPONENT_NAME:-OPEA_SPEECHT5_TTS}
+  tts-speecht5:
+    extends: tts
+    container_name: tts-speecht5-service
+    environment:
+      TTS_COMPONENT_NAME: ${TTS_COMPONENT_NAME:-OPEA_SPEECHT5_TTS}
+    depends_on:
+      speecht5-service:
+        condition: service_healthy
+  tts-speecht5-gaudi:
+    extends: tts
+    container_name: tts-speecht5-gaudi-service
+    environment:
+      TTS_COMPONENT_NAME: ${TTS_COMPONENT_NAME:-OPEA_SPEECHT5_TTS}
+    depends_on:
+      speecht5-gaudi-service:
+        condition: service_healthy
+  tts-gptsovits:
+    extends: tts
+    container_name: tts-gpt-sovits-service
+    environment:
+      TTS_COMPONENT_NAME: ${TTS_COMPONENT_NAME:-OPEA_GPTSOVITS_TTS}
+    depends_on:
+      gpt-sovits-service:
+        condition: service_healthy
+
+
+networks:
+  default:
+    driver: bridge

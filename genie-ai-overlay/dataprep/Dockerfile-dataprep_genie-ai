@@ -1,0 +1,127 @@
+# ======== Stage 1: The OPEA Base ========
+# This stage clones the external OPEA repository at a specific version.
+ARG OPEA_REPO_URL="https://github.com/opea-project/GenAIComps.git"
+ARG OPEA_VERSION="v1.3" # This tag can be changed to upgrade OPEA
+FROM alpine/git:latest AS opea_base
+
+ARG OPEA_REPO_URL
+ARG OPEA_VERSION
+
+WORKDIR /src
+# Clone only the specified branch/tag, with no history for speed
+RUN git clone --depth 1 --branch ${OPEA_VERSION} ${OPEA_REPO_URL} .
+
+# ======== Final Stage: Assembly ========
+# Use the official NVIDIA CUDA image for Ubuntu 22.04 to enable GPU access.
+# This uses the correct 'cudnn8' tag.
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+
+# ARG for Hugging Face token is NO LONGER NEEDED.
+
+WORKDIR /app
+
+# Step A: Install System Dependencies
+# Install Python 3.10, pip, and all required system libraries for OPEA dataprep.
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends --fix-missing \
+    # Install Python 3.10 (which is on Ubuntu 22.04) and pip
+    python3.10 \
+    python3-pip \
+    # Install OPEA system dependencies
+    build-essential \
+    default-jre \
+    libcairo2 \
+    libgl1 \
+    libjemalloc-dev \
+    libpq-dev \
+    libreoffice \
+    poppler-utils \
+    tesseract-ocr \
+    wget \
+    curl \
+    unzip \
+    ca-certificates && \
+    # Create symlinks to make python3.10 the default 'python' and 'python3'
+    # and pip3 the default 'pip'
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 && \
+    update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Add /app (for 'comps'), the dataprep 'src' (for entrypoint),
+# and 'proto' (for api_protocol) to PYTHONPATH
+ENV PYTHONPATH="${PYTHONPATH}:/app:/app/comps/dataprep/src:/app/comps/cores/proto"
+
+# Step A.1: Pre-install EasyOCR models (Early Download for Caching)
+# Done here so that changes to python code (COPY) don't trigger re-download.
+RUN mkdir -p /root/.EasyOCR/model && \
+    mkdir -p /root/.EasyOCR/config && \
+    wget --tries=3 --timeout=60 https://github.com/JaidedAI/EasyOCR/releases/download/v1.3/english_g2.zip -O /tmp/english_g2.zip && \
+    wget --tries=3 --timeout=60 https://github.com/JaidedAI/EasyOCR/releases/download/pre-v1.1.6/craft_mlt_25k.zip -O /tmp/craft_mlt_25k.zip && \
+    unzip /tmp/english_g2.zip -d /root/.EasyOCR/model && \
+    rm /tmp/english_g2.zip && \
+    unzip /tmp/craft_mlt_25k.zip -d /root/.EasyOCR/model && \
+    rm /tmp/craft_mlt_25k.zip
+
+# Step B: Copy the entire OPEA 'comps' directory from the clone
+COPY --from=opea_base /src/comps/ /app/comps/
+
+# Define the path to the requirements file for easier reference
+ARG REQ_PATH=/app/comps/dataprep/src/requirements.txt
+
+# Step C: Prune large, unnecessary packages from requirements.txt
+# The base requirements file includes 'unstructured[all-docs]' and 'pyspark',
+# which cause the build to fail with "No space left on device".
+# We replace 'unstructured[all-docs]' with 'unstructured' and remove 'pyspark'.
+RUN sed -i "s/unstructured\[all-docs\]/unstructured/" ${REQ_PATH} && \
+    sed -i "/pyspark/d" ${REQ_PATH}
+
+# Step D: Copy and Run the Dependency Patch and the utils.py patch
+# This removes other unused, broken dependencies (pathway, graspologic)
+COPY --chmod=0755 genie-ai-overlay/build-patches/fix_dependencies.sh /app/fix_dependencies.sh
+RUN ./fix_dependencies.sh ${REQ_PATH}
+# Step E: Install *fixed and pruned* dependencies (BEFORE copying custom code to allow caching)
+# This will now succeed as it's installing a much smaller set of packages.
+RUN pip install --no-cache-dir -r ${REQ_PATH}
+
+# Copy custom utils to its new correct location
+# Moved here so changes to this file don't invalidate the slow pip install layer
+COPY genie-ai-overlay/dataprep/genieai_dataprep_utils.py /app/comps/dataprep/src/genieai_dataprep_utils.py
+
+# Step F: Install overlay-specific dependencies
+# The custom genieai_dataprep_arangodb.py requires 'rank_bm25', which is not in the base requirements.
+RUN pip install --no-cache-dir rank_bm25 python-multipart
+
+# Step G: Pre-install EasyOCR models (Moved to Step A.1 to improve caching)
+# Models are now downloaded early so changing code doesn't trigger re-download.
+
+# Step H: Fix docarray circular import (Proactive fix based on retriever)
+# 1. Rename the conflicting local file to avoid name collision.
+# 2. Update imports to point to the new, non-conflicting filename.
+RUN mv /app/comps/cores/proto/docarray.py /app/comps/cores/proto/opea_docarray.py && \
+    sed -i 's/from comps.cores.proto.docarray import/from comps.cores.proto.opea_docarray import/' /app/comps/__init__.py && \
+    sed -i 's/from \.\.proto.docarray import/from \.\.proto.opea_docarray import/' /app/comps/cores/mega/orchestrator.py && \
+    sed -i 's/from \.\.proto.docarray import/from \.\.proto.opea_docarray import/' /app/comps/cores/mega/micro_service.py
+
+# Step I: "Overlay" our custom GENIE-AI files
+# These paths are relative to the build context (our repo root)
+# 1. Copy our new subclass (Section 2.1) and the loader
+COPY genie-ai-overlay/dataprep/genieai_dataprep_arangodb.py /app/comps/dataprep/src/integrations/genieai_dataprep_arangodb.py
+
+COPY genie-ai-overlay/dataprep/genieai_dataprep_loader.py /app/comps/dataprep/src/genieai_dataprep_loader.py
+
+# 2. Overwrite OPEA's entry point with our new one
+COPY genie-ai-overlay/dataprep/genieai_dataprep_microservice.py /app/comps/dataprep/src/genieai_dataprep_microservice.py
+
+# 3. Overwrite the OPEA API protocol with our custom version
+COPY genie-ai-overlay/core/genieai_api_protocol.py /app/comps/cores/proto/genieai_api_protocol.py
+
+# Step J: Lighten library load & Fix Duplicate Registration
+# 1. Comment out unused integrations in the *base* OPEA microservice.
+# 2. Fix the duplicate import path for 'arangodb.py' to resolve the ValueError.
+RUN sed -i '/from integrations\./ { /arangodb/! s/^/#/ }' /app/comps/dataprep/src/opea_dataprep_microservice.py && \
+    sed -i 's|from integrations.arangodb import OpeaArangoDataprep|from comps.dataprep.src.integrations.arangodb import OpeaArangoDataprep|' /app/comps/dataprep/src/opea_dataprep_microservice.py
+
+# Step K: Run the new GENIE-AI entry point from its new location
+CMD ["python", "comps/dataprep/src/genieai_dataprep_microservice.py"]

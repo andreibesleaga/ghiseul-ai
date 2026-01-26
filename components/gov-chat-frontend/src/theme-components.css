@@ -1,0 +1,244 @@
+/* theme-components.css - Fixed to ensure navbar title is white on blue, support GENIE.AI configurable colors, and remove !important for better local overrides */
+
+/* Apply theme variables to all needed components */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Apply theme to main app layout elements */
+#app {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Nav Bar - Use GENIE.AI configured gradient and text color */
+.nav-bar {
+  background: var(--bg-navbar);
+  color: var(--text-navbar);
+}
+
+/* Brand name/title in navbar - Force white color */
+.brand-name,
+.nav-bar h4,
+.nav-bar .brand-name,
+[class*="brand-name"],
+.nav-bar [class*="title"],
+.nav-bar [class*="heading"] {
+  color: var(--text-navbar, #ffffff) !important;
+}
+
+/* Main content area */
+.content-area,
+main {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Sidebar */
+.side-bar,
+.sidebar {
+  background-color: var(--bg-sidebar);
+  color: var(--text-primary);
+  border-right: 1px solid var(--border-color);
+}
+
+/* Knowledge areas sidebar */
+.knowledge-areas {
+  background-color: var(--bg-sidebar);
+  color: var(--text-primary);
+}
+
+/* Modal dialogs and panels */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content,
+.settings-dialog,
+.analytics-content,
+.dialog-content,
+.feedback-dialog .dialog-content {
+  background-color: var(--bg-dialog);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.dialog-header,
+.modal-header {
+  border-bottom-color: var(--border-color);
+}
+
+.dialog-footer,
+.modal-footer {
+  border-top-color: var(--border-color);
+}
+
+/* Settings panel */
+.settings-section {
+  border-bottom-color: var(--border-color);
+}
+
+/* Form controls */
+input,
+select,
+textarea,
+.dropdown,
+.search-box {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-input) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Cards and panels */
+.metric-card,
+.card,
+.panel,
+.chat-message.bot .message-bubble,
+.analytics-section,
+.chart-container {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+/* Ensure lighter background for message bubbles */
+.chat-message.bot .message-bubble {
+  background-color: var(--bg-tertiary);
+}
+
+/* User messages in chat */
+.chat-message.user .message-bubble {
+  background-color: var(--accent-color);
+  color: var(--text-button-primary);
+}
+
+/* Theme toggles */
+.theme-toggle {
+  background-color: var(--bg-button-secondary);
+  color: var(--text-button-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.theme-toggle.active {
+  background-color: var(--bg-button-primary);
+  color: var(--text-button-primary);
+  border-color: var(--bg-button-primary);
+}
+
+/* Slider styling */
+.slider {
+  background-color: var(--slider-track);
+}
+
+.slider::-webkit-slider-thumb {
+  background-color: var(--bg-button-primary);
+}
+
+.slider::-moz-range-thumb {
+  background-color: var(--bg-button-primary);
+}
+
+/* Switch styling */
+.switch-track {
+  background-color: var(--switch-track-off);
+}
+
+.switch-track.active {
+  background-color: var(--switch-track-on);
+}
+
+.switch-thumb {
+  background-color: var(--switch-thumb);
+}
+
+/* Buttons */
+.btn-primary,
+.primary-btn,
+.send-btn {
+  background-color: var(--bg-button-primary);
+  color: var(--text-button-primary);
+}
+
+.btn-primary:hover,
+.primary-btn:hover,
+.send-btn:hover {
+  background-color: var(--bg-button-primary-hover);
+}
+
+.btn-secondary,
+.cancel-btn,
+.btn-close {
+  background-color: var(--bg-button-secondary);
+  color: var(--text-button-secondary);
+}
+
+.btn-secondary:hover,
+.cancel-btn:hover,
+.btn-close:hover {
+  background-color: var(--bg-button-secondary-hover);
+}
+
+/* Tables */
+table {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+th {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+td {
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+/* Weather forecast panel */
+.weather-forecast {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+/* Styles for settings dialog - removed !important for better local overrides */
+.settings-dialog {
+  background-color: var(--bg-dialog);
+  color: var(--text-primary);
+}
+
+.settings-dialog .section-title,
+.settings-dialog .dialog-header,
+.settings-dialog label {
+  color: var(--text-primary);
+}
+
+/* Force theme on Light/Dark/System buttons */
+.settings-dialog .theme-toggle {
+  background-color: var(--bg-button-secondary) !important;
+  color: var(--text-button-secondary) !important;
+}
+
+.settings-dialog .theme-toggle.active {
+  background-color: var(--bg-button-primary) !important;
+  color: var(--text-button-primary) !important;
+}
+
+.app-name {
+  color: white !important;
+}
+
+.node-name {
+  color: var(--text-primary, white);
+}
+
+.node-name {
+  flex: 1;
+  color: var(--text-primary, white) !important;
+}

@@ -1,0 +1,66 @@
+# ArangoDB Configuration
+ARANGO_URL=http://arango-vector-db:8529  # Matches Docker service name
+ARANGO_DB=genie-ai
+ARANGO_USERNAME=root
+ARANGO_PASSWORD=test
+
+# Database Backup Configuration
+BACKUP_DIR=./database_backups
+MAX_BACKUPS=5
+BACKUP_FORMAT=json
+COMPRESS_BACKUPS=true
+LOG_LEVEL=debug
+
+# JWT Configuration
+JWT_SECRET=UJeFROw+yRJeVOPiUTgdcXzlE2eukTfATZPxBfPkptQLZs+ER+iuSA1BIXiJtw1sS181kiRqdncodVZOWD4sfA==
+JWT_EXPIRES_IN=24h
+
+# Server Configuration
+BACKEND_PORT=3000
+NODE_ENV=production
+API_PREFIX=/api
+
+# File Upload Configuration
+UPLOAD_DIR=./uploads
+MAX_FILE_SIZE=5242880
+
+# Session Configuration
+# SESSION_SECRET=your_session_secret_here  # Replace with a secure random string
+SESSION_SECRET=${SESSION_SECRET:-default-session-secret}
+SESSION_EXPIRATION_TIME=1800000  # 30 minutes in milliseconds
+
+# CORS Configuration
+CORS_ORIGIN=https://localhost/  # Matches docker-compose.yaml
+
+# Email configuration
+EMAIL_HOST=localhost
+EMAIL_PORT=587
+EMAIL_SECURE=false
+EMAIL_USER=test
+EMAIL_PASSWORD=password
+EMAIL_FROM=noreply@localhost
+
+# App config
+FRONTEND_PORT=8090
+APP_NAME=Genie AI
+FRONTEND_URL=https://localhost
+#FRONTEND_URL=https://genie-ai.itu.int/
+OPENWEATHERMAP_API_KEY=b115ccced35ade4c9a1077b6e5a210dd
+
+# Frontend Translation Service configuration
+TRANSLATION_THREADS=4
+TRANSLATION_BATCHES=5
+TRANSLATION_CACHE=on
+TRANSLATION_CACHE_PATH=/cache/translations
+TRANSLATION_CACHE_PASSWORD=!@#$$5678
+TRANSLATION_CACHE_HOST=redis-cache
+TRANSLATION_CACHE_PORT=6379
+
+# OPEA Host configuration
+OPEA_HOST=e2e-109-198
+OPEA_PORT=8888
+CONTEXT_OPTION=conversation-with-context-labels
+
+#CORS configuration
+CORS_ALLOWED_ORIGINS=http://localhost:8090,https://localhost:8090
+CSP_CONNECT_SRC="'self' http://localhost:3000 http://localhost:8090 ws://localhost:8090 https://api.open-meteo.com https://ipapi.co https://nominatim.openstreetmap.org'"

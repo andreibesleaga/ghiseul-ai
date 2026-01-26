@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+	},
+	"extensions": {
+		"recommendations": [
+			"jfrog.jfrog-vscode-extension",
+			"snyk-security.snyk-vulnerability-scanner"
+		]
+	}
+}

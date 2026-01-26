@@ -1,0 +1,26 @@
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    runtime: nvidia
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all 
+              capabilities: [gpu]
+    env_file:
+      - .env
+    ipc: "host"
+    volumes:
+      - /root/.cache/huggingface:/root/.cache/huggingface
+    command: >
+      --model ibm-granite/granite-3.2-2b-instruct
+      --dtype=half
+      --max_model_len 8192
+#      --gpu_memory_utilization 0.5
+#      --served-model-name Qwen2.5-VL-7B-Instruct
+#      --max_model_len 24000
+#      --api-key ${API_KEY}

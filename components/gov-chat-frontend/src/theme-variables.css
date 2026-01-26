@@ -1,0 +1,164 @@
+/* theme-variables.css - FIXED to ensure consistent button colors across themes with mode-specific secondary buttons and switch colors */
+
+/* Default (light) theme variables - applied to the root level */
+:root {
+  /* Base colors */
+  --bg-primary: #f5f7fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f2f5;
+  --bg-dialog: #ffffff;
+  --bg-input: #ffffff;
+
+  /* Navbar gradient relies on dynamically set variables */
+  --bg-navbar: linear-gradient(135deg, var(--navbar-gradient-start), var(--navbar-gradient-end));
+  --bg-sidebar: #f0f2f5;
+  --bg-card: #ffffff;
+
+  /* Button colors */
+  --bg-button-primary: var(--accent-color, #4E97D1); /* Use accent color, fallback to Ghișeul Unic blue */
+  --bg-button-primary-hover: var(--accent-hover, #3a7da0); /* Hover shade */
+  --bg-button-secondary: #d1d5db; /* Neutral gray for light mode */
+  --bg-button-secondary-hover: #b9bfc9; /* Slightly darker gray for hover */
+
+  /* Text colors */
+  --text-primary: #333333;
+  --text-secondary: #4d4d4d;
+  --text-tertiary: #767676;
+  --text-navbar: #ffffff;
+  --text-muted: #6c757d;
+  --text-button-primary: #ffffff;
+  --text-button-secondary: #333333; /* Dark text for light background */
+
+  /* Borders */
+  --border-color: #dcdfe4;
+  --border-light: #e5e7eb;
+  --border-input: #dcdfe4;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Accent colors rely on dynamically set variables */
+  --accent-color: var(--accent-color, #4E97D1); /* Fallback to Ghișeul Unic blue */
+  --accent-hover: var(--accent-hover, #3a7da0);
+  --accent-color-secondary: var(--accent-color-secondary, #2C5F8A); /* Secondary accent from config */
+
+  /* Status colors */
+  --status-operational: #10b981;
+  --status-degraded: #f59e0b;
+  --status-outage: #ef4444;
+
+  /* Form elements */
+  --slider-track: #e9ecef;
+  --slider-thumb: var(--bg-button-primary, #4E97D1); /* Use primary color for consistency */
+  --switch-track-off: #d0d0d0;
+  --switch-track-on: var(--bg-button-primary, #4E97D1); /* Use primary color for active state */
+  --switch-thumb: #ffffff;
+}
+
+/* Dark theme variables - applied ONLY when [data-theme="dark"] is present */
+html[data-theme="dark"],
+body[data-theme="dark"],
+[data-theme="dark"] {
+  /* Base colors */
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #252525;
+  --bg-tertiary: #2a2a2a;
+  --bg-dialog: #2a2a2a;
+  --bg-input: #333333;
+
+  /* Navbar gradient relies on dynamically set variables, same as light mode */
+  --bg-navbar: linear-gradient(135deg, var(--navbar-gradient-start), var(--navbar-gradient-end));
+  --bg-sidebar: #252525;
+  --bg-card: #2a2a2a;
+
+  /* Button colors - no override for primary to keep it consistent with light mode */
+  --bg-button-secondary: #4b5563; /* Dark gray for dark mode */
+  --bg-button-secondary-hover: #6b7280; /* Slightly lighter gray for hover */
+
+  /* Text colors */
+  --text-primary: #f0f0f0;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #8c8c8c;
+  --text-navbar: #ffffff;
+  --text-muted: #9ca3af;
+  --text-button-primary: #ffffff;
+  --text-button-secondary: #e0e0e0; /* Light text for dark background */
+
+  /* Borders */
+  --border-color: #3a3a3a;
+  --border-light: #333333;
+  --border-input: #3a3a3a;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+
+  /* Status colors remain the same for consistency */
+  --status-operational: #10b981;
+  --status-degraded: #f59e0b;
+  --status-outage: #ef4444;
+
+  /* Form elements */
+  --slider-track: #3a3a3a;
+  --slider-thumb: var(--bg-button-primary, #4E97D1); /* Use primary color */
+  --switch-track-off: #4d4d4d;
+  --switch-track-on: var(--bg-button-primary, #4E97D1); /* Use primary color */
+  --switch-thumb: #ffffff;
+}
+
+/* System theme support */
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"],
+  body[data-theme="system"],
+  [data-theme="system"] {
+    /* Base colors */
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #252525;
+    --bg-tertiary: #2a2a2a;
+    --bg-dialog: #2a2a2a;
+    --bg-input: #333333;
+
+    /* Navbar gradient */
+    --bg-navbar: linear-gradient(135deg, var(--navbar-gradient-start), var(--navbar-gradient-end));
+    --bg-sidebar: #252525;
+    --bg-card: #2a2a2a;
+
+    /* Button colors - no override for primary */
+    --bg-button-secondary: #4b5563;
+    --bg-button-secondary-hover: #6b7280;
+
+    /* Text colors */
+    --text-primary: #f0f0f0;
+    --text-secondary: #b3b3b3;
+    --text-tertiary: #8c8c8c;
+    --text-navbar: #ffffff;
+    --text-muted: #9ca3af;
+    --text-button-primary: #ffffff;
+    --text-button-secondary: #e0e0e0;
+
+    /* Borders */
+    --border-color: #3a3a3a;
+    --border-light: #333333;
+    --border-input: #3a3a3a;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+
+    /* Status colors */
+    --status-operational: #10b981;
+    --status-degraded: #f59e0b;
+    --status-outage: #ef4444;
+
+    /* Form elements */
+    --slider-track: #3a3a3a;
+    --slider-thumb: var(--bg-button-primary, #4E97D1);
+    --switch-track-off: #4d4d4d;
+    --switch-track-on: var(--bg-button-primary, #4E97D1);
+    --switch-thumb: #ffffff;
+  }
+}

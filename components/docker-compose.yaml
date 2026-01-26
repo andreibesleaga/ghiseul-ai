@@ -1,0 +1,101 @@
+version: '3.8'
+
+volumes:
+  redis_data:
+  doc_repo_uploads: {}
+  arango_data:
+services:
+  arango-vector-db:
+    image: arangodb/arangodb:3.12.4
+    container_name: arango-vector-db
+    ports:
+      - "8529:8529"
+    volumes:
+      - /root/arango_data:/var/lib/arangodb3
+    environment:
+      ARANGO_ROOT_PASSWORD: ${ARANGO_PASSWORD}
+    # https://docs.arangodb.com/3.12/components/arangodb-server/options/
+    command: ["--experimental-vector-index=true"]
+    restart: unless-stopped
+    networks:
+      - chatqna_default
+
+  frontend:
+    build: ./gov-chat-frontend
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    env_file:
+      - ./gov-chat-frontend/.env
+    depends_on:
+      - backend
+    networks:
+      - chatqna_default
+
+  redis-cache:
+    image: redis:7-alpine
+    container_name: redis-cache
+    restart: unless-stopped
+    ports:
+      - "6379:6379" # Optional: Expose on host for debugging
+    command: redis-server --appendonly yes --maxmemory-policy noeviction --requirepass "!@#$$5678"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - chatqna_default
+
+  backend:
+    build:
+      context: .
+      dockerfile: gov-chat-backend/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./database_backups:/app/database_backups
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./gov-chat-backend/Uploads:/app/Uploads
+    environment:
+      - JWT_SECRET=${JWT_SECRET:-default-jwt-secret}
+    env_file:
+      - ./gov-chat-backend/.env
+    depends_on:
+      redis-cache:
+        condition: service_healthy
+    networks:
+      - chatqna_default
+  
+  document-repository:
+    build:
+      context: .
+      dockerfile: document-repository/Dockerfile
+    container_name: doc-repo-dev
+    env_file:
+      - ./document-repository/.env
+    depends_on:
+      - clamav
+    ports:
+      - "3001:3001"
+    networks:
+      - chatqna_default
+    volumes:
+      - ./logs:/app/logs
+      - doc_repo_uploads:/app/uploads
+  
+  clamav:
+    image: clamav/clamav
+    container_name: clamav
+    ports:
+      - "3310:3310" # ClamAV daemon port
+    networks:
+      - chatqna_default
+
+networks:
+  chatqna_default:
+    external: true

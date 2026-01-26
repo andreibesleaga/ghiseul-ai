@@ -1,0 +1,83 @@
+# ======== Stage 1: The OPEA Example Base (ChatQnA code) ========
+# This stage clones the orchestration layer 
+ARG OPEA_REPO_URL="https://github.com/opea-project/GenAIExamples.git"
+ARG OPEA_VERSION="v1.3" 
+FROM alpine/git:latest AS opea_example_base
+
+ARG OPEA_REPO_URL
+ARG OPEA_VERSION
+
+WORKDIR /src
+RUN git clone --depth 1 --branch ${OPEA_VERSION} ${OPEA_REPO_URL} .
+
+# ======== Stage 2 (NEW): The OPEA Comps Base Builder ========
+# This stage builds the missing 'opea/comps-base:v1.3' functionality from source.
+ARG OPEA_COMPS_REPO_URL="https://github.com/opea-project/GenAIComps.git"
+ARG OPEA_VERSION="v1.3" # Re-declare ARG for this stage
+FROM python:3.10-slim AS comps_base_builder
+
+# Install git so we can clone
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+ARG OPEA_COMPS_REPO_URL="https://github.com/opea-project/GenAIComps.git"
+ARG OPEA_VERSION="v1.3"
+
+# Clone the GenAIComps repo
+WORKDIR /src/GenAIComps
+RUN git clone --depth 1 --branch ${OPEA_VERSION} ${OPEA_COMPS_REPO_URL} .
+
+# Install the GenAIComps package and its dependencies
+RUN pip install --no-cache-dir -e .
+
+# Re-create the user and directory structure expected by the final stage
+RUN useradd -ms /bin/bash user
+RUN mkdir -p /home/user/comps && chown -R user:user /home/user
+
+# Copy the *contents* of the cloned 'comps' directory to the expected path
+RUN cp -R /src/GenAIComps/comps/. /home/user/comps/
+
+# Set default user for this base
+USER user
+WORKDIR /home/user
+
+
+# ======== Final Stage: Assembly ========
+# This is the final production image. 
+FROM comps_base_builder
+
+ARG OPEA_VERSION="v1.3" 
+
+# Switch back to root to create /app and install packages
+USER root
+WORKDIR /app
+
+# Tell Python to include all our custom code paths.
+# /home/user is the parent of the 'comps' package.
+# /app is for api_protocol.py and the ChatQnA app itself.
+ENV PYTHONPATH="/home/user:/app:/app/ChatQnA:${PYTHONPATH}"
+
+# Step A: Copy the base OPEA ChatQnA code
+COPY --from=opea_example_base /src/ChatQnA/ /app/ChatQnA/
+
+# Step B: Copy the hacked entrypoint.sh with the right permissions from the overlay
+COPY --chmod=0755 genie-ai-overlay/chatqna/entrypoint.sh /app/ChatQnA/entrypoint.sh
+
+# Step C: Install dependencies
+# Install extra dependencies from our original Dockerfile_genieai
+RUN pip install --no-cache-dir langdetect transformers
+
+# Step D: "Overlay" our custom GENIE-AI "glue" files
+# --- FIX: Copy the original api_protocol.py to /app to make it importable as top-level 'api_protocol' ---
+# This path '/home/user/comps/...' will now be correct
+RUN cp /home/user/comps/cores/proto/api_protocol.py /app/api_protocol.py
+
+# --- Copy to the correct path where comps is located (/home/user/comps) ---
+# This copies the hacked api_protocol.py and constants.py 
+COPY --chown=user:user genie-ai-overlay/core/genieai_api_protocol.py /home/user/comps/cores/proto/genieai_api_protocol.py
+COPY --chown=user:user genie-ai-overlay/core/constants.py /home/user/comps/cores/mega/constants.py
+
+# This copies your main script
+COPY --chown=user:user genie-ai-overlay/chatqna/genieai_chatqna.py /app/ChatQnA/genieai_chatqna.py
+
+# Step E: Run our new GENIE-AI entry point
+ENTRYPOINT ["bash", "/app/ChatQnA/entrypoint.sh"]

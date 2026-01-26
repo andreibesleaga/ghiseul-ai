@@ -1,0 +1,4282 @@
+{
+  "metadata": {
+    "exportDate": "2025-06-19T14:55:00.762Z",
+    "sourceDatabase": "node-services",
+    "sourceUrl": "http://localhost:8529",
+    "collections": [
+      "serviceCategories",
+      "services",
+      "categoryServices",
+      "serviceCategoryTranslations",
+      "serviceCategoryTranslationsEdge",
+      "serviceTranslations",
+      "serviceTranslationsEdge"
+    ],
+    "documentCounts": {
+      "serviceCategories": 13,
+      "services": 53,
+      "categoryServices": 53,
+      "serviceCategoryTranslations": 39,
+      "serviceCategoryTranslationsEdge": 39,
+      "serviceTranslations": 159,
+      "serviceTranslationsEdge": 159
+    },
+    "totalDocuments": 515,
+    "includeSystemFields": false,
+    "exportVersion": "4.0"
+  },
+  "schemas": {
+    "serviceCategories": {
+      "type": "object",
+      "properties": {
+        "_key": {
+          "type": "string"
+        },
+        "nameEN": {
+          "type": "string"
+        },
+        "nameFR": {
+          "type": "string",
+          "optional": true
+        },
+        "nameSW": {
+          "type": "string",
+          "optional": true
+        },
+        "order": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "_key",
+        "nameEN",
+        "order"
+      ]
+    },
+    "services": {
+      "type": "object",
+      "properties": {
+        "_key": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "nameEN": {
+          "type": "string"
+        },
+        "nameFR": {
+          "type": "string",
+          "optional": true
+        },
+        "nameSW": {
+          "type": "string",
+          "optional": true
+        },
+        "description": {
+          "type": "string",
+          "optional": true
+        },
+        "order": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "_key",
+        "categoryId",
+        "nameEN",
+        "order"
+      ]
+    },
+    "categoryServices": {
+      "type": "object",
+      "properties": {
+        "_from": {
+          "type": "string"
+        },
+        "_to": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number",
+          "optional": true
+        }
+      },
+      "required": [
+        "_from",
+        "_to"
+      ]
+    },
+    "serviceCategoryTranslations": {
+      "type": "object",
+      "properties": {
+        "_key": {
+          "type": "string"
+        },
+        "serviceCategoryId": {
+          "type": "string"
+        },
+        "languageCode": {
+          "type": "string"
+        },
+        "translation": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "optional": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "optional": true
+        }
+      },
+      "required": [
+        "_key",
+        "serviceCategoryId",
+        "languageCode",
+        "translation"
+      ]
+    },
+    "serviceCategoryTranslationsEdge": {
+      "type": "object",
+      "properties": {
+        "_key": {
+          "type": "string"
+        },
+        "_from": {
+          "type": "string"
+        },
+        "_to": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "optional": true
+        }
+      },
+      "required": [
+        "_key",
+        "_from",
+        "_to"
+      ]
+    },
+    "serviceTranslations": {
+      "type": "object",
+      "properties": {
+        "_key": {
+          "type": "string"
+        },
+        "serviceId": {
+          "type": "string"
+        },
+        "languageCode": {
+          "type": "string"
+        },
+        "translation": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "optional": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "optional": true
+        }
+      },
+      "required": [
+        "_key",
+        "serviceId",
+        "languageCode",
+        "translation"
+      ]
+    },
+    "serviceTranslationsEdge": {
+      "type": "object",
+      "properties": {
+        "_key": {
+          "type": "string"
+        },
+        "_from": {
+          "type": "string"
+        },
+        "_to": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "optional": true
+        }
+      },
+      "required": [
+        "_key",
+        "_from",
+        "_to"
+      ]
+    }
+  },
+  "data": {
+    "serviceCategories": [
+      {
+        "_key": "1",
+        "nameEN": "Identity & Civil Registration",
+        "nameFR": "Identité et état civil",
+        "nameSW": "Utambulisho na Usajili wa Raia",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "2",
+        "nameEN": "Healthcare & Social Services",
+        "nameFR": "Santé et services sociaux",
+        "nameSW": "Afya na Huduma za Kijamii",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "3",
+        "nameEN": "Education & Learning",
+        "nameFR": "Éducation et apprentissage",
+        "nameSW": "Elimu na Mafunzo",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "4",
+        "nameEN": "Employment & Labor Services",
+        "nameFR": "Emploi et services du travail",
+        "nameSW": "Ajira na Huduma za Kazi",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "5",
+        "nameEN": "Taxes & Revenue",
+        "nameFR": "Impôts et revenus",
+        "nameSW": "Kodi na Mapato",
+        "order": 5,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "6",
+        "nameEN": "Public Safety & Justice",
+        "nameFR": "Sécurité publique et justice",
+        "nameSW": "Usalama wa Umma na Haki",
+        "order": 6,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "7",
+        "nameEN": "Transportation & Mobility",
+        "nameFR": "Transport et mobilité",
+        "nameSW": "Usafiri na Usafiri",
+        "order": 7,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "8",
+        "nameEN": "Business & Trade",
+        "nameFR": "Affaires et commerce",
+        "nameSW": "Biashara na Biashara",
+        "order": 8,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "9",
+        "nameEN": "Housing & Urban Development",
+        "nameFR": "Logement et développement urbain",
+        "nameSW": "Nyumba na Maendeleo ya Mjini",
+        "order": 9,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "10",
+        "nameEN": "Utilities & Environment",
+        "nameFR": "Services publics et environnement",
+        "nameSW": "Huduma na Mazingira",
+        "order": 10,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "11",
+        "nameEN": "Culture & Recreation",
+        "nameFR": "Culture et loisirs",
+        "nameSW": "Utamaduni na Burudani",
+        "order": 11,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "12",
+        "nameEN": "Immigration & Citizenship",
+        "nameFR": "Immigration et citoyenneté",
+        "nameSW": "Uhamiaji na Uraia",
+        "order": 12,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "13",
+        "nameEN": "Social Security & Pensions",
+        "nameFR": "Sécurité sociale et retraites",
+        "nameSW": "Hifadhi ya Jamii na Pensheni",
+        "order": 13,
+        "createdAt": null,
+        "updatedAt": null
+      }
+    ],
+    "services": [
+      {
+        "_key": "1",
+        "categoryId": "serviceCategories/1",
+        "nameEN": "Birth Registration",
+        "nameFR": "Enregistrement des naissances",
+        "nameSW": "Usajili wa Kuzaliwa",
+        "description": "Birth Registration service under Identity & Civil Registration category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "3",
+        "categoryId": "serviceCategories/1",
+        "nameEN": "National ID Cards",
+        "nameFR": "Cartes d'identité nationale",
+        "nameSW": "Vitambulisho vya Kitaifa",
+        "description": "National ID Cards service under Identity & Civil Registration category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "5",
+        "categoryId": "serviceCategories/1",
+        "nameEN": "Passport Services",
+        "nameFR": "Services de passeport",
+        "nameSW": "Huduma za Pasipoti",
+        "description": "Passport Services service under Identity & Civil Registration category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "7",
+        "categoryId": "serviceCategories/1",
+        "nameEN": "Vital Records",
+        "nameFR": "État civil",
+        "nameSW": "Kumbukumbu za Muhimu",
+        "description": "Vital Records service under Identity & Civil Registration category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "73",
+        "categoryId": "serviceCategories/10",
+        "nameEN": "Natural Resources",
+        "nameFR": "Ressources naturelles",
+        "nameSW": "Rasilimali za Asili",
+        "description": "Natural Resources service under Utilities & Environment category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "75",
+        "categoryId": "serviceCategories/10",
+        "nameEN": "Environmental Protection",
+        "nameFR": "Protection de l'environnement",
+        "nameSW": "Uhifadhi wa Mazingira",
+        "description": "Environmental Protection service under Utilities & Environment category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "77",
+        "categoryId": "serviceCategories/10",
+        "nameEN": "Parks & Recreation",
+        "nameFR": "Parcs et loisirs",
+        "nameSW": "Mbuga na Burudani",
+        "description": "Parks & Recreation service under Utilities & Environment category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "79",
+        "categoryId": "serviceCategories/10",
+        "nameEN": "Wildlife",
+        "nameFR": "Faune",
+        "nameSW": "Wanyamapori",
+        "description": "Wildlife service under Utilities & Environment category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "81",
+        "categoryId": "serviceCategories/11",
+        "nameEN": "Arts & Culture",
+        "nameFR": "Arts et culture",
+        "nameSW": "Sanaa na Utamaduni",
+        "description": "Arts & Culture service under Culture & Recreation category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "83",
+        "categoryId": "serviceCategories/11",
+        "nameEN": "Heritage",
+        "nameFR": "Patrimoine",
+        "nameSW": "Urithi",
+        "description": "Heritage service under Culture & Recreation category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "85",
+        "categoryId": "serviceCategories/11",
+        "nameEN": "Sports & Recreation",
+        "nameFR": "Sports et loisirs",
+        "nameSW": "Michezo na Burudani",
+        "description": "Sports & Recreation service under Culture & Recreation category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "87",
+        "categoryId": "serviceCategories/11",
+        "nameEN": "Tourism",
+        "nameFR": "Tourisme",
+        "nameSW": "Utalii",
+        "description": "Tourism service under Culture & Recreation category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "89",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Immigration Services",
+        "nameFR": "Services d'immigration",
+        "nameSW": "Huduma za Uhamiaji",
+        "description": "Immigration Services service under Immigration & Citizenship category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "91",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Citizenship Applications",
+        "nameFR": "Demandes de citoyenneté",
+        "nameSW": "Maombi ya Uraia",
+        "description": "Citizenship Applications service under Immigration & Citizenship category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "93",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Visas",
+        "nameFR": "Visas",
+        "nameSW": "Visa",
+        "description": "Visas service under Immigration & Citizenship category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "95",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Refugee Programs",
+        "nameFR": "Programmes pour réfugiés",
+        "nameSW": "Programu za Wakimbizi",
+        "description": "Refugee Programs service under Immigration & Citizenship category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "97",
+        "categoryId": "serviceCategories/12",
+        "nameEN": "Elections and Voting",
+        "nameFR": "Élections et vote",
+        "nameSW": "Uchaguzi na Kupiga Kura",
+        "description": "Elections and Voting service under Immigration & Citizenship category",
+        "order": 5,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "99",
+        "categoryId": "serviceCategories/13",
+        "nameEN": "Retirement benefits",
+        "nameFR": "Allocations de retraite",
+        "nameSW": "Manufaa ya kustaafu",
+        "description": "Retirement benefits service under Social Security & Pensions category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "101",
+        "categoryId": "serviceCategories/13",
+        "nameEN": "Pension fund management",
+        "nameFR": "Gestion des fonds de pension",
+        "nameSW": "Usimamizi wa mfuko wa pensheni",
+        "description": "Pension fund management service under Social Security & Pensions category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "103",
+        "categoryId": "serviceCategories/13",
+        "nameEN": "Survivor benefits",
+        "nameFR": "Allocations de survivant",
+        "nameSW": "Manufaa ya warithi",
+        "description": "Survivor benefits service under Social Security & Pensions category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "105",
+        "categoryId": "serviceCategories/13",
+        "nameEN": "Disability pensions",
+        "nameFR": "Pensions pour invalidité",
+        "nameSW": "Pensheni za ulemavu",
+        "description": "Disability pensions service under Social Security & Pensions category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "9",
+        "categoryId": "serviceCategories/2",
+        "nameEN": "Medical Services",
+        "nameFR": "Services médicaux",
+        "nameSW": "Huduma za Matibabu",
+        "description": "Medical Services service under Healthcare & Social Services category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "11",
+        "categoryId": "serviceCategories/2",
+        "nameEN": "Social Assistance",
+        "nameFR": "Aide sociale",
+        "nameSW": "Msaada wa Kijamii",
+        "description": "Social Assistance service under Healthcare & Social Services category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "13",
+        "categoryId": "serviceCategories/2",
+        "nameEN": "Healthcare Programs",
+        "nameFR": "Programmes de santé",
+        "nameSW": "Programu za Afya",
+        "description": "Healthcare Programs service under Healthcare & Social Services category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "15",
+        "categoryId": "serviceCategories/2",
+        "nameEN": "Mental Health",
+        "nameFR": "Santé mentale",
+        "nameSW": "Afya ya Akili",
+        "description": "Mental Health service under Healthcare & Social Services category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "17",
+        "categoryId": "serviceCategories/3",
+        "nameEN": "K-12 Schools",
+        "nameFR": "Écoles K-12",
+        "nameSW": "Shule za K-12",
+        "description": "K-12 Schools service under Education & Learning category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "19",
+        "categoryId": "serviceCategories/3",
+        "nameEN": "Higher Education",
+        "nameFR": "Enseignement supérieur",
+        "nameSW": "Elimu ya Juu",
+        "description": "Higher Education service under Education & Learning category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "21",
+        "categoryId": "serviceCategories/3",
+        "nameEN": "Adult Learning",
+        "nameFR": "Formation des adultes",
+        "nameSW": "Mafunzo ya Watu Wazima",
+        "description": "Adult Learning service under Education & Learning category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "23",
+        "categoryId": "serviceCategories/3",
+        "nameEN": "Educational Resources",
+        "nameFR": "Ressources éducatives",
+        "nameSW": "Rasilimali za Elimu",
+        "description": "Educational Resources service under Education & Learning category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "25",
+        "categoryId": "serviceCategories/4",
+        "nameEN": "Job Search",
+        "nameFR": "Recherche d'emploi",
+        "nameSW": "Utafutaji wa Kazi",
+        "description": "Job Search service under Employment & Labor Services category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "27",
+        "categoryId": "serviceCategories/4",
+        "nameEN": "Labor Rights",
+        "nameFR": "Droits du travail",
+        "nameSW": "Haki za Wafanyakazi",
+        "description": "Labor Rights service under Employment & Labor Services category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "29",
+        "categoryId": "serviceCategories/4",
+        "nameEN": "Workplace Safety",
+        "nameFR": "Sécurité au travail",
+        "nameSW": "Usalama Kazini",
+        "description": "Workplace Safety service under Employment & Labor Services category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "31",
+        "categoryId": "serviceCategories/4",
+        "nameEN": "Career Development",
+        "nameFR": "Développement de carrière",
+        "nameSW": "Maendeleo ya Kazi",
+        "description": "Career Development service under Employment & Labor Services category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "33",
+        "categoryId": "serviceCategories/5",
+        "nameEN": "Income Tax",
+        "nameFR": "Impôt sur le revenu",
+        "nameSW": "Kodi ya Mapato",
+        "description": "Income Tax service under Taxes & Revenue category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "35",
+        "categoryId": "serviceCategories/5",
+        "nameEN": "Sales Tax",
+        "nameFR": "Taxe de vente",
+        "nameSW": "Kodi ya Mauzo",
+        "description": "Sales Tax service under Taxes & Revenue category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "37",
+        "categoryId": "serviceCategories/5",
+        "nameEN": "Property Tax",
+        "nameFR": "Impôt foncier",
+        "nameSW": "Kodi ya Mali",
+        "description": "Property Tax service under Taxes & Revenue category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "39",
+        "categoryId": "serviceCategories/5",
+        "nameEN": "Tax Credits",
+        "nameFR": "Crédits d'impôt",
+        "nameSW": "Punguzo za Kodi",
+        "description": "Tax Credits service under Taxes & Revenue category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "41",
+        "categoryId": "serviceCategories/6",
+        "nameEN": "Police Services",
+        "nameFR": "Services de police",
+        "nameSW": "Huduma za Polisi",
+        "description": "Police Services service under Public Safety & Justice category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "43",
+        "categoryId": "serviceCategories/6",
+        "nameEN": "Courts",
+        "nameFR": "Tribunaux",
+        "nameSW": "Mahakama",
+        "description": "Courts service under Public Safety & Justice category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "45",
+        "categoryId": "serviceCategories/6",
+        "nameEN": "Legal Services",
+        "nameFR": "Services juridiques",
+        "nameSW": "Huduma za Kisheria",
+        "description": "Legal Services service under Public Safety & Justice category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "47",
+        "categoryId": "serviceCategories/6",
+        "nameEN": "Emergency Services",
+        "nameFR": "Services d'urgence",
+        "nameSW": "Huduma za Dharura",
+        "description": "Emergency Services service under Public Safety & Justice category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "49",
+        "categoryId": "serviceCategories/7",
+        "nameEN": "Driver Services",
+        "nameFR": "Services aux conducteurs",
+        "nameSW": "Huduma za Dereva",
+        "description": "Driver Services service under Transportation & Mobility category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "51",
+        "categoryId": "serviceCategories/7",
+        "nameEN": "Public Transit",
+        "nameFR": "Transport en commun",
+        "nameSW": "Usafiri wa Umma",
+        "description": "Public Transit service under Transportation & Mobility category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "53",
+        "categoryId": "serviceCategories/7",
+        "nameEN": "Roads & Highways",
+        "nameFR": "Routes et autoroutes",
+        "nameSW": "Barabara na Barabara Kuu",
+        "description": "Roads & Highways service under Transportation & Mobility category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "55",
+        "categoryId": "serviceCategories/7",
+        "nameEN": "Aviation",
+        "nameFR": "Aviation",
+        "nameSW": "Usafiri wa Anga",
+        "description": "Aviation service under Transportation & Mobility category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "57",
+        "categoryId": "serviceCategories/8",
+        "nameEN": "Business Registration",
+        "nameFR": "Enregistrement d'entreprise",
+        "nameSW": "Usajili wa Biashara",
+        "description": "Business Registration service under Business & Trade category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "59",
+        "categoryId": "serviceCategories/8",
+        "nameEN": "Economic Development",
+        "nameFR": "Développement économique",
+        "nameSW": "Maendeleo ya Kiuchumi",
+        "description": "Economic Development service under Business & Trade category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "61",
+        "categoryId": "serviceCategories/8",
+        "nameEN": "Trade",
+        "nameFR": "Commerce",
+        "nameSW": "Biashara",
+        "description": "Trade service under Business & Trade category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "63",
+        "categoryId": "serviceCategories/8",
+        "nameEN": "Small Business Support",
+        "nameFR": "Soutien aux petites entreprises",
+        "nameSW": "Msaada wa Biashara Ndogo",
+        "description": "Small Business Support service under Business & Trade category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "65",
+        "categoryId": "serviceCategories/9",
+        "nameEN": "Housing Programs",
+        "nameFR": "Programmes de logement",
+        "nameSW": "Programu za Nyumba",
+        "description": "Housing Programs service under Housing & Urban Development category",
+        "order": 1,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "67",
+        "categoryId": "serviceCategories/9",
+        "nameEN": "Property Assessment",
+        "nameFR": "Évaluation des propriétés",
+        "nameSW": "Tathmini ya Mali",
+        "description": "Property Assessment service under Housing & Urban Development category",
+        "order": 2,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "69",
+        "categoryId": "serviceCategories/9",
+        "nameEN": "Rental Assistance",
+        "nameFR": "Aide à la location",
+        "nameSW": "Msaada wa Kukodi",
+        "description": "Rental Assistance service under Housing & Urban Development category",
+        "order": 3,
+        "createdAt": null,
+        "updatedAt": null
+      },
+      {
+        "_key": "71",
+        "categoryId": "serviceCategories/9",
+        "nameEN": "Homeownership",
+        "nameFR": "Accession à la propriété",
+        "nameSW": "Umiliki wa Nyumba",
+        "description": "Homeownership service under Housing & Urban Development category",
+        "order": 4,
+        "createdAt": null,
+        "updatedAt": null
+      }
+    ],
+    "categoryServices": [
+      {
+        "_key": "2",
+        "_from": "serviceCategories/1",
+        "_to": "services/1",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "4",
+        "_from": "serviceCategories/1",
+        "_to": "services/3",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "6",
+        "_from": "serviceCategories/1",
+        "_to": "services/5",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "8",
+        "_from": "serviceCategories/1",
+        "_to": "services/7",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "74",
+        "_from": "serviceCategories/10",
+        "_to": "services/73",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "76",
+        "_from": "serviceCategories/10",
+        "_to": "services/75",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "78",
+        "_from": "serviceCategories/10",
+        "_to": "services/77",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "80",
+        "_from": "serviceCategories/10",
+        "_to": "services/79",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "82",
+        "_from": "serviceCategories/11",
+        "_to": "services/81",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "84",
+        "_from": "serviceCategories/11",
+        "_to": "services/83",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "86",
+        "_from": "serviceCategories/11",
+        "_to": "services/85",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "88",
+        "_from": "serviceCategories/11",
+        "_to": "services/87",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "90",
+        "_from": "serviceCategories/12",
+        "_to": "services/89",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "92",
+        "_from": "serviceCategories/12",
+        "_to": "services/91",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "94",
+        "_from": "serviceCategories/12",
+        "_to": "services/93",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "96",
+        "_from": "serviceCategories/12",
+        "_to": "services/95",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "98",
+        "_from": "serviceCategories/12",
+        "_to": "services/97",
+        "order": 5,
+        "createdAt": null
+      },
+      {
+        "_key": "100",
+        "_from": "serviceCategories/13",
+        "_to": "services/99",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "102",
+        "_from": "serviceCategories/13",
+        "_to": "services/101",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "104",
+        "_from": "serviceCategories/13",
+        "_to": "services/103",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "106",
+        "_from": "serviceCategories/13",
+        "_to": "services/105",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "10",
+        "_from": "serviceCategories/2",
+        "_to": "services/9",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "12",
+        "_from": "serviceCategories/2",
+        "_to": "services/11",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "14",
+        "_from": "serviceCategories/2",
+        "_to": "services/13",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "16",
+        "_from": "serviceCategories/2",
+        "_to": "services/15",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "18",
+        "_from": "serviceCategories/3",
+        "_to": "services/17",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "20",
+        "_from": "serviceCategories/3",
+        "_to": "services/19",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "22",
+        "_from": "serviceCategories/3",
+        "_to": "services/21",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "24",
+        "_from": "serviceCategories/3",
+        "_to": "services/23",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "26",
+        "_from": "serviceCategories/4",
+        "_to": "services/25",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "28",
+        "_from": "serviceCategories/4",
+        "_to": "services/27",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "30",
+        "_from": "serviceCategories/4",
+        "_to": "services/29",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "32",
+        "_from": "serviceCategories/4",
+        "_to": "services/31",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "34",
+        "_from": "serviceCategories/5",
+        "_to": "services/33",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "36",
+        "_from": "serviceCategories/5",
+        "_to": "services/35",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "38",
+        "_from": "serviceCategories/5",
+        "_to": "services/37",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "40",
+        "_from": "serviceCategories/5",
+        "_to": "services/39",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "42",
+        "_from": "serviceCategories/6",
+        "_to": "services/41",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "44",
+        "_from": "serviceCategories/6",
+        "_to": "services/43",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "46",
+        "_from": "serviceCategories/6",
+        "_to": "services/45",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "48",
+        "_from": "serviceCategories/6",
+        "_to": "services/47",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "50",
+        "_from": "serviceCategories/7",
+        "_to": "services/49",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "52",
+        "_from": "serviceCategories/7",
+        "_to": "services/51",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "54",
+        "_from": "serviceCategories/7",
+        "_to": "services/53",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "56",
+        "_from": "serviceCategories/7",
+        "_to": "services/55",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "58",
+        "_from": "serviceCategories/8",
+        "_to": "services/57",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "60",
+        "_from": "serviceCategories/8",
+        "_to": "services/59",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "62",
+        "_from": "serviceCategories/8",
+        "_to": "services/61",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "64",
+        "_from": "serviceCategories/8",
+        "_to": "services/63",
+        "order": 4,
+        "createdAt": null
+      },
+      {
+        "_key": "66",
+        "_from": "serviceCategories/9",
+        "_to": "services/65",
+        "order": 1,
+        "createdAt": null
+      },
+      {
+        "_key": "68",
+        "_from": "serviceCategories/9",
+        "_to": "services/67",
+        "order": 2,
+        "createdAt": null
+      },
+      {
+        "_key": "70",
+        "_from": "serviceCategories/9",
+        "_to": "services/69",
+        "order": 3,
+        "createdAt": null
+      },
+      {
+        "_key": "72",
+        "_from": "serviceCategories/9",
+        "_to": "services/71",
+        "order": 4,
+        "createdAt": null
+      }
+    ],
+    "serviceCategoryTranslations": [
+      {
+        "_key": "1_EN",
+        "serviceCategoryId": "1",
+        "languageCode": "EN",
+        "translation": "Identity & Civil Registration",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "1_FR",
+        "serviceCategoryId": "1",
+        "languageCode": "FR",
+        "translation": "Identité et état civil",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "1_SW",
+        "serviceCategoryId": "1",
+        "languageCode": "SW",
+        "translation": "Utambulisho na Usajili wa Raia",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "10_EN",
+        "serviceCategoryId": "10",
+        "languageCode": "EN",
+        "translation": "Utilities & Environment",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "10_FR",
+        "serviceCategoryId": "10",
+        "languageCode": "FR",
+        "translation": "Services publics et environnement",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "10_SW",
+        "serviceCategoryId": "10",
+        "languageCode": "SW",
+        "translation": "Huduma na Mazingira",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "11_EN",
+        "serviceCategoryId": "11",
+        "languageCode": "EN",
+        "translation": "Culture & Recreation",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "11_FR",
+        "serviceCategoryId": "11",
+        "languageCode": "FR",
+        "translation": "Culture et loisirs",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "11_SW",
+        "serviceCategoryId": "11",
+        "languageCode": "SW",
+        "translation": "Utamaduni na Burudani",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "12_EN",
+        "serviceCategoryId": "12",
+        "languageCode": "EN",
+        "translation": "Immigration & Citizenship",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "12_FR",
+        "serviceCategoryId": "12",
+        "languageCode": "FR",
+        "translation": "Immigration et citoyenneté",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "12_SW",
+        "serviceCategoryId": "12",
+        "languageCode": "SW",
+        "translation": "Uhamiaji na Uraia",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "13_EN",
+        "serviceCategoryId": "13",
+        "languageCode": "EN",
+        "translation": "Social Security & Pensions",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "13_FR",
+        "serviceCategoryId": "13",
+        "languageCode": "FR",
+        "translation": "Sécurité sociale et retraites",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "13_SW",
+        "serviceCategoryId": "13",
+        "languageCode": "SW",
+        "translation": "Hifadhi ya Jamii na Pensheni",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "2_EN",
+        "serviceCategoryId": "2",
+        "languageCode": "EN",
+        "translation": "Healthcare & Social Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "2_FR",
+        "serviceCategoryId": "2",
+        "languageCode": "FR",
+        "translation": "Santé et services sociaux",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "2_SW",
+        "serviceCategoryId": "2",
+        "languageCode": "SW",
+        "translation": "Afya na Huduma za Kijamii",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "3_EN",
+        "serviceCategoryId": "3",
+        "languageCode": "EN",
+        "translation": "Education & Learning",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "3_FR",
+        "serviceCategoryId": "3",
+        "languageCode": "FR",
+        "translation": "Éducation et apprentissage",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "3_SW",
+        "serviceCategoryId": "3",
+        "languageCode": "SW",
+        "translation": "Elimu na Mafunzo",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "4_EN",
+        "serviceCategoryId": "4",
+        "languageCode": "EN",
+        "translation": "Employment & Labor Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "4_FR",
+        "serviceCategoryId": "4",
+        "languageCode": "FR",
+        "translation": "Emploi et services du travail",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "4_SW",
+        "serviceCategoryId": "4",
+        "languageCode": "SW",
+        "translation": "Ajira na Huduma za Kazi",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "5_EN",
+        "serviceCategoryId": "5",
+        "languageCode": "EN",
+        "translation": "Taxes & Revenue",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "5_FR",
+        "serviceCategoryId": "5",
+        "languageCode": "FR",
+        "translation": "Impôts et revenus",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "5_SW",
+        "serviceCategoryId": "5",
+        "languageCode": "SW",
+        "translation": "Kodi na Mapato",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "6_EN",
+        "serviceCategoryId": "6",
+        "languageCode": "EN",
+        "translation": "Public Safety & Justice",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "6_FR",
+        "serviceCategoryId": "6",
+        "languageCode": "FR",
+        "translation": "Sécurité publique et justice",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "6_SW",
+        "serviceCategoryId": "6",
+        "languageCode": "SW",
+        "translation": "Usalama wa Umma na Haki",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "7_EN",
+        "serviceCategoryId": "7",
+        "languageCode": "EN",
+        "translation": "Transportation & Mobility",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "7_FR",
+        "serviceCategoryId": "7",
+        "languageCode": "FR",
+        "translation": "Transport et mobilité",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "7_SW",
+        "serviceCategoryId": "7",
+        "languageCode": "SW",
+        "translation": "Usafiri na Usafiri",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "8_EN",
+        "serviceCategoryId": "8",
+        "languageCode": "EN",
+        "translation": "Business & Trade",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "8_FR",
+        "serviceCategoryId": "8",
+        "languageCode": "FR",
+        "translation": "Affaires et commerce",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "8_SW",
+        "serviceCategoryId": "8",
+        "languageCode": "SW",
+        "translation": "Biashara na Biashara",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "9_EN",
+        "serviceCategoryId": "9",
+        "languageCode": "EN",
+        "translation": "Housing & Urban Development",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "9_FR",
+        "serviceCategoryId": "9",
+        "languageCode": "FR",
+        "translation": "Logement et développement urbain",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "9_SW",
+        "serviceCategoryId": "9",
+        "languageCode": "SW",
+        "translation": "Nyumba na Maendeleo ya Mjini",
+        "isActive": true,
+        "createdAt": "2025-06-18T10:51:31.696Z",
+        "updatedAt": "2025-06-18T10:51:31.696Z"
+      }
+    ],
+    "serviceCategoryTranslationsEdge": [
+      {
+        "_key": "53093517",
+        "_from": "serviceCategories/1",
+        "_to": "serviceCategoryTranslations/1_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093520",
+        "_from": "serviceCategories/1",
+        "_to": "serviceCategoryTranslations/1_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093514",
+        "_from": "serviceCategories/1",
+        "_to": "serviceCategoryTranslations/1_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093601",
+        "_from": "serviceCategories/10",
+        "_to": "serviceCategoryTranslations/10_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093598",
+        "_from": "serviceCategories/10",
+        "_to": "serviceCategoryTranslations/10_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093595",
+        "_from": "serviceCategories/10",
+        "_to": "serviceCategoryTranslations/10_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093610",
+        "_from": "serviceCategories/11",
+        "_to": "serviceCategoryTranslations/11_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093607",
+        "_from": "serviceCategories/11",
+        "_to": "serviceCategoryTranslations/11_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093604",
+        "_from": "serviceCategories/11",
+        "_to": "serviceCategoryTranslations/11_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093619",
+        "_from": "serviceCategories/12",
+        "_to": "serviceCategoryTranslations/12_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093616",
+        "_from": "serviceCategories/12",
+        "_to": "serviceCategoryTranslations/12_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093613",
+        "_from": "serviceCategories/12",
+        "_to": "serviceCategoryTranslations/12_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093628",
+        "_from": "serviceCategories/13",
+        "_to": "serviceCategoryTranslations/13_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093625",
+        "_from": "serviceCategories/13",
+        "_to": "serviceCategoryTranslations/13_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093622",
+        "_from": "serviceCategories/13",
+        "_to": "serviceCategoryTranslations/13_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093523",
+        "_from": "serviceCategories/2",
+        "_to": "serviceCategoryTranslations/2_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093526",
+        "_from": "serviceCategories/2",
+        "_to": "serviceCategoryTranslations/2_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093529",
+        "_from": "serviceCategories/2",
+        "_to": "serviceCategoryTranslations/2_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093532",
+        "_from": "serviceCategories/3",
+        "_to": "serviceCategoryTranslations/3_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093535",
+        "_from": "serviceCategories/3",
+        "_to": "serviceCategoryTranslations/3_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093538",
+        "_from": "serviceCategories/3",
+        "_to": "serviceCategoryTranslations/3_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093541",
+        "_from": "serviceCategories/4",
+        "_to": "serviceCategoryTranslations/4_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093544",
+        "_from": "serviceCategories/4",
+        "_to": "serviceCategoryTranslations/4_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093547",
+        "_from": "serviceCategories/4",
+        "_to": "serviceCategoryTranslations/4_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093556",
+        "_from": "serviceCategories/5",
+        "_to": "serviceCategoryTranslations/5_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093550",
+        "_from": "serviceCategories/5",
+        "_to": "serviceCategoryTranslations/5_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093553",
+        "_from": "serviceCategories/5",
+        "_to": "serviceCategoryTranslations/5_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093559",
+        "_from": "serviceCategories/6",
+        "_to": "serviceCategoryTranslations/6_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093565",
+        "_from": "serviceCategories/6",
+        "_to": "serviceCategoryTranslations/6_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093562",
+        "_from": "serviceCategories/6",
+        "_to": "serviceCategoryTranslations/6_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093574",
+        "_from": "serviceCategories/7",
+        "_to": "serviceCategoryTranslations/7_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093571",
+        "_from": "serviceCategories/7",
+        "_to": "serviceCategoryTranslations/7_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093568",
+        "_from": "serviceCategories/7",
+        "_to": "serviceCategoryTranslations/7_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093583",
+        "_from": "serviceCategories/8",
+        "_to": "serviceCategoryTranslations/8_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093580",
+        "_from": "serviceCategories/8",
+        "_to": "serviceCategoryTranslations/8_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093577",
+        "_from": "serviceCategories/8",
+        "_to": "serviceCategoryTranslations/8_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093592",
+        "_from": "serviceCategories/9",
+        "_to": "serviceCategoryTranslations/9_SW",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093589",
+        "_from": "serviceCategories/9",
+        "_to": "serviceCategoryTranslations/9_FR",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      },
+      {
+        "_key": "53093586",
+        "_from": "serviceCategories/9",
+        "_to": "serviceCategoryTranslations/9_EN",
+        "createdAt": "2025-06-18T10:51:31.696Z"
+      }
+    ],
+    "serviceTranslations": [
+      {
+        "_key": "1_EN",
+        "serviceId": "1",
+        "languageCode": "EN",
+        "translation": "Birth Registration",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "1_FR",
+        "serviceId": "1",
+        "languageCode": "FR",
+        "translation": "Enregistrement des naissances",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "1_SW",
+        "serviceId": "1",
+        "languageCode": "SW",
+        "translation": "Usajili wa Kuzaliwa",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "101_EN",
+        "serviceId": "101",
+        "languageCode": "EN",
+        "translation": "Pension fund management",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "101_FR",
+        "serviceId": "101",
+        "languageCode": "FR",
+        "translation": "Gestion des fonds de pension",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "101_SW",
+        "serviceId": "101",
+        "languageCode": "SW",
+        "translation": "Usimamizi wa mfuko wa pensheni",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "103_EN",
+        "serviceId": "103",
+        "languageCode": "EN",
+        "translation": "Survivor benefits",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "103_FR",
+        "serviceId": "103",
+        "languageCode": "FR",
+        "translation": "Allocations de survivant",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "103_SW",
+        "serviceId": "103",
+        "languageCode": "SW",
+        "translation": "Manufaa ya warithi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "105_EN",
+        "serviceId": "105",
+        "languageCode": "EN",
+        "translation": "Disability pensions",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "105_FR",
+        "serviceId": "105",
+        "languageCode": "FR",
+        "translation": "Pensions pour invalidité",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "105_SW",
+        "serviceId": "105",
+        "languageCode": "SW",
+        "translation": "Pensheni za ulemavu",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "11_EN",
+        "serviceId": "11",
+        "languageCode": "EN",
+        "translation": "Social Assistance",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "11_FR",
+        "serviceId": "11",
+        "languageCode": "FR",
+        "translation": "Aide sociale",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "11_SW",
+        "serviceId": "11",
+        "languageCode": "SW",
+        "translation": "Msaada wa Kijamii",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "13_EN",
+        "serviceId": "13",
+        "languageCode": "EN",
+        "translation": "Healthcare Programs",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "13_FR",
+        "serviceId": "13",
+        "languageCode": "FR",
+        "translation": "Programmes de santé",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "13_SW",
+        "serviceId": "13",
+        "languageCode": "SW",
+        "translation": "Programu za Afya",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "15_EN",
+        "serviceId": "15",
+        "languageCode": "EN",
+        "translation": "Mental Health",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "15_FR",
+        "serviceId": "15",
+        "languageCode": "FR",
+        "translation": "Santé mentale",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "15_SW",
+        "serviceId": "15",
+        "languageCode": "SW",
+        "translation": "Afya ya Akili",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "17_EN",
+        "serviceId": "17",
+        "languageCode": "EN",
+        "translation": "K-12 Schools",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "17_FR",
+        "serviceId": "17",
+        "languageCode": "FR",
+        "translation": "Écoles K-12",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "17_SW",
+        "serviceId": "17",
+        "languageCode": "SW",
+        "translation": "Shule za K-12",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "19_EN",
+        "serviceId": "19",
+        "languageCode": "EN",
+        "translation": "Higher Education",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "19_FR",
+        "serviceId": "19",
+        "languageCode": "FR",
+        "translation": "Enseignement supérieur",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "19_SW",
+        "serviceId": "19",
+        "languageCode": "SW",
+        "translation": "Elimu ya Juu",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "21_EN",
+        "serviceId": "21",
+        "languageCode": "EN",
+        "translation": "Adult Learning",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "21_FR",
+        "serviceId": "21",
+        "languageCode": "FR",
+        "translation": "Formation des adultes",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "21_SW",
+        "serviceId": "21",
+        "languageCode": "SW",
+        "translation": "Mafunzo ya Watu Wazima",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "23_EN",
+        "serviceId": "23",
+        "languageCode": "EN",
+        "translation": "Educational Resources",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "23_FR",
+        "serviceId": "23",
+        "languageCode": "FR",
+        "translation": "Ressources éducatives",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "23_SW",
+        "serviceId": "23",
+        "languageCode": "SW",
+        "translation": "Rasilimali za Elimu",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "25_EN",
+        "serviceId": "25",
+        "languageCode": "EN",
+        "translation": "Job Search",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "25_FR",
+        "serviceId": "25",
+        "languageCode": "FR",
+        "translation": "Recherche d'emploi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "25_SW",
+        "serviceId": "25",
+        "languageCode": "SW",
+        "translation": "Utafutaji wa Kazi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "27_EN",
+        "serviceId": "27",
+        "languageCode": "EN",
+        "translation": "Labor Rights",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "27_FR",
+        "serviceId": "27",
+        "languageCode": "FR",
+        "translation": "Droits du travail",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "27_SW",
+        "serviceId": "27",
+        "languageCode": "SW",
+        "translation": "Haki za Wafanyakazi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "29_EN",
+        "serviceId": "29",
+        "languageCode": "EN",
+        "translation": "Workplace Safety",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "29_FR",
+        "serviceId": "29",
+        "languageCode": "FR",
+        "translation": "Sécurité au travail",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "29_SW",
+        "serviceId": "29",
+        "languageCode": "SW",
+        "translation": "Usalama Kazini",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "3_EN",
+        "serviceId": "3",
+        "languageCode": "EN",
+        "translation": "National ID Cards",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "3_FR",
+        "serviceId": "3",
+        "languageCode": "FR",
+        "translation": "Cartes d'identité nationale",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "3_SW",
+        "serviceId": "3",
+        "languageCode": "SW",
+        "translation": "Vitambulisho vya Kitaifa",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "31_EN",
+        "serviceId": "31",
+        "languageCode": "EN",
+        "translation": "Career Development",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "31_FR",
+        "serviceId": "31",
+        "languageCode": "FR",
+        "translation": "Développement de carrière",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "31_SW",
+        "serviceId": "31",
+        "languageCode": "SW",
+        "translation": "Maendeleo ya Kazi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "33_EN",
+        "serviceId": "33",
+        "languageCode": "EN",
+        "translation": "Income Tax",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "33_FR",
+        "serviceId": "33",
+        "languageCode": "FR",
+        "translation": "Impôt sur le revenu",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "33_SW",
+        "serviceId": "33",
+        "languageCode": "SW",
+        "translation": "Kodi ya Mapato",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "35_EN",
+        "serviceId": "35",
+        "languageCode": "EN",
+        "translation": "Sales Tax",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "35_FR",
+        "serviceId": "35",
+        "languageCode": "FR",
+        "translation": "Taxe de vente",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "35_SW",
+        "serviceId": "35",
+        "languageCode": "SW",
+        "translation": "Kodi ya Mauzo",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "37_EN",
+        "serviceId": "37",
+        "languageCode": "EN",
+        "translation": "Property Tax",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "37_FR",
+        "serviceId": "37",
+        "languageCode": "FR",
+        "translation": "Impôt foncier",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "37_SW",
+        "serviceId": "37",
+        "languageCode": "SW",
+        "translation": "Kodi ya Mali",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "39_EN",
+        "serviceId": "39",
+        "languageCode": "EN",
+        "translation": "Tax Credits",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "39_FR",
+        "serviceId": "39",
+        "languageCode": "FR",
+        "translation": "Crédits d'impôt",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "39_SW",
+        "serviceId": "39",
+        "languageCode": "SW",
+        "translation": "Punguzo za Kodi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "41_EN",
+        "serviceId": "41",
+        "languageCode": "EN",
+        "translation": "Police Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "41_FR",
+        "serviceId": "41",
+        "languageCode": "FR",
+        "translation": "Services de police",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "41_SW",
+        "serviceId": "41",
+        "languageCode": "SW",
+        "translation": "Huduma za Polisi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "43_EN",
+        "serviceId": "43",
+        "languageCode": "EN",
+        "translation": "Courts",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "43_FR",
+        "serviceId": "43",
+        "languageCode": "FR",
+        "translation": "Tribunaux",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "43_SW",
+        "serviceId": "43",
+        "languageCode": "SW",
+        "translation": "Mahakama",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "45_EN",
+        "serviceId": "45",
+        "languageCode": "EN",
+        "translation": "Legal Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "45_FR",
+        "serviceId": "45",
+        "languageCode": "FR",
+        "translation": "Services juridiques",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "45_SW",
+        "serviceId": "45",
+        "languageCode": "SW",
+        "translation": "Huduma za Kisheria",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "47_EN",
+        "serviceId": "47",
+        "languageCode": "EN",
+        "translation": "Emergency Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "47_FR",
+        "serviceId": "47",
+        "languageCode": "FR",
+        "translation": "Services d'urgence",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "47_SW",
+        "serviceId": "47",
+        "languageCode": "SW",
+        "translation": "Huduma za Dharura",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "49_EN",
+        "serviceId": "49",
+        "languageCode": "EN",
+        "translation": "Driver Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "49_FR",
+        "serviceId": "49",
+        "languageCode": "FR",
+        "translation": "Services aux conducteurs",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "49_SW",
+        "serviceId": "49",
+        "languageCode": "SW",
+        "translation": "Huduma za Dereva",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "5_EN",
+        "serviceId": "5",
+        "languageCode": "EN",
+        "translation": "Passport Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "5_FR",
+        "serviceId": "5",
+        "languageCode": "FR",
+        "translation": "Services de passeport",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "5_SW",
+        "serviceId": "5",
+        "languageCode": "SW",
+        "translation": "Huduma za Pasipoti",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "51_EN",
+        "serviceId": "51",
+        "languageCode": "EN",
+        "translation": "Public Transit",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "51_FR",
+        "serviceId": "51",
+        "languageCode": "FR",
+        "translation": "Transport en commun",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "51_SW",
+        "serviceId": "51",
+        "languageCode": "SW",
+        "translation": "Usafiri wa Umma",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53_EN",
+        "serviceId": "53",
+        "languageCode": "EN",
+        "translation": "Roads & Highways",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53_FR",
+        "serviceId": "53",
+        "languageCode": "FR",
+        "translation": "Routes et autoroutes",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53_SW",
+        "serviceId": "53",
+        "languageCode": "SW",
+        "translation": "Barabara na Barabara Kuu",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "55_EN",
+        "serviceId": "55",
+        "languageCode": "EN",
+        "translation": "Aviation",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "55_FR",
+        "serviceId": "55",
+        "languageCode": "FR",
+        "translation": "Aviation",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "55_SW",
+        "serviceId": "55",
+        "languageCode": "SW",
+        "translation": "Usafiri wa Anga",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "57_EN",
+        "serviceId": "57",
+        "languageCode": "EN",
+        "translation": "Business Registration",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "57_FR",
+        "serviceId": "57",
+        "languageCode": "FR",
+        "translation": "Enregistrement d'entreprise",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "57_SW",
+        "serviceId": "57",
+        "languageCode": "SW",
+        "translation": "Usajili wa Biashara",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "59_EN",
+        "serviceId": "59",
+        "languageCode": "EN",
+        "translation": "Economic Development",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "59_FR",
+        "serviceId": "59",
+        "languageCode": "FR",
+        "translation": "Développement économique",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "59_SW",
+        "serviceId": "59",
+        "languageCode": "SW",
+        "translation": "Maendeleo ya Kiuchumi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "61_EN",
+        "serviceId": "61",
+        "languageCode": "EN",
+        "translation": "Trade",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "61_FR",
+        "serviceId": "61",
+        "languageCode": "FR",
+        "translation": "Commerce",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "61_SW",
+        "serviceId": "61",
+        "languageCode": "SW",
+        "translation": "Biashara",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "63_EN",
+        "serviceId": "63",
+        "languageCode": "EN",
+        "translation": "Small Business Support",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "63_FR",
+        "serviceId": "63",
+        "languageCode": "FR",
+        "translation": "Soutien aux petites entreprises",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "63_SW",
+        "serviceId": "63",
+        "languageCode": "SW",
+        "translation": "Msaada wa Biashara Ndogo",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "65_EN",
+        "serviceId": "65",
+        "languageCode": "EN",
+        "translation": "Housing Programs",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "65_FR",
+        "serviceId": "65",
+        "languageCode": "FR",
+        "translation": "Programmes de logement",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "65_SW",
+        "serviceId": "65",
+        "languageCode": "SW",
+        "translation": "Programu za Nyumba",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "67_EN",
+        "serviceId": "67",
+        "languageCode": "EN",
+        "translation": "Property Assessment",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "67_FR",
+        "serviceId": "67",
+        "languageCode": "FR",
+        "translation": "Évaluation des propriétés",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "67_SW",
+        "serviceId": "67",
+        "languageCode": "SW",
+        "translation": "Tathmini ya Mali",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "69_EN",
+        "serviceId": "69",
+        "languageCode": "EN",
+        "translation": "Rental Assistance",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "69_FR",
+        "serviceId": "69",
+        "languageCode": "FR",
+        "translation": "Aide à la location",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "69_SW",
+        "serviceId": "69",
+        "languageCode": "SW",
+        "translation": "Msaada wa Kukodi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "7_EN",
+        "serviceId": "7",
+        "languageCode": "EN",
+        "translation": "Vital Records",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "7_FR",
+        "serviceId": "7",
+        "languageCode": "FR",
+        "translation": "État civil",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "7_SW",
+        "serviceId": "7",
+        "languageCode": "SW",
+        "translation": "Kumbukumbu za Muhimu",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "71_EN",
+        "serviceId": "71",
+        "languageCode": "EN",
+        "translation": "Homeownership",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "71_FR",
+        "serviceId": "71",
+        "languageCode": "FR",
+        "translation": "Accession à la propriété",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "71_SW",
+        "serviceId": "71",
+        "languageCode": "SW",
+        "translation": "Umiliki wa Nyumba",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "73_EN",
+        "serviceId": "73",
+        "languageCode": "EN",
+        "translation": "Natural Resources",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "73_FR",
+        "serviceId": "73",
+        "languageCode": "FR",
+        "translation": "Ressources naturelles",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "73_SW",
+        "serviceId": "73",
+        "languageCode": "SW",
+        "translation": "Rasilimali za Asili",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "75_EN",
+        "serviceId": "75",
+        "languageCode": "EN",
+        "translation": "Environmental Protection",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "75_FR",
+        "serviceId": "75",
+        "languageCode": "FR",
+        "translation": "Protection de l'environnement",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "75_SW",
+        "serviceId": "75",
+        "languageCode": "SW",
+        "translation": "Uhifadhi wa Mazingira",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "77_EN",
+        "serviceId": "77",
+        "languageCode": "EN",
+        "translation": "Parks & Recreation",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "77_FR",
+        "serviceId": "77",
+        "languageCode": "FR",
+        "translation": "Parcs et loisirs",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "77_SW",
+        "serviceId": "77",
+        "languageCode": "SW",
+        "translation": "Mbuga na Burudani",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "79_EN",
+        "serviceId": "79",
+        "languageCode": "EN",
+        "translation": "Wildlife",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "79_FR",
+        "serviceId": "79",
+        "languageCode": "FR",
+        "translation": "Faune",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "79_SW",
+        "serviceId": "79",
+        "languageCode": "SW",
+        "translation": "Wanyamapori",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "81_EN",
+        "serviceId": "81",
+        "languageCode": "EN",
+        "translation": "Arts & Culture",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "81_FR",
+        "serviceId": "81",
+        "languageCode": "FR",
+        "translation": "Arts et culture",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "81_SW",
+        "serviceId": "81",
+        "languageCode": "SW",
+        "translation": "Sanaa na Utamaduni",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "83_EN",
+        "serviceId": "83",
+        "languageCode": "EN",
+        "translation": "Heritage",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "83_FR",
+        "serviceId": "83",
+        "languageCode": "FR",
+        "translation": "Patrimoine",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "83_SW",
+        "serviceId": "83",
+        "languageCode": "SW",
+        "translation": "Urithi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "85_EN",
+        "serviceId": "85",
+        "languageCode": "EN",
+        "translation": "Sports & Recreation",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "85_FR",
+        "serviceId": "85",
+        "languageCode": "FR",
+        "translation": "Sports et loisirs",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "85_SW",
+        "serviceId": "85",
+        "languageCode": "SW",
+        "translation": "Michezo na Burudani",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "87_EN",
+        "serviceId": "87",
+        "languageCode": "EN",
+        "translation": "Tourism",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "87_FR",
+        "serviceId": "87",
+        "languageCode": "FR",
+        "translation": "Tourisme",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "87_SW",
+        "serviceId": "87",
+        "languageCode": "SW",
+        "translation": "Utalii",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "89_EN",
+        "serviceId": "89",
+        "languageCode": "EN",
+        "translation": "Immigration Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "89_FR",
+        "serviceId": "89",
+        "languageCode": "FR",
+        "translation": "Services d'immigration",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "89_SW",
+        "serviceId": "89",
+        "languageCode": "SW",
+        "translation": "Huduma za Uhamiaji",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "9_EN",
+        "serviceId": "9",
+        "languageCode": "EN",
+        "translation": "Medical Services",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "9_FR",
+        "serviceId": "9",
+        "languageCode": "FR",
+        "translation": "Services médicaux",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "9_SW",
+        "serviceId": "9",
+        "languageCode": "SW",
+        "translation": "Huduma za Matibabu",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "91_EN",
+        "serviceId": "91",
+        "languageCode": "EN",
+        "translation": "Citizenship Applications",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "91_FR",
+        "serviceId": "91",
+        "languageCode": "FR",
+        "translation": "Demandes de citoyenneté",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "91_SW",
+        "serviceId": "91",
+        "languageCode": "SW",
+        "translation": "Maombi ya Uraia",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "93_EN",
+        "serviceId": "93",
+        "languageCode": "EN",
+        "translation": "Visas",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "93_FR",
+        "serviceId": "93",
+        "languageCode": "FR",
+        "translation": "Visas",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "93_SW",
+        "serviceId": "93",
+        "languageCode": "SW",
+        "translation": "Visa",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "95_EN",
+        "serviceId": "95",
+        "languageCode": "EN",
+        "translation": "Refugee Programs",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "95_FR",
+        "serviceId": "95",
+        "languageCode": "FR",
+        "translation": "Programmes pour réfugiés",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "95_SW",
+        "serviceId": "95",
+        "languageCode": "SW",
+        "translation": "Programu za Wakimbizi",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "97_EN",
+        "serviceId": "97",
+        "languageCode": "EN",
+        "translation": "Elections and Voting",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "97_FR",
+        "serviceId": "97",
+        "languageCode": "FR",
+        "translation": "Élections et vote",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "97_SW",
+        "serviceId": "97",
+        "languageCode": "SW",
+        "translation": "Uchaguzi na Kupiga Kura",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "99_EN",
+        "serviceId": "99",
+        "languageCode": "EN",
+        "translation": "Retirement benefits",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "99_FR",
+        "serviceId": "99",
+        "languageCode": "FR",
+        "translation": "Allocations de retraite",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "99_SW",
+        "serviceId": "99",
+        "languageCode": "SW",
+        "translation": "Manufaa ya kustaafu",
+        "isActive": true,
+        "createdAt": "2025-06-18T12:37:29.988Z",
+        "updatedAt": "2025-06-18T12:37:29.988Z"
+      }
+    ],
+    "serviceTranslationsEdge": [
+      {
+        "_key": "53098100",
+        "_from": "services/1",
+        "_to": "serviceTranslations/1_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098103",
+        "_from": "services/1",
+        "_to": "serviceTranslations/1_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098097",
+        "_from": "services/1",
+        "_to": "serviceTranslations/1_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098553",
+        "_from": "services/101",
+        "_to": "serviceTranslations/101_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098550",
+        "_from": "services/101",
+        "_to": "serviceTranslations/101_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098547",
+        "_from": "services/101",
+        "_to": "serviceTranslations/101_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098562",
+        "_from": "services/103",
+        "_to": "serviceTranslations/103_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098559",
+        "_from": "services/103",
+        "_to": "serviceTranslations/103_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098556",
+        "_from": "services/103",
+        "_to": "serviceTranslations/103_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098571",
+        "_from": "services/105",
+        "_to": "serviceTranslations/105_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098568",
+        "_from": "services/105",
+        "_to": "serviceTranslations/105_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098565",
+        "_from": "services/105",
+        "_to": "serviceTranslations/105_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098142",
+        "_from": "services/11",
+        "_to": "serviceTranslations/11_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098145",
+        "_from": "services/11",
+        "_to": "serviceTranslations/11_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098148",
+        "_from": "services/11",
+        "_to": "serviceTranslations/11_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098151",
+        "_from": "services/13",
+        "_to": "serviceTranslations/13_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098154",
+        "_from": "services/13",
+        "_to": "serviceTranslations/13_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098157",
+        "_from": "services/13",
+        "_to": "serviceTranslations/13_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098160",
+        "_from": "services/15",
+        "_to": "serviceTranslations/15_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098163",
+        "_from": "services/15",
+        "_to": "serviceTranslations/15_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098166",
+        "_from": "services/15",
+        "_to": "serviceTranslations/15_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098169",
+        "_from": "services/17",
+        "_to": "serviceTranslations/17_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098172",
+        "_from": "services/17",
+        "_to": "serviceTranslations/17_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098175",
+        "_from": "services/17",
+        "_to": "serviceTranslations/17_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098184",
+        "_from": "services/19",
+        "_to": "serviceTranslations/19_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098181",
+        "_from": "services/19",
+        "_to": "serviceTranslations/19_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098178",
+        "_from": "services/19",
+        "_to": "serviceTranslations/19_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098187",
+        "_from": "services/21",
+        "_to": "serviceTranslations/21_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098190",
+        "_from": "services/21",
+        "_to": "serviceTranslations/21_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098193",
+        "_from": "services/21",
+        "_to": "serviceTranslations/21_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098196",
+        "_from": "services/23",
+        "_to": "serviceTranslations/23_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098199",
+        "_from": "services/23",
+        "_to": "serviceTranslations/23_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098202",
+        "_from": "services/23",
+        "_to": "serviceTranslations/23_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098205",
+        "_from": "services/25",
+        "_to": "serviceTranslations/25_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098208",
+        "_from": "services/25",
+        "_to": "serviceTranslations/25_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098211",
+        "_from": "services/25",
+        "_to": "serviceTranslations/25_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098214",
+        "_from": "services/27",
+        "_to": "serviceTranslations/27_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098217",
+        "_from": "services/27",
+        "_to": "serviceTranslations/27_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098220",
+        "_from": "services/27",
+        "_to": "serviceTranslations/27_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098223",
+        "_from": "services/29",
+        "_to": "serviceTranslations/29_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098226",
+        "_from": "services/29",
+        "_to": "serviceTranslations/29_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098229",
+        "_from": "services/29",
+        "_to": "serviceTranslations/29_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098112",
+        "_from": "services/3",
+        "_to": "serviceTranslations/3_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098109",
+        "_from": "services/3",
+        "_to": "serviceTranslations/3_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098106",
+        "_from": "services/3",
+        "_to": "serviceTranslations/3_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098232",
+        "_from": "services/31",
+        "_to": "serviceTranslations/31_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098235",
+        "_from": "services/31",
+        "_to": "serviceTranslations/31_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098238",
+        "_from": "services/31",
+        "_to": "serviceTranslations/31_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098247",
+        "_from": "services/33",
+        "_to": "serviceTranslations/33_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098244",
+        "_from": "services/33",
+        "_to": "serviceTranslations/33_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098241",
+        "_from": "services/33",
+        "_to": "serviceTranslations/33_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098253",
+        "_from": "services/35",
+        "_to": "serviceTranslations/35_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098256",
+        "_from": "services/35",
+        "_to": "serviceTranslations/35_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098250",
+        "_from": "services/35",
+        "_to": "serviceTranslations/35_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098259",
+        "_from": "services/37",
+        "_to": "serviceTranslations/37_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098262",
+        "_from": "services/37",
+        "_to": "serviceTranslations/37_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098265",
+        "_from": "services/37",
+        "_to": "serviceTranslations/37_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098268",
+        "_from": "services/39",
+        "_to": "serviceTranslations/39_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098271",
+        "_from": "services/39",
+        "_to": "serviceTranslations/39_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098274",
+        "_from": "services/39",
+        "_to": "serviceTranslations/39_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098277",
+        "_from": "services/41",
+        "_to": "serviceTranslations/41_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098280",
+        "_from": "services/41",
+        "_to": "serviceTranslations/41_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098283",
+        "_from": "services/41",
+        "_to": "serviceTranslations/41_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098289",
+        "_from": "services/43",
+        "_to": "serviceTranslations/43_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098292",
+        "_from": "services/43",
+        "_to": "serviceTranslations/43_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098286",
+        "_from": "services/43",
+        "_to": "serviceTranslations/43_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098295",
+        "_from": "services/45",
+        "_to": "serviceTranslations/45_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098298",
+        "_from": "services/45",
+        "_to": "serviceTranslations/45_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098301",
+        "_from": "services/45",
+        "_to": "serviceTranslations/45_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098304",
+        "_from": "services/47",
+        "_to": "serviceTranslations/47_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098307",
+        "_from": "services/47",
+        "_to": "serviceTranslations/47_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098310",
+        "_from": "services/47",
+        "_to": "serviceTranslations/47_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098313",
+        "_from": "services/49",
+        "_to": "serviceTranslations/49_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098316",
+        "_from": "services/49",
+        "_to": "serviceTranslations/49_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098319",
+        "_from": "services/49",
+        "_to": "serviceTranslations/49_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098118",
+        "_from": "services/5",
+        "_to": "serviceTranslations/5_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098115",
+        "_from": "services/5",
+        "_to": "serviceTranslations/5_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098121",
+        "_from": "services/5",
+        "_to": "serviceTranslations/5_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098328",
+        "_from": "services/51",
+        "_to": "serviceTranslations/51_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098325",
+        "_from": "services/51",
+        "_to": "serviceTranslations/51_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098322",
+        "_from": "services/51",
+        "_to": "serviceTranslations/51_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098331",
+        "_from": "services/53",
+        "_to": "serviceTranslations/53_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098334",
+        "_from": "services/53",
+        "_to": "serviceTranslations/53_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098337",
+        "_from": "services/53",
+        "_to": "serviceTranslations/53_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098340",
+        "_from": "services/55",
+        "_to": "serviceTranslations/55_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098343",
+        "_from": "services/55",
+        "_to": "serviceTranslations/55_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098346",
+        "_from": "services/55",
+        "_to": "serviceTranslations/55_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098352",
+        "_from": "services/57",
+        "_to": "serviceTranslations/57_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098349",
+        "_from": "services/57",
+        "_to": "serviceTranslations/57_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098355",
+        "_from": "services/57",
+        "_to": "serviceTranslations/57_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098364",
+        "_from": "services/59",
+        "_to": "serviceTranslations/59_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098361",
+        "_from": "services/59",
+        "_to": "serviceTranslations/59_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098358",
+        "_from": "services/59",
+        "_to": "serviceTranslations/59_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098367",
+        "_from": "services/61",
+        "_to": "serviceTranslations/61_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098370",
+        "_from": "services/61",
+        "_to": "serviceTranslations/61_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098373",
+        "_from": "services/61",
+        "_to": "serviceTranslations/61_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098379",
+        "_from": "services/63",
+        "_to": "serviceTranslations/63_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098382",
+        "_from": "services/63",
+        "_to": "serviceTranslations/63_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098376",
+        "_from": "services/63",
+        "_to": "serviceTranslations/63_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098385",
+        "_from": "services/65",
+        "_to": "serviceTranslations/65_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098388",
+        "_from": "services/65",
+        "_to": "serviceTranslations/65_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098391",
+        "_from": "services/65",
+        "_to": "serviceTranslations/65_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098394",
+        "_from": "services/67",
+        "_to": "serviceTranslations/67_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098397",
+        "_from": "services/67",
+        "_to": "serviceTranslations/67_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098400",
+        "_from": "services/67",
+        "_to": "serviceTranslations/67_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098403",
+        "_from": "services/69",
+        "_to": "serviceTranslations/69_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098409",
+        "_from": "services/69",
+        "_to": "serviceTranslations/69_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098406",
+        "_from": "services/69",
+        "_to": "serviceTranslations/69_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098124",
+        "_from": "services/7",
+        "_to": "serviceTranslations/7_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098127",
+        "_from": "services/7",
+        "_to": "serviceTranslations/7_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098130",
+        "_from": "services/7",
+        "_to": "serviceTranslations/7_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098412",
+        "_from": "services/71",
+        "_to": "serviceTranslations/71_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098415",
+        "_from": "services/71",
+        "_to": "serviceTranslations/71_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098418",
+        "_from": "services/71",
+        "_to": "serviceTranslations/71_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098427",
+        "_from": "services/73",
+        "_to": "serviceTranslations/73_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098424",
+        "_from": "services/73",
+        "_to": "serviceTranslations/73_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098421",
+        "_from": "services/73",
+        "_to": "serviceTranslations/73_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098433",
+        "_from": "services/75",
+        "_to": "serviceTranslations/75_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098436",
+        "_from": "services/75",
+        "_to": "serviceTranslations/75_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098430",
+        "_from": "services/75",
+        "_to": "serviceTranslations/75_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098439",
+        "_from": "services/77",
+        "_to": "serviceTranslations/77_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098442",
+        "_from": "services/77",
+        "_to": "serviceTranslations/77_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098445",
+        "_from": "services/77",
+        "_to": "serviceTranslations/77_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098448",
+        "_from": "services/79",
+        "_to": "serviceTranslations/79_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098451",
+        "_from": "services/79",
+        "_to": "serviceTranslations/79_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098454",
+        "_from": "services/79",
+        "_to": "serviceTranslations/79_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098457",
+        "_from": "services/81",
+        "_to": "serviceTranslations/81_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098463",
+        "_from": "services/81",
+        "_to": "serviceTranslations/81_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098460",
+        "_from": "services/81",
+        "_to": "serviceTranslations/81_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098466",
+        "_from": "services/83",
+        "_to": "serviceTranslations/83_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098469",
+        "_from": "services/83",
+        "_to": "serviceTranslations/83_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098472",
+        "_from": "services/83",
+        "_to": "serviceTranslations/83_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098475",
+        "_from": "services/85",
+        "_to": "serviceTranslations/85_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098478",
+        "_from": "services/85",
+        "_to": "serviceTranslations/85_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098481",
+        "_from": "services/85",
+        "_to": "serviceTranslations/85_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098490",
+        "_from": "services/87",
+        "_to": "serviceTranslations/87_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098487",
+        "_from": "services/87",
+        "_to": "serviceTranslations/87_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098484",
+        "_from": "services/87",
+        "_to": "serviceTranslations/87_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098493",
+        "_from": "services/89",
+        "_to": "serviceTranslations/89_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098496",
+        "_from": "services/89",
+        "_to": "serviceTranslations/89_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098499",
+        "_from": "services/89",
+        "_to": "serviceTranslations/89_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098136",
+        "_from": "services/9",
+        "_to": "serviceTranslations/9_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098139",
+        "_from": "services/9",
+        "_to": "serviceTranslations/9_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098133",
+        "_from": "services/9",
+        "_to": "serviceTranslations/9_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098508",
+        "_from": "services/91",
+        "_to": "serviceTranslations/91_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098505",
+        "_from": "services/91",
+        "_to": "serviceTranslations/91_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098502",
+        "_from": "services/91",
+        "_to": "serviceTranslations/91_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098517",
+        "_from": "services/93",
+        "_to": "serviceTranslations/93_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098514",
+        "_from": "services/93",
+        "_to": "serviceTranslations/93_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098511",
+        "_from": "services/93",
+        "_to": "serviceTranslations/93_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098526",
+        "_from": "services/95",
+        "_to": "serviceTranslations/95_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098523",
+        "_from": "services/95",
+        "_to": "serviceTranslations/95_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098520",
+        "_from": "services/95",
+        "_to": "serviceTranslations/95_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098529",
+        "_from": "services/97",
+        "_to": "serviceTranslations/97_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098532",
+        "_from": "services/97",
+        "_to": "serviceTranslations/97_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098535",
+        "_from": "services/97",
+        "_to": "serviceTranslations/97_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098538",
+        "_from": "services/99",
+        "_to": "serviceTranslations/99_EN",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098541",
+        "_from": "services/99",
+        "_to": "serviceTranslations/99_FR",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      },
+      {
+        "_key": "53098544",
+        "_from": "services/99",
+        "_to": "serviceTranslations/99_SW",
+        "createdAt": "2025-06-18T12:37:29.988Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "export": {
+    "filePath": "exports/serviceCategoriesAndServices_export_2025-06-19T14-55-00.json",
+    "documentCounts": {
+      "serviceCategories": 13,
+      "services": 53,
+      "categoryServices": 53,
+      "serviceCategoryTranslations": 39,
+      "serviceCategoryTranslationsEdge": 39,
+      "serviceTranslations": 159,
+      "serviceTranslationsEdge": 159
+    },
+    "totalDocuments": 515,
+    "fileSize": 122728
+  },
+  "timestamp": "2025-06-19T14:55:00.766Z",
+  "config": {
+    "outputDir": "./exports",
+    "filename": "serviceCategoriesAndServices_export_2025-06-19T14-55-00.json",
+    "includeSystemFields": false,
+    "prettyPrint": true
+  },
+  "database": {
+    "url": "http://localhost:8529",
+    "name": "node-services"
+  }
+}

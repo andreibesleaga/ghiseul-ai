@@ -1,0 +1,44 @@
+# Service configuration
+HOST=0.0.0.0
+PORT=3001
+NODE_ENV=development
+
+# ArangoDB configuration
+ARANGO_URL=http://91.203.132.51:8529
+ARANGO_USERNAME=root
+ARANGO_PASSWORD=test
+ARANGO_DB_NAME=node-services
+
+# Document Ingestion configuration
+DOCUMENT_INGESTION_LANGUAGE=en
+
+# Data prep service configuration
+DATAPREP_HOST=http://91.203.132.198
+DATAPREP_PORT=6007
+
+# File upload configuration
+MAX_FILES_UPLOAD=10
+MAX_FILE_SIZE=52428800
+UPLOAD_DIR=./uploads
+
+# Security configuration
+JWT_SECRET=default-jwt-secret
+JWT_EXPIRATION=24h
+BCRYPT_ROUNDS=10
+
+# Clamscan configuration
+VIRUS_SCANNING=true
+CLAMSCAN_REMOVE_INFECTED=false
+CLAMSCAN_QUARANTINE_INFECTED=false
+CLAMSCAN_DEBUG_MODE=false
+CLAMSCAN_SOCKET=false
+CLAMSCAN_HOST=127.0.0.1
+CLAMSCAN_PORT=3310
+CLAMSCAN_TIMEOUT=60000
+CLAMSCAN_LOCAL_FALLBACK=true
+CLAMSCAN_PATH=/usr/bin/clamdscan
+CLAMSCAN_ACTIVE=true
+
+# Logging config
+LOG_LEVEL=info
+LOG_FILE=app.log

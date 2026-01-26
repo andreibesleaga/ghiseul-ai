@@ -1,0 +1,27 @@
+{
+  "message": "User-Conversation edge does not match schema",
+  "level": "moderate",
+  "type": "json",
+  "rule": {
+    "type": "object",
+    "properties": {
+      "_from": {
+        "type": "string"
+      },
+      "_to": {
+        "type": "string"
+      },
+      "role": {
+        "type": "string"
+      },
+      "lastViewedAt": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "_from",
+      "_to",
+      "role"
+    ]
+  }
+}

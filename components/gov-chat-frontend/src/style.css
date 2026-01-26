@@ -1,0 +1,475 @@
+/* style.css */
+
+/* Basic resets and fonts */
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #213547;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.chat-area {
+  background: url('@/assets/chat-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+/* Buttons, links, etc. */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #213547;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Basic link style */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+/* Headings, etc. */
+h1 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0.5rem 0;
+}
+
+/* Override block for specific classes */
+.nav-bar,
+.side-bar,
+.service-tree-panel,
+.node-label,
+.nav-left,
+.nav-right,
+.brand-name,
+.brand-logo {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Override block for nav bar and service tree */
+[data-v-5d5c126d],
+[data-v-5d5c126d] *,
+[data-v-9c4dc7a8],
+[data-v-9c4dc7a8] * {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Fix for dropdown/ellipsis menu positioning */
+.dropdown-menu,
+.context-menu,
+.ellipsis-menu,
+.chat-actions-menu,
+.folder-actions-menu {
+  position: absolute !important;
+  z-index: 9999 !important;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: visible !important;
+}
+
+/* Fix for parent containers */
+.chat-item,
+.folder-item,
+.chat-list-item,
+.chat-entry,
+.sidebar-section {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Ellipsis button */
+.actions-trigger,
+.more-options,
+.ellipsis-btn,
+.menu-trigger {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Fix for overflow issues */
+.chat-container,
+.sidebar-container,
+.chatbot-container,
+.chat-window,
+.side-bar {
+  overflow: visible !important;
+}
+
+/* Action buttons container */
+.chat-actions,
+.action-buttons,
+.action-icons {
+  position: absolute;
+  right: 0;
+  z-index: 10000 !important;
+  isolation: isolate;
+}
+
+/* Individual action buttons */
+.edit-icon,
+.move-icon,
+.delete-icon,
+.action-icon {
+  position: relative;
+  z-index: 10001 !important;
+}
+
+/* ChatBotComponent panel */
+.chatbot-container,
+.chat-panel,
+.chat-window {
+  z-index: 1;
+  position: relative;
+}
+
+/* Override overflow hidden */
+#app,
+.main-container,
+.sidebar-container,
+.chat-history-container {
+  overflow: visible !important;
+}
+
+/* Menu positioning */
+.dropdown-menu,
+.context-menu,
+.menu-dropdown {
+  position: fixed !important;
+  z-index: 10002 !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+}
+
+/* Action buttons and menus */
+[class*="action"],
+[class*="icon"],
+[class*="menu"],
+[class*="dropdown"],
+[class*="btn"],
+img[src*="edit"],
+img[src*="move"],
+img[src*="delete"],
+svg {
+  z-index: 99999 !important;
+  position: relative !important;
+}
+
+/* Edit icon on the right */
+.chat-list-item>div:last-child,
+.chat-entry>div:last-child,
+.chat-item>div:last-child {
+  z-index: 99999 !important;
+  position: relative !important;
+}
+
+/* Prevent panel overlap */
+.chatbot-container,
+.chat-panel,
+.chat-window,
+main>div:first-child {
+  overflow: visible !important;
+  z-index: 1 !important;
+}
+
+/* ChatBotComponent */
+[class*="ChatBot"],
+[class*="chat-bot"],
+[data-component="ChatBot"] {
+  z-index: 1 !important;
+  overflow: visible !important;
+}
+
+/* Portal-like behavior for menus */
+.menu-container,
+.dropdown-container,
+.context-menu-container {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100000 !important;
+}
+
+.menu-container>*,
+.dropdown-container>*,
+.context-menu-container>* {
+  pointer-events: auto;
+}
+
+/* Move divs after chat items forward */
+.chat-item~div,
+.chat-entry~div,
+.chat-list-item~div {
+  z-index: 99999 !important;
+  position: relative !important;
+}
+
+/* Analytics dashboard overrides - ensure consistent styling */
+.analytics-dashboard h2,
+.analytics-dashboard .dashboard-header h2,
+.period-selector,
+.period-selector label,
+.dashboard-header label {
+  color: var(--text-primary);
+  font-weight: 600 !important;
+}
+
+.metric-card h3,
+.metric-card .metric-value,
+.metrics-summary h3,
+.metrics-summary .metric-value {
+  color: var(--text-primary);
+  font-weight: 700 !important;
+}
+
+.chart-container h3,
+.half-width h3,
+.full-width h3 {
+  color: var(--text-primary);
+  font-weight: 600 !important;
+}
+
+.no-data {
+  color: var(--text-tertiary);
+  font-weight: 500 !important;
+}
+
+/* Chart-specific overrides */
+.x-axis text,
+.y-axis-left text,
+.y-axis-right text,
+svg text,
+.axis text,
+text.tick,
+text.label,
+text.value {
+  fill: var(--text-primary);
+  font-weight: 600 !important;
+}
+
+.top-queries-table {
+  background-color: var(--bg-card, #ffffff) !important;
+  /* Explicit light mode background */
+}
+
+.top-queries-table th,
+.top-queries-table td,
+.top-queries-table .query-text {
+  color: var(--text-primary);
+  font-weight: 500 !important;
+}
+
+.chart-legend text,
+.legend text {
+  fill: var(--text-primary);
+  font-weight: 600 !important;
+}
+
+.trend {
+  font-weight: 500 !important;
+}
+
+.trend.neutral {
+  color: var(--text-secondary);
+}
+
+.error-message,
+.loading-container p {
+  color: var(--text-primary);
+  font-weight: 500 !important;
+}
+
+/* Dark mode overrides for analytics and charts */
+[data-theme="dark"] .analytics-dashboard h2,
+[data-theme="dark"] .analytics-dashboard h3,
+[data-theme="dark"] .period-selector,
+[data-theme="dark"] .period-selector label,
+[data-theme="dark"] .metric-card h3,
+[data-theme="dark"] .metric-value,
+[data-theme="dark"] .chart-container h3,
+[data-theme="dark"] .no-data,
+[data-theme="dark"] .error-message,
+[data-theme="dark"] .loading-container p,
+[data-theme="dark"] .x-axis text,
+[data-theme="dark"] .y-axis-left text,
+[data-theme="dark"] .y-axis-right text,
+[data-theme="dark"] svg text,
+[data-theme="dark"] .top-queries-table,
+[data-theme="dark"] .top-queries-table th,
+[data-theme="dark"] .top-queries-table td,
+[data-theme="dark"] .chart-legend text,
+[data-theme="dark"] .trend {
+  background-color: var(--bg-card, #414141) !important;
+  /* Original dark mode color */
+  color: var(--text-primary, #ffffff) !important;
+  -webkit-text-fill-color: none !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* Fallback for analytics-content */
+.analytics-content {
+  background: var(--bg-dialog, #ffffff) !important;
+}
+
+[data-theme="dark"] .analytics-content {
+  background: var(--bg-dialog, #414141) !important;
+}
+
+/* Notification styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: notificationFadeIn 0.3s ease;
+  cursor: pointer;
+}
+
+.notification.success {
+  background-color: #10b981;
+}
+
+.notification.error {
+  background-color: #ef4444;
+}
+
+.notification.info {
+  background-color: #3b82f6;
+}
+
+.notification.warning {
+  background-color: #f59e0b;
+}
+
+@keyframes notificationFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile keyboard handling */
+@media screen and (max-width: 768px) {
+  body.keyboard-open {
+    height: var(--window-height);
+    overflow: hidden;
+  }
+
+  body.keyboard-open .app-container {
+    height: var(--content-height);
+    overflow: hidden;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    .side-bar.keyboard-active {
+      position: fixed !important;
+      top: 60px !important;
+      left: 0 !important;
+      height: calc(var(--window-height) - 60px) !important;
+      z-index: 1000 !important;
+    }
+
+    .side-bar.keyboard-active .sidebar-content {
+      padding-bottom: 100px !important;
+    }
+  }
+}
+
+:root {
+  --window-height: 100vh;
+  --keyboard-height: 0px;
+  --visible-height: 100vh;
+}
+
+html.android-device.keyboard-open {
+  overflow: hidden;
+  height: var(--visible-height);
+}
+
+html.android-device.keyboard-open.input-focused .side-bar.side-bar-open {
+  position: fixed !important;
+  top: 60px !important;
+  bottom: auto !important;
+  height: auto !important;
+  max-height: var(--visible-height) !important;
+  overflow: hidden !important;
+}
+
+html.android-device.keyboard-open .sidebar-content {
+  max-height: calc(var(--visible-height) - 110px) !important;
+  overflow-y: auto !important;
+}
+
+html.android-device.keyboard-open .search-container {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  background-color: var(--bg-sidebar) !important;
+}
+
+html.android-device.keyboard-open .weather-container {
+  display: none !important;
+}
+
+html.android-device.keyboard-open .tree-list-container {
+  min-height: 200px !important;
+  max-height: calc(var(--visible-height) - 150px) !important;
+  overflow-y: auto !important;
+}
+
+.search-box:focus {
+  box-shadow: 0 0 0 2px rgba(78, 151, 209, 0.3) !important;
+  border-color: #4E97D1 !important;
+}

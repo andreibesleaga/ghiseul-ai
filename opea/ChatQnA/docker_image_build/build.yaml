@@ -1,0 +1,92 @@
+# Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+services:
+  chatqna:
+    build:
+      args:
+        IMAGE_REPO: ${REGISTRY}
+        BASE_TAG: ${TAG}
+        http_proxy: ${http_proxy}
+        https_proxy: ${https_proxy}
+        no_proxy: ${no_proxy}
+      context: ../
+      dockerfile: ./Dockerfile
+    image: ${REGISTRY:-opea}/chatqna:${TAG:-latest}
+  chatqna-ui:
+    build:
+      context: ../ui
+      dockerfile: ./docker/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/chatqna-ui:${TAG:-latest}
+  chatqna-conversation-ui:
+    build:
+      context: ../ui
+      dockerfile: ./docker/Dockerfile.react
+    extends: chatqna
+    image: ${REGISTRY:-opea}/chatqna-conversation-ui:${TAG:-latest}
+  embedding:
+    build:
+      context: GenAIComps
+      dockerfile: comps/embeddings/src/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/embedding:${TAG:-latest}
+  retriever:
+    build:
+      context: GenAIComps
+      dockerfile: comps/retrievers/src/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/retriever:${TAG:-latest}
+  reranking:
+    build:
+      context: GenAIComps
+      dockerfile: comps/rerankings/src/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/reranking:${TAG:-latest}
+  llm-textgen:
+    build:
+      context: GenAIComps
+      dockerfile: comps/llms/src/text-generation/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/llm-textgen:${TAG:-latest}
+  llm-faqgen:
+    build:
+      context: GenAIComps
+      dockerfile: comps/llms/src/faq-generation/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/llm-faqgen:${TAG:-latest}
+  dataprep:
+    build:
+      context: GenAIComps
+      dockerfile: comps/dataprep/src/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/dataprep:${TAG:-latest}
+  guardrails:
+    build:
+      context: GenAIComps
+      dockerfile: comps/guardrails/src/guardrails/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/guardrails:${TAG:-latest}
+  vllm-rocm:
+    build:
+      context: GenAIComps
+      dockerfile: comps/third_parties/vllm/src/Dockerfile.amd_gpu
+    image: ${REGISTRY:-opea}/vllm-rocm:${TAG:-latest}
+  vllm:
+    build:
+      context: vllm
+      dockerfile: docker/Dockerfile.cpu
+    extends: chatqna
+    image: ${REGISTRY:-opea}/vllm:${TAG:-latest}
+  vllm-gaudi:
+    build:
+      context: vllm-fork
+      dockerfile: Dockerfile.hpu
+    extends: chatqna
+    image: ${REGISTRY:-opea}/vllm-gaudi:${TAG:-latest}
+  nginx:
+    build:
+      context: GenAIComps
+      dockerfile: comps/third_parties/nginx/src/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/nginx:${TAG:-latest}

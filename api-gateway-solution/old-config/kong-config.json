@@ -1,0 +1,213 @@
+{
+  "services": [
+    {
+      "name": "express-api",
+      "host": "e2e-109-51",
+      "port": 3000,
+      "protocol": "http",
+      "connect_timeout": 60000,
+      "read_timeout": 60000,
+      "write_timeout": 60000,
+      "retries": 5,
+      "path": "/",
+      "routes": [
+        {
+          "name": "admin-route",
+          "paths": ["/api/admin"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "analytics-route",
+          "paths": ["/api/analytics"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "auth-route",
+          "paths": ["/api/auth"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "database-operations-route",
+          "paths": ["/api/database"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "logger-route",
+          "paths": ["/api/logger"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "query-route",
+          "paths": ["/api/queries"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "security-route",
+          "paths": ["/api/security"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "service-category-route",
+          "paths": ["/api/service-categories"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "service-route",
+          "paths": ["/api/services"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "session-route",
+          "paths": ["/api/sessions"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "user-route",
+          "paths": ["/api/users"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        },
+        {
+          "name": "api-fallback",
+          "paths": ["/api"],
+          "strip_path": false,
+          "preserve_host": true,
+          "protocols": ["http", "https"],
+          "service": { "id": null }
+        }
+      ],
+      "plugins": [
+        {
+          "name": "cors",
+          "config": {
+            "origins": ["*"],
+            "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+            "headers": ["Accept", "Accept-Version", "Accept-Language", "Content-Length", "Content-MD5", "Content-Type", "Date", "X-Auth-Token", "Authorization", "X-Requested-With"],
+            "credentials": true,
+            "max_age": 3600,
+            "preflight_continue": false
+          },
+          "enabled": true,
+          "service": { "id": null }
+        },
+        {
+          "name": "rate-limiting",
+          "config": {
+            "minute": 100,
+            "hour": 1000,
+            "policy": "local",
+            "fault_tolerant": true,
+            "hide_client_headers": false
+          },
+          "enabled": true,
+          "service": { "id": null }
+        },
+        {
+          "name": "request-transformer",
+          "config": {
+            "add": {
+              "headers": ["X-Kong-Proxy: true"]
+            }
+          },
+          "enabled": true,
+          "service": { "id": null }
+        },
+        {
+          "name": "response-transformer",
+          "config": {
+            "add": {
+              "headers": ["X-Powered-By: Kong", "X-Kong-Proxy-Latency: ${latency}"]
+            }
+          },
+          "enabled": true,
+          "service": { "id": null }
+        },
+        {
+          "name": "request-termination",
+          "config": {
+            "status_code": 503,
+            "message": "API is currently under maintenance. Please try again later."
+          },
+          "enabled": false,
+          "service": { "id": null }
+        },
+        {
+          "name": "file-log",
+          "config": {
+            "path": "/var/log/kong/api.log",
+            "reopen": true
+          },
+          "enabled": true,
+          "service": { "id": null }
+        }
+      ]
+    }
+  ],
+  "upstreams": [
+    {
+      "name": "express-api-servers",
+      "algorithm": "round-robin",
+      "hash_on": "none",
+      "hash_fallback": "none",
+      "hash_on_cookie_path": "/",
+      "slots": 10000,
+      "healthchecks": {
+        "active": {
+          "concurrency": 10,
+          "healthy": {
+            "http_statuses": [200, 302],
+            "interval": 5,
+            "successes": 2
+          },
+          "http_path": "/api/health",
+          "timeout": 1,
+          "unhealthy": {
+            "http_failures": 2,
+            "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505],
+            "interval": 5,
+            "tcp_failures": 2,
+            "timeouts": 2
+          }
+        }
+      },
+      "targets": [
+        {
+          "target": "e2e-109-51:3000",
+          "weight": 100
+        }
+      ]
+    }
+  ]
+}

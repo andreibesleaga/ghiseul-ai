@@ -1,0 +1,44 @@
+# ======== Stage 1: The OPEA Example Base ========
+# This stage clones the orchestration layer
+ARG OPEA_REPO_URL="https://github.com/opea-project/GenAIExamples.git"
+ARG OPEA_VERSION="v1.3" 
+FROM alpine/git:latest AS opea_example_base
+
+ARG OPEA_REPO_URL
+ARG OPEA_VERSION
+
+WORKDIR /src
+RUN git clone --depth 1 --branch ${OPEA_VERSION} ${OPEA_REPO_URL} .
+
+# ======== Final Stage: Assembly ========
+# This is the final production image.
+FROM opea/comps-base:${OPEA_VERSION}
+WORKDIR /app
+
+# Tell Python to include /app in its search path
+ENV PYTHONPATH="${PYTHONPATH}:/app"
+
+# Step A: Copy the base OPEA ChatQnA code
+COPY --from=opea_example_base /src/ChatQnA/ /app/ChatQnA/
+
+# Step B: Copy the hacked entrypoint.sh with the right permissions from the overlay
+COPY --chmod=0755 genie-ai-overlay/chatqna/entrypoint.sh /app/ChatQnA/entrypoint.sh
+
+# Step C: Install dependencies
+# Install extra dependencies from our original Dockerfile_genieai
+RUN pip install langdetect transformers
+
+# Step D: "Overlay" our custom GENIE-AI "glue" files
+# --- FIX: Copy the original api_protocol.py to /app to make it importable as top-level 'api_protocol' ---
+RUN cp /home/user/comps/cores/proto/api_protocol.py /app/api_protocol.py
+
+# --- Copy to the correct path where comps is located (/home/user/comps) ---
+# This copies the hacked api_protocol.py and constants.py to the /home/user/comps/... directory
+COPY --chown=user:user genie-ai-overlay/core/genieai_api_protocol.py /home/user/comps/cores/proto/genieai_api_protocol.py
+COPY --chown=user:user genie-ai-overlay/core/constants.py /home/user/comps/cores/mega/constants.py
+
+# This copies your main script
+COPY --chown=user:user genie-ai-overlay/chatqna/genieai_chatqna.py /app/ChatQnA/genieai_chatqna.py
+
+# Step E: Run our new GENIE-AI entry point
+ENTRYPOINT ["bash", "/app/ChatQnA/entrypoint.sh"]

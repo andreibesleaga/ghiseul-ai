@@ -1,0 +1,36 @@
+FROM node:22.14.0
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python3 \
+        make \
+        build-essential \
+        && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY gov-chat-backend/package*.json ./
+COPY shared/lib ./shared-lib
+RUN echo "--- Verifying contents of security-headers.js during build ---" && cat ./shared-lib/security-headers.js
+RUN ls -l /app/shared-lib && \
+    test -f /app/shared-lib/security-headers.js && echo "security-headers.js found" || echo "security-headers.js missing" && \
+    test -f /app/shared-lib/security-middleware.js && echo "security-middleware.js found" || echo "security-middleware.js missing"
+
+RUN npm config set registry https://registry.npmjs.org/ && \
+    npm install --verbose --fetch-timeout 600000 || \
+    npm install --prefer-offline || \
+    npm ci
+RUN rm -rf /app/node_modules/shared-lib
+
+COPY gov-chat-backend/ ./
+RUN ls -l /app && \
+    ls -l /app/shared-lib && \
+    mkdir -p /app/Uploads
+
+# Expose the default port. The $PORT var from compose will be used by node
+EXPOSE 3000
+
+# --- REMOVED ALL ENV VARS FROM HERE ---
+# They are now all managed in your .env file
+
+CMD ["node", "index.js"]

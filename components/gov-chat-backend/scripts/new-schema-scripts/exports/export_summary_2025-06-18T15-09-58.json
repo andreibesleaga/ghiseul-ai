@@ -1,0 +1,23 @@
+{
+  "export": {
+    "filePath": "exports/serviceCategoriesAndServices_export_2025-06-18T15-09-58.json",
+    "documentCounts": {
+      "serviceCategories": 13,
+      "services": 53,
+      "categoryServices": 53
+    },
+    "totalDocuments": 119,
+    "fileSize": 32816
+  },
+  "timestamp": "2025-06-18T15:09:58.526Z",
+  "config": {
+    "outputDir": "./exports",
+    "filename": "serviceCategoriesAndServices_export_2025-06-18T15-09-58.json",
+    "includeSystemFields": false,
+    "prettyPrint": true
+  },
+  "database": {
+    "url": "http://localhost:8529",
+    "name": "node-services"
+  }
+}

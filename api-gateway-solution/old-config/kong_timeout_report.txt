@@ -1,0 +1,7 @@
+Kong Timeout Report - Tue Jun 17 15:19:35 IST 2025
+=====================================
+Service: express-api (ID: 453cb927-f3d0-4b68-8791-3165dc046719)
+  Connect Timeout: 300000 ms
+  Read Timeout: 300000 ms
+  Write Timeout: 300000 ms
+-------------------------------------

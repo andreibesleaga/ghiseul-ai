@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "exportDate": "2025-06-18T09:54:22.766Z",
+    "sourceDatabase": "node-services",
+    "sourceUrl": "http://localhost:8529",
+    "collection": "serviceCategories",
+    "documentCount": 13,
+    "includeSystemFields": false,
+    "exportVersion": "1.0"
+  },
+  "schema": {
+    "type": "object",
+    "properties": {
+      "_key": {
+        "type": "string"
+      },
+      "nameEN": {
+        "type": "string"
+      },
+      "nameFR": {
+        "type": "string",
+        "optional": true
+      },
+      "nameSW": {
+        "type": "string",
+        "optional": true
+      },
+      "order": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "_key",
+      "nameEN",
+      "order"
+    ]
+  },
+  "data": [
+    {
+      "_key": "1",
+      "nameEN": "Identity & Civil Registration",
+      "nameFR": "Identité et état civil",
+      "nameSW": "Utambulisho na Usajili wa Raia",
+      "order": 1,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "2",
+      "nameEN": "Healthcare & Social Services",
+      "nameFR": "Santé et services sociaux",
+      "nameSW": "Afya na Huduma za Kijamii",
+      "order": 2,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "3",
+      "nameEN": "Education & Learning",
+      "nameFR": "Éducation et apprentissage",
+      "nameSW": "Elimu na Mafunzo",
+      "order": 3,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "4",
+      "nameEN": "Employment & Labor Services",
+      "nameFR": "Emploi et services du travail",
+      "nameSW": "Ajira na Huduma za Kazi",
+      "order": 4,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "5",
+      "nameEN": "Taxes & Revenue",
+      "nameFR": "Impôts et revenus",
+      "nameSW": "Kodi na Mapato",
+      "order": 5,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "6",
+      "nameEN": "Public Safety & Justice",
+      "nameFR": "Sécurité publique et justice",
+      "nameSW": "Usalama wa Umma na Haki",
+      "order": 6,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "7",
+      "nameEN": "Transportation & Mobility",
+      "nameFR": "Transport et mobilité",
+      "nameSW": "Usafiri na Usafiri",
+      "order": 7,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "8",
+      "nameEN": "Business & Trade",
+      "nameFR": "Affaires et commerce",
+      "nameSW": "Biashara na Biashara",
+      "order": 8,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "9",
+      "nameEN": "Housing & Urban Development",
+      "nameFR": "Logement et développement urbain",
+      "nameSW": "Nyumba na Maendeleo ya Mjini",
+      "order": 9,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "10",
+      "nameEN": "Utilities & Environment",
+      "nameFR": "Services publics et environnement",
+      "nameSW": "Huduma na Mazingira",
+      "order": 10,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "11",
+      "nameEN": "Culture & Recreation",
+      "nameFR": "Culture et loisirs",
+      "nameSW": "Utamaduni na Burudani",
+      "order": 11,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "12",
+      "nameEN": "Immigration & Citizenship",
+      "nameFR": "Immigration et citoyenneté",
+      "nameSW": "Uhamiaji na Uraia",
+      "order": 12,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "_key": "13",
+      "nameEN": "Social Security & Pensions",
+      "nameFR": "Sécurité sociale et retraites",
+      "nameSW": "Hifadhi ya Jamii na Pensheni",
+      "order": 13,
+      "createdAt": null,
+      "updatedAt": null
+    }
+  ]
+}

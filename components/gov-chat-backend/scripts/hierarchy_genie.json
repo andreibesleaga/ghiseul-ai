@@ -1,0 +1,52 @@
+[
+    {
+        "category": "Passport Services",
+        "services": [
+            "New Passport Application",
+            "Passport Renewal",
+            "Lost or Stolen Passport Report",
+            "Child Passport Application",
+            "Expedited Service"
+        ]
+    },
+    {
+        "category": "Civil Registry",
+        "services": [
+            "Birth Certificate Request",
+            "Death Certificate Request",
+            "Marriage Certificate",
+            "Adoption Records",
+            "Name Change Application"
+        ]
+    },
+    {
+        "category": "Vehicle Registration & Licensing",
+        "services": [
+            "Driver License Renewal",
+            "Vehicle Title Transfer",
+            "License Plate Renewal",
+            "Driving Test Scheduling",
+            "Vehicle Safety Inspection"
+        ]
+    },
+    {
+        "category": "Taxes & Revenue",
+        "services": [
+            "Income Tax Filing",
+            "Property Tax Payment",
+            "Business Tax Registration",
+            "Tax Refund Status",
+            "Audit Support"
+        ]
+    },
+    {
+        "category": "Healthcare",
+        "services": [
+            "Public Health Insurance Enrollment",
+            "Vaccination Records",
+            "Doctor Directory",
+            "Hospital Locations",
+            "Emergency Services Info"
+        ]
+    }
+]

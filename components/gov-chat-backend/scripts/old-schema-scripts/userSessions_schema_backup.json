@@ -1,0 +1,24 @@
+{
+  "message": "User-Session edge does not match schema",
+  "level": "moderate",
+  "type": "json",
+  "rule": {
+    "type": "object",
+    "properties": {
+      "_from": {
+        "type": "string"
+      },
+      "_to": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "_from",
+      "_to",
+      "createdAt"
+    ]
+  }
+}

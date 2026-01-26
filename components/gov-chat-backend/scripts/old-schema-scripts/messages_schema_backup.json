@@ -1,0 +1,43 @@
+{
+  "message": "Message document does not match schema",
+  "level": "moderate",
+  "type": "json",
+  "rule": {
+    "type": "object",
+    "properties": {
+      "_key": {
+        "type": "string"
+      },
+      "conversationId": {
+        "type": "string"
+      },
+      "content": {
+        "type": "string"
+      },
+      "timestamp": {
+        "type": "string"
+      },
+      "sender": {
+        "type": "string"
+      },
+      "sequence": {
+        "type": "number"
+      },
+      "readStatus": {
+        "type": "boolean"
+      },
+      "metadata": {
+        "type": "object",
+        "optional": true
+      }
+    },
+    "required": [
+      "_key",
+      "conversationId",
+      "content",
+      "timestamp",
+      "sender",
+      "sequence"
+    ]
+  }
+}

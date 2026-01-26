@@ -1,0 +1,206 @@
+# ========= GENERAL =========
+LOGFLAG=true
+no_proxy=noproxy
+http_proxy=
+https_proxy=
+
+# ========= KONG DATABASE SERVICE CONFIG =========
+POSTGRES_USER=kong
+POSTGRES_DB=kong
+POSTGRES_PASSWORD=k1ngk0ng
+
+# ========= KONG SERVICE CONFIG =========
+KONG_DATABASE=postgres
+KONG_PG_HOST=kong-database
+KONG_PG_USER=kong
+KONG_PG_PASSWORD=k1ngk0ng
+KONG_PROXY_ACCESS_LOG=/dev/stdout
+KONG_ADMIN_ACCESS_LOG=/dev/stdout
+KONG_PROXY_ERROR_LOG=/dev/stderr
+KONG_ADMIN_ERROR_LOG=/dev/stderr
+KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+KONG_DNS_RESOLVER="127.0.0.11"
+KONG_DNS_ORDER="LAST,A,AAAA,CNAME"
+
+# ========= FRONTEND SERVICE CONFIG =========
+FRONTEND_PORT=8090
+APP_NAME=Genie AI
+VUE_APP_API_URL=https://<your-frontend-reverse-proxy>/api
+VUE_PROXY_HOST=kong:8010
+VUE_APP_CSP_CONNECT_SRC="'self' http://localhost:8010 https://localhost:8010 http://localhost:8090 https://localhost:8090 ws://localhost:8090 wss://localhost:8090 https://genie-ai.itu.int "
+CSP_CONNECT_SRC='self' http://localhost https://localhost http://localhost:8010 https://localhost:8010 ws://localhost:8090 wss://localhost:8090 https://genie-ai.itu.int 
+CORS_ALLOWED_ORIGINS=http://localhost,https://localhost,http://localhost:8090,https://localhost:8090,https://genie-ai.itu.int$$/
+
+# ========= BACKEND SERVICE CONFIG=========
+LOG_LEVEL=debug
+JWT_SECRET=UJeFROw+yRJeVOPiUTgdcXzlE2eukTfATZPxBfPkptQLZs+ER+iuSA1BIXiJtw1sS181kiRqdncodVZOWD4sfA==
+JWT_EXPIRES_IN=24h
+OPENWEATHERMAP_API_KEY=b115ccced35ade4c9a1077b6e5a210dd
+NODE_ENV=production
+TRANSLATION_THREADS=4
+TRANSLATION_BATCHES=5
+TRANSLATION_CACHE=on
+TRANSLATION_CACHE_PATH=/cache/translations
+TRANSLATION_CACHE_PASSWORD=!@#$$5678
+TRANSLATION_CACHE_HOST=redis-cache
+TRANSLATION_CACHE_PORT=6379
+BACKEND_PORT=3000
+API_PREFIX=/api
+SESSION_SECRET=default-session-secret
+SESSION_EXPIRATION_TIME=1800000
+CORS_ORIGIN=http://localhost/
+EMAIL_HOST=<your-smtp-host>
+EMAIL_PORT=<your-smtp-port>
+EMAIL_SECURE=false
+EMAIL_USER=<your-email-user>
+EMAIL_PASSWORD=<your-smtp-password... quoted if it contains special characters>
+EMAIL_FROM=noreply@<your-domain-name>
+FRONTEND_URL=https://localhost/
+BACKUP_DIR=./database_backups
+MAX_BACKUPS=5
+BACKUP_FORMAT=json
+COMPRESS_BACKUPS=true
+OPEA_HOST=chatqna-xeon-backend-server
+OPEA_PORT=8888
+CONTEXT_OPTION=conversation-with-context-labels
+
+# ========= ARANGODB =========
+ARANGO_PASSWORD=test
+ARANGO_DB_NAME=genie-ai
+ARANGO_DB=genie-ai
+ARANGO_URL=http://arango-vector-db:8529
+ARANGO_USER=root
+ARANGO_USERNAME=root
+
+
+# ========= DOCUMENT REPOSITORY SERVICE CONFIG ==========
+DOC_REPO_PORT=3001
+DOCUMENT_INGESTION_LANGUAGE=en
+DATAPREP_HOST=http://dataprep-arango-service
+DATAPREP_PORT=5000
+MAX_FILES_UPLOAD=10
+MAX_FILE_SIZE=52428800
+UPLOAD_DIR=./uploads
+BCRYPT_ROUNDS=10
+VIRUS_SCANNING=true
+CLAMSCAN_REMOVE_INFECTED=false
+CLAMSCAN_QUARANTINE_INFECTED=false
+CLAMSCAN_DEBUG_MODE=false
+CLAMSCAN_SOCKET=false
+CLAMSCAN_HOST=127.0.0.1
+CLAMSCAN_PORT=3310
+CLAMSCAN_TIMEOUT=60000
+CLAMSCAN_LOCAL_FALLBACK=true
+CLAMSCAN_PATH=/usr/bin/clamdscan
+CLAMSCAN_ACTIVE=true
+LOG_FILE=app.log
+
+# ========= EXTERNAL AUTH KEYS =========
+HUGGINGFACEHUB_API_TOKEN=
+HUGGING_FACE_HUB_TOKEN=
+VLLM_API_KEY=
+
+# ========= CHATQNA NGINX SERVICE =========
+FRONTEND_SERVICE_IP=chatqna-xeon-ui-server
+FRONTEND_SERVICE_PORT=5173
+BACKEND_SERVICE_NAME=chatqna
+BACKEND_SERVICE_IP=chatqna-xeon-backend-server
+BACKEND_SERVICE_PORT=8888
+DATAPREP_SERVICE_IP=dataprep-arango-service
+DATAPREP_SERVICE_PORT=5000
+
+# ========= CHATQNA BACKEND SERVICE ==========
+OPEA_EXAMPLES_URL=https://github.com/opea-project/GenAIExamples.git
+CHATQNA_TYPE=CHATQNA_MACDAVID
+MEGA_SERVICE_HOST_IP=chatqna-xeon-backend-server
+# ---- Embedding service
+EMBEDDING_SERVER_HOST_IP=tei
+EMBEDDING_SERVER_PORT=80
+# ---- retriever service
+RETRIEVER_SERVICE_HOST_IP=retriever-arango-service
+RETRIEVER_SERVICE_PORT=7000
+# ---- reranker service
+RERANK_SERVER_HOST_IP=tei_reranker
+RERANK_SERVER_PORT=80
+# ---- LLM service
+LLM_SERVER_HOST_IP=vllm
+LLM_SERVER_PORT=8000
+# ---- Guardrail service
+GUARDRAIL_SERVICE_HOST_IP=guardrail
+GUARDRAIL_SERVICE_PORT=9090
+# ---- Translation service
+TRANSLATION_SERVICE_HOST_IP=vllm-translation-guardrail
+TRANSLATION_SERVICE_PORT=9031
+# Document repository service
+DOC_REPO_URL=http://localhost:3001
+
+# ========= DATAPREP SERVICE =========
+OPEA_GENAI_COMPS_URL=https://github.com/opea-project/GenAIComps.git
+DATAPREP_CHUNK_SIZE=500
+DATAPREP_CHUNK_OVERLAP=50
+DATAPREP_ARANGO_INSERT_ASYNC=false
+DATAPREP_ARANGO_USE_GRAPH_NAME=true
+DATAPREP_NODE_PROPERTIES=
+DATAPREP_RELATIONSHIP_PROPERTIES=
+DATAPREP_OPENAI_CHAT_ENABLED=true
+DATAPREP_OPENAI_EMBED_ENABLED=true
+DATAPREP_EMBED_NODES=true
+DATAPREP_EMBED_RELATIONSHIPS=true
+DATAPREP_EMBED_SOURCE_DOCUMENTS=true
+DATAPREP_ARANGO_GRAPH_NAME=GRAPH
+TEI_EMBEDDING_ENDPOINT=http://embedding:6000
+GUARDRAIL_URL=http://guardrail:9090/v1/guardrails
+E2E_CPU_URL=http://localhost:3000
+
+# ========= HTTP SERVICE - Authorization service (used by chatqna and data prep services) ==========
+AUTH_SERVICE_URL="https://localhost/"
+AUTH_SERVICE_USERNAME="genie-ai-manager"
+AUTH_SERVICE_PASSWORD="1357924680+Manager"
+GET_AUTH_TOKEN_URL=http://http-service:6666/get-token
+
+# ========= RETRIEVER SERVICE =========
+RETRIEVER_ARANGO_GRAPH_NAME=GRAPH
+RETRIEVER_ARANGO_SEARCH_START=node
+RETRIEVER_ARANGO_SEARCH_MODE=hybrid
+RETRIEVER_ARANGO_TRAVERSAL_ENABLED=true
+RETRIEVER_ARANGO_TRAVERSAL_MAX_DEPTH=3
+RETRIEVER_ARANGO_USE_APPROX_SEARCH=false
+RETRIEVER_SUMMARIZER_ENABLED=false
+RETRIEVER_OPENAI_CHAT_ENABLED=true
+RETRIEVER_OPENAI_EMBED_ENABLED=true
+RETRIEVER_OPENAI_EMBED_MODEL=text-embedding-3-small
+ARANGO_FILTER_STRATEGY=OR
+
+# ========= VLLM SERVICE =========
+VLLM_ENDPOINT=http://vllm:80
+
+# ========= VLLM INFERENCE CONFIG =========
+# The model used for main chat/generation (Service: vllm)
+# Defaults to the granite model 
+VLLM_LLM_MODEL_ID=ibm-granite/granite-3.3-2b-instruct
+VLLM_GPU_UTIL=0.65
+VLLM_MAX_MODEL_LEN=16384
+VLLM_DTYPE=half
+
+# ========= VLLM TRANSLATION/GUARDRAIL CONFIG =========
+# The model used for guardrails and translation (Service: vllm-translation-guardrail)
+# Defaults to the gemma model 
+VLLM_TRANSLATION_MODEL_ID=google/gemma-3-1b-it
+VLLM_TRANSLATION_GPU_UTIL=0.15
+VLLM_TRANSLATION_MAX_MODEL_LEN=16384
+VLLM_TRANSLATION_DTYPE=bfloat16
+
+# ========= EMBEDDING AND RERANKING MODELS =========
+# This is the embedding model used by the OPEA embedding service
+EMBEDDING_MODEL_ID=BAAI/bge-base-en-v1.5
+# This reranker model is only needed for multi-lingual backends and is a RoBERTa architecture not BERT. Not compatible with TEI
+#RERANKER_MODEL_ID=BAAI/bge-reranker-v2-m3
+# This is a correct reranker model to use for the reranker image
+RERANKER_MODEL_ID=cross-encoder/ms-marco-MiniLM-L-6-v2
+# This is the TEI embedding model and the vector dimensions need to equal the model used for the OPEA embedding service above
+TEI_EMBED_MODEL=BAAI/bge-base-en-v1.5
+
+# ========= TELEMETRY (optional) =========
+# JAEGER_IP=127.0.0.1
+# OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=grpc://127.0.0.1:4317
+# TELEMETRY_ENDPOINT=http://127.0.0.1:4318/v1/traces

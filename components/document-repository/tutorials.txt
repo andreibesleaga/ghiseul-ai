@@ -1,0 +1,160 @@
+Go to the file-system directory:
+cd chat-ui-file-system
+
+Initialize project:                          
+npm init -y                                  
+                                             
+Install dependencies:                        
+npm install express multer cors morgan       
+   
+Run the serice: (& = running in background)
+node index.js &
+🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄🍄
+
+
+===
+Upload a file
+
+curl -X POST http://localhost:9981/api/files/upload \
+  -F "files=@/root/AAA-testing.txt" \
+  -F "files=@/root/user_profile.py"
+
+(Run ⬇️ on your LOCAL computer to upload file to the file system)
+curl -X POST http://91.203.132.51:9981/api/files/upload \
+  -F "files=@/Users/scarlettsun/Desktop/ITU/ExamplePDF.pdf" \
+  -F "files=@/Users/scarlettsun/Desktop/ITU/Sample_criteria.xlsx" \
+  -F "files=@/Users/scarlettsun/Desktop/ITU/marker.md" \
+
+🍰🍰🍰🍰🍰🍰 TO DO:
+- Set upload limit as environment variable
+
+🍬 What would happen if more than $upload_limit files being uploaded?
+🍬 MulterError: Unexpected field occurs 
+🍬 None of the files will be uploaded.
+
+
+
+
+
+===
+Read a file
+
+curl http://91.203.132.51:9981/api/files/read/1748532891451-453187604-ExamplePDF.pdf
+(🍬 open the http link in browser and you can view the content)
+
+curl http://localhost:9981/api/files/read/1748532316939-499477610-AAA-testing.txt
+
+
+curl -X POST http://localhost:9981/api/files/read \
+-H "Content-Type: application/json" \
+-d '{"filenames": ["1748532891451-453187604-ExamplePDF.pdf"]}'
+
+
+(🏖️ frontend integration)
+<form action="http://<remote-node-ip>:9981/api/files/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" />
+  <button type="submit">Upload</button>
+</form>
+
+
+
+
+
+===
+Download a file
+
+curl http://localhost:9981/api/files/1748521446956-129192260-AAA-testing.txt --output downloaded.txt
+(🍬 with specified destination directory in the remote node: curl http://localhost:9981/api/files/AAA-testing.txt --output /root/downloaded.txt)
+
+(Run ⬇️ on your LOCAL computer to download file from the file system to you local computer)
+curl http://91.203.132.51:9981/api/files/1748599563379-973835855-AAA-testing.txt --output /Users/scarlettsun/Desktop/ITU/Hahahatxtopdf.pdf
+
+(🏖️ frontend integration)
+<a href="http://<remote-node-ip>:9981/api/files/ExamplePDF.pdf" download>Download File</a>
+
+
+
+
+
+===
+Delete files
+
+curl -X DELETE http://localhost:9981/api/files \
+-H "Content-Type: application/json" \
+-d '{"filename": ["1748599629462-517492980-unstructured.txt", "1748599628851-667547748-pdfminer.txt", "1748599628714-933219479-LlamaParse.txt"]}'
+
+curl -X DELETE http://91.203.132.51:9981/api/files \
+-H "Content-Type: application/json" \
+-d '{"filename": ["1748599628611-141154022-txtai.txt", "1748599628514-663239751-marker.txt", "1748599628496-629822155-Updated Architecture Diagram.drawio", "1748599628364-877778172-marker.md", "1748599628360-419459811-Sample_criteria.xlsx"]}'
+
+
+
+
+
+
+===
+Modify/Rewrite a file
+
+curl -X PUT http://localhost:9981/api/files/1748521446956-129192260-AAA-testing.txt -H "Content-Type: application/json" -d '{"content":"New file content 🍬🍬🍬"}'
+
+
+
+
+
+
+
+
+
+Initialize project:
+
+npm init -y
+
+✅ 1. What does npm init -y do?
+npm init initializes a Node.js project by creating a file called package.json.
+
+🔹 What’s package.json?
+It’s like a project manifest that:
+
+Defines your project’s name, version, and description
+
+Tracks all the packages (dependencies) your app uses
+
+Lets you share or deploy the project
+
+🔹 What does -y do?
+It just skips the questions (name, version, etc.) and fills them in with defaults.
+
+❗ Will it affect other services?
+No! It only affects the current folder: chat-ui-file-system/. It will not touch chat-ui-vue-app/ or any other folders.
+
+
+
+
+
+
+
+
+Install dependencies:
+
+npm install express multer cors morgan
+
+✅ 2. What does npm install express multer cors morgan do?
+This command installs four Node.js libraries that your file system service needs:
+
+Package	Purpose
+express	Web framework to handle routes (URLs like /upload)
+multer	Handles file uploads sent from forms
+cors	Lets other services (frontend/backend) call this one
+morgan	Logs requests to the terminal for debugging
+
+❗ Will it affect other services?
+No! Again, these packages are installed locally inside chat-ui-file-system/. They won’t interfere with any other part of your project.
+
+
+
+
+
+
+
+
+

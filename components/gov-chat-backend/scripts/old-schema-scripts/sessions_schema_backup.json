@@ -1,0 +1,40 @@
+{
+  "message": "Session document does not match schema",
+  "level": "moderate",
+  "type": "json",
+  "rule": {
+    "type": "object",
+    "properties": {
+      "_key": {
+        "type": "string"
+      },
+      "userId": {
+        "type": "string"
+      },
+      "startTime": {
+        "type": "string"
+      },
+      "endTime": {
+        "type": "string",
+        "optional": true
+      },
+      "deviceInfo": {
+        "type": "object",
+        "optional": true
+      },
+      "ipAddress": {
+        "type": "string",
+        "optional": true
+      },
+      "active": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "_key",
+      "userId",
+      "startTime",
+      "active"
+    ]
+  }
+}

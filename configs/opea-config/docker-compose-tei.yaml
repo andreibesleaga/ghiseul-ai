@@ -1,0 +1,26 @@
+version: '3.8'  # Match your original version
+services:
+  tei:  # Keep the same service name or rename it
+    image: ghcr.io/huggingface/text-embeddings-inference:turing-1.7
+    container_name: tei-testing  # Optional: Adjust if needed
+    entrypoint: /bin/sh -c "text-embeddings-router --json-output --model-id ${EMBEDDING_MODEL_ID} --auto-truncate"
+    ports:
+      - "7000:80"  # Or "80:80" if using default port
+    volumes:
+      - "${DATA_PATH:-./data}:/data"
+    shm_size: 2g
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+    runtime: nvidia
+    environment:
+      - EMBEDDING_MODEL_ID=${EMBEDDING_MODEL_ID}
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]  # Update port if changed
+      interval: 10s
+      timeout: 6s
+      retries: 48

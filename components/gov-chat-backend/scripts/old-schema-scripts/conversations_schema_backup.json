@@ -1,0 +1,52 @@
+{
+  "message": "Conversation document does not match schema",
+  "level": "moderate",
+  "type": "json",
+  "rule": {
+    "type": "object",
+    "properties": {
+      "_key": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "lastMessage": {
+        "type": "string"
+      },
+      "created": {
+        "type": "string"
+      },
+      "updated": {
+        "type": "string"
+      },
+      "messageCount": {
+        "type": "number"
+      },
+      "isStarred": {
+        "type": "boolean"
+      },
+      "isArchived": {
+        "type": "boolean"
+      },
+      "category": {
+        "type": "string"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "_key",
+      "title",
+      "created",
+      "updated",
+      "messageCount",
+      "isStarred",
+      "isArchived"
+    ]
+  }
+}
