@@ -77,7 +77,6 @@ If queries fail or services hang:
 
 ## LICENSE
 Apache License 2.0
-
-Andrei Besleaga Nicolae
-UNICC-ITU Genie AI
-OPEA
+- Andrei Besleaga Nicolae
+- UNICC-ITU Genie AI
+- OPEA
