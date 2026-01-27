@@ -82,3 +82,12 @@ Apache License 2.0
 - Andrei Besleaga Nicolae
 - UNICC-ITU Genie AI
 - OPEA
+
+
+## RUNNING EXAMPLE
+- Document ingestion:
+ ![Document ingestion](Screenshot1.png)
+ - UI Interface:
+ ![UI Interface](Screenshot2.png)
+ - System monitoring:
+ ![System monitoring](Screenshot3.png)
