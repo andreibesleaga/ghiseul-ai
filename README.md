@@ -1,6 +1,6 @@
 # Genie AI Replica (6GB GPU Edition)
 
-This is a local replica of the Genie AI platform, optimized to run on consumer hardware with limited VRAM (6GB) and has Romanian localizations. It implements an AI trainable chatbot with a full RAG (Retrieval Augmented Generation) pipeline using OPEA microservices, ArangoDB, and vLLM.
+This is a local replica of the Genie AI platform, optimized to run on consumer hardware with limited VRAM (6GB) and has some Romanian localizations. It implements an AI trainable chatbot with a full RAG (Retrieval Augmented Generation) pipeline using OPEA microservices, ArangoDB, and vLLM.
 
 ## 🚀 Features
 
@@ -66,7 +66,7 @@ Run the automated test suite to verify the entire pipeline (Ingestion -> Retriev
 
 ## ⚠️ Known Limitations (6GB Config)
 *   LLM context window is limited to **1024/2048 tokens**. Long documents should be ingested with smaller chunks (current `chunk_size=150`).
-*   Advanced guardrails and translation services are disabled to save VRAM.
+*   **Advanced guardrails and translation services are disabled to save VRAM.**
 *   Ingestion uses a simplified flow (no LLM-based graph extraction).
 
 ## 🔧 Troubleshooting
