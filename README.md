@@ -83,9 +83,11 @@ Apache License 2.0
 - UNICC-ITU Genie AI
 - OPEA
 
-Document ingestion:
- ![Document ingestion](Snapshot1.png)
- UI Interface:
- ![UI Interface](Snapshot2.png)
- System monitoring:
- ![System monitoring](Snapshot3.png)
+
+## RUNNING EXAMPLE
+- Document ingestion:
+ ![Document ingestion](Screenshot1.png)
+ - UI Interface:
+ ![UI Interface](Screenshot2.png)
+ - System monitoring:
+ ![System monitoring](Screenshot3.png)
