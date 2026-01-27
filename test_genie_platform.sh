@@ -9,6 +9,7 @@
 # =================================================================================
 
 set -e
+export PATH=$PWD:$PATH
 
 # Colors for output
 RED='\033[0;31m'
@@ -106,7 +107,7 @@ OPTIONAL_CONTAINERS=(
     "kong"
     "frontend"
     "backend"
-    "document-repository"
+    "doc-repo-dev"
 )
 
 ALL_RUNNING=$(docker ps --format '{{.Names}}')

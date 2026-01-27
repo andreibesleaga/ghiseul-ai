@@ -30,6 +30,8 @@ Use the optimized start script to launch all services in the correct order:
 
 *Follow docs in .md text files for more information on initialization and usage.*
 
+*Make sure the infrastructure services are started and configured as in: GENIE.AI-Installation-Configuration-Guide.md : Step 4 -> Step 7*
+
 ### 2. Monitor Status
 Launch the interactive monitoring console to check container health, GPU usage, and logs:
 ```bash

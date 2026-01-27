@@ -245,14 +245,26 @@ print_status "Waiting for services to initialize (10 seconds)..."
 sleep 10
 
 # Apply Kong configuration
+# Apply Kong configuration
 print_status "Applying Kong API Gateway configuration..."
-if [ -f "api-gateway-solution/new-config/manage-kong-config.sh" ]; then
+
+# 1. Bootstrap Kong Database (Idempotent)
+print_status "  Bootstrapping Kong database..."
+docker-compose run --rm kong kong migrations bootstrap >/dev/null 2>&1 || true
+
+# 2. Apply Config via Python Script
+if [ -f "api-gateway-solution/new-config/apply_kong_config.py" ]; then
     cd api-gateway-solution/new-config/
-    printf "localhost\n8001\nbackend\n3000\ndocument-repository\n3001\n" | ./manage-kong-config.sh -a > /dev/null 2>&1
+    if command -v python3 &> /dev/null; then
+        python3 apply_kong_config.py
+    else
+        print_warning "  python3 not found, trying python..."
+        python apply_kong_config.py
+    fi
     cd "$SCRIPT_DIR"
     print_status "  ✓ Kong configuration applied"
 else
-    print_warning "  Kong configuration script not found, skipping..."
+    print_warning "  Kong configuration script (apply_kong_config.py) not found, skipping..."
 fi
 
 # Final status check

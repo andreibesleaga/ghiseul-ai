@@ -630,5 +630,4 @@ services:
 
 networks:
   genieai_network:
-    name: genieai_mvp_genieai_network
     driver: bridge
