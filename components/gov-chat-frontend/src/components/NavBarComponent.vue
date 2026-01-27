@@ -278,7 +278,7 @@ export default {
       type: Object,
       required: true,
       default: () => ({
-        app: { title: 'Genie AI Romania', icon: { type: 'file', value: '/config/genie-ai-icon-light.svg' } },
+        app: { title: 'Ghiseul AI Romania', icon: { type: 'file', value: '/config/genie-ai-icon-light.svg' } },
         theme: { navbar: { textColor: '#ffffff' } }
       })
     }

@@ -28,7 +28,7 @@ import './theme-components.css'
 // Fetch configuration for GENIE.AI framework with fallback defaults
 let config = {
   app: {
-    title: 'Genie AI Romania',
+    title: 'Ghiseul AI Romania',
     icon: { type: 'file', value: '/config/genie-ai-icon-light.svg' }
   },
   theme: {

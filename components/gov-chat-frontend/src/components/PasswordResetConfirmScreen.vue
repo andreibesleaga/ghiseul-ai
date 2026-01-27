@@ -21,7 +21,7 @@
           {{
             $config && $config.app
               ? $config.app.title
-              : $t("app.name", "Genie AI Romania")
+              : $t("app.name", "Ghiseul AI Romania")
           }}
         </h1>
       </div>

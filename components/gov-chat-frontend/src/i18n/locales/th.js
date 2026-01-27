@@ -210,7 +210,7 @@ export default {
     backToLogin: 'กลับไปเข้าสู่ระบบ'
   },
   admin: {
-    genie: 'Genie AI Romania',
+    genie: 'Ghiseul AI Romania',
     dashboard: 'แดชบอร์ด',
     system: 'ระบบ',
     settings: 'การตั้งค่า',

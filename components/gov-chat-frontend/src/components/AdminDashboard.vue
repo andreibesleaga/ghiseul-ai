@@ -27,7 +27,7 @@
       <div class="sidebar">
         <div class="logo">
           <div class="logo-icon">G</div>
-          <span>{{ translate("admin.genie", "Genie AI Romania") }}</span>
+          <span>{{ translate("admin.genie", "Ghiseul AI Romania") }}</span>
         </div>
 
         <div class="nav-section">

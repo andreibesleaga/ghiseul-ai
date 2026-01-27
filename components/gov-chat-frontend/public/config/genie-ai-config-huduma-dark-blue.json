@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "GENIE.AI Framework Configuration",
-  "description": "Configuration file for customizing the GENIE.AI chatbot framework with a darker blue theme for Genie AI Romania",
+  "description": "Configuration file for customizing the GENIE.AI chatbot framework with a darker blue theme for Ghiseul AI Romania",
   "type": "object",
   "properties": {
     "app": {
@@ -217,7 +217,7 @@
     "theme"
   ],
   "app": {
-    "title": "Genie AI Romania",
+    "title": "Ghiseul AI Romania",
     "icon": {
       "type": "file",
       "value": "/config/genie-ai-icon-light.svg"
@@ -236,7 +236,7 @@
   },
   "features": {
     "chat": {
-      "welcomeMessage": "Bun venit la Genie AI Romania, asistentul tău pentru servicii publice!",
+      "welcomeMessage": "Bun venit la Ghiseul AI Romania, asistentul tău pentru servicii publice!",
       "botName": "Genie",
       "quickHelp": {
         "buttons": [

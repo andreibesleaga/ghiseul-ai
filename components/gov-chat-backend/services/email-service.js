@@ -47,7 +47,7 @@ class EmailService {
     this.fromEmail = process.env.EMAIL_FROM || 'noreply@hud.email';
 
     // App name for email templates
-    this.appName = process.env.APP_NAME || 'Genie AI Romania';
+    this.appName = process.env.APP_NAME || 'Ghiseul AI Romania';
 
     // Default frontend URL for links, normalized
     this.defaultFrontendUrl = this.normalizeBaseUrl(process.env.FRONTEND_URL || 'http://localhost:8080'); // Modified
