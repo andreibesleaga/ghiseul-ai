@@ -68,9 +68,9 @@ Run the automated test suite to verify the entire pipeline (Ingestion -> Retriev
 
 ## ⚠️ Known Limitations (6GB Config)
 *   LLM context window is limited to **1024/2048 tokens**. Long documents should be ingested with smaller chunks (current `chunk_size=150`).
-*   **Advanced guardrails and translation services are disabled to save VRAM.**
 *   Ingestion uses a simplified flow (no LLM-based graph extraction).
-*   It is not optimized for production use and may have many limitations and security vulnerabilities dependencies.
+*   **Advanced guardrails and translation services are disabled to save VRAM.**
+*   **It is not optimized for production use and may have many limitations and security vulnerabilities dependencies.**
 
 ## 🔧 Troubleshooting
 
