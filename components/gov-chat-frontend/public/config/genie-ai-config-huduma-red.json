@@ -11,7 +11,7 @@
         "title": {
           "type": "string",
           "description": "Main application title displayed in the UI",
-          "default": "GENIE.AI Chatbot"
+          "default": "Ghiseul AI"
         },
         "icon": {
           "type": "object",
@@ -105,12 +105,12 @@
             "welcomeMessage": {
               "type": "string",
               "description": "Custom welcome message for the chatbot",
-              "default": "Welcome to GENIE.AI!"
+              "default": "Welcome to Ghiseul AI!"
             },
             "botName": {
               "type": "string",
               "description": "Name of the chatbot",
-              "default": "Genie"
+              "default": "Ghiseul AI"
             },
             "quickHelp": {
               "type": "object",

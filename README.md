@@ -1,6 +1,8 @@
-# Genie AI Replica (6GB GPU Edition)
+# Ghiseul AI - Genie AI Replica (6GB GPU Edition)
 
-This is a local replica of the Genie AI platform, optimized to run on consumer hardware with limited VRAM (6GB) and has some Romanian localizations. It implements an AI trainable chatbot with a full RAG (Retrieval Augmented Generation) pipeline using OPEA microservices, ArangoDB, and vLLM.
+This is a local replica of the GENIE.AI platform, optimized to run on consumer hardware with limited VRAM (6GB), for development and testing purposes.
+
+It has some Romanian localizations and added scripts for setup and monitoring of the platform and implements an AI trainable chatbot with a full RAG (Retrieval Augmented Generation) pipeline using OPEA microservices, ArangoDB, and vLLM.
 
 ## 🚀 Features
 
