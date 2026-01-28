@@ -2,7 +2,7 @@
 
 This is a local replica of the GENIE.AI platform, optimized to run on consumer hardware with limited VRAM (6GB), for development and testing purposes.
 
-It has some Romanian localizations and added scripts for setup and monitoring, and implements an AI trainable chatbot with a full RAG (Retrieval Augmented Generation) pipeline using OPEA microservices, ArangoDB, and vLLM.
+It has Romanian localizations and added scripts for setup and monitoring, and implements an AI trainable chatbot with a full RAG (Retrieval Augmented Generation) pipeline using OPEA microservices, ArangoDB, and vLLM.
 
 ## 🚀 Features
 
