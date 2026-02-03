@@ -1,8 +1,8 @@
 # Ghiseul AI - Genie AI Replica (6GB GPU Edition)
 
-This is a local replica of the GENIE.AI framework, optimized to run on consumer hardware with limited VRAM (6GB), for development and testing purposes.
+Local replica of the GENIE.AI framework, optimized to run on consumer hardware with limited VRAM (6GB), for development and testing purposes.
 
-It has added scripts for setup and monitoring of the platform and implements an AI trainable chatbot (with Romanian localizations and public institutions services example), with a full RAG (Retrieval Augmented Generation) pipeline using OPEA microservices, ArangoDB, and vLLM.
+It has added scripts for the setup/running and observability/monitoring of the platform, and implements an AI trainable Chatbot (with Romanian localizations and public institutions services example), with a full RAG (Retrieval Augmented Generation) pipeline using OPEA microservices, ArangoDB, and vLLM.
 
 ## 🚀 Features
 
@@ -16,10 +16,10 @@ It has added scripts for setup and monitoring of the platform and implements an 
 
 ## 📋 Prerequisites
 
-*   Linux OS (tested on Ubuntu WSL).
-*   **Docker** & **Docker Compose**.
-*   **NVIDIA GPU** (min 6GB VRAM) with NVIDIA CUDA Container Toolkit installed.
-*   `jq` and `curl` (for testing scripts).
+*   **Linux OS (tested on Ubuntu WSL)**.
+*   **Docker**.
+*   **NVIDIA GPU** (min 6GB VRAM) with **NVIDIA CUDA Container Toolkit** installed.
+*   `jq` and `curl` (for scripts).
 
 ## 🛠️ Quick Start
 
@@ -65,6 +65,7 @@ Run the automated test suite to verify the entire pipeline (Ingestion -> Retriev
     *   `core/` - Shared protocols.
 *   `docker-compose.yaml` - Main service orchestration.
 *   `.env` - Configuration variables (Optimized for 6GB VRAM).
+*   check the original GENIE.AI documentation for more information
 
 ## ⚠️ Known Limitations (6GB Config)
 *   LLM context window is limited to **1024/2048 tokens**. Long documents should be ingested with smaller chunks (current `chunk_size=150`).
@@ -88,9 +89,11 @@ Apache License 2.0
 
 
 ## RUNNING EXAMPLE
-- Document ingestion:
+- Document ingestion (learning) UI:
  ![Document ingestion](Screenshot1.png)
- - UI Interface:
+ - Enduser UI Interface:
  ![UI Interface](Screenshot2.png)
- - System monitoring:
+ - System monitoring / logs / observability:
  ![System monitoring](Screenshot3.png)
+
+---
