@@ -2,7 +2,7 @@ docarray[full]==0.41.0
 fastapi==0.115.12
 hanging-threads==2.0.7
 langchain==0.3.23
-langchain-community==0.3.21
+langchain-community==0.3.27
 langchain-neo4j==0.4.0
 neo4j==5.28.1
 numpy==2.2.5

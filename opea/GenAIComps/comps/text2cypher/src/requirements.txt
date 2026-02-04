@@ -4,10 +4,10 @@ fastapi==0.115.12
 huggingface-hub==0.30.2
 json-repair==0.41.1
 langchain==0.3.23
-langchain-community==0.3.27
+langchain-community==0.4.1
 langchain-experimental==0.3.4
 langchain-huggingface==0.1.2
-llama-index==0.12.31
+llama-index==0.13.0
 llama-index-embeddings-huggingface==0.5.3
 llama-index-embeddings-langchain==0.3.0
 llama-index-graph-stores-neo4j==0.4.6
@@ -23,6 +23,6 @@ pydub==0.25.1
 pyprojroot==0.3.0
 sentence-transformers==4.1.0
 shortuuid==1.0.13
-unstructured==0.18.18
-urllib3==2.4.0
+unstructured==0.18.31
+urllib3==2.6.3
 uvicorn==0.34.2
