@@ -1,4 +1,4 @@
-aiohttp==3.11.18
+aiohttp==3.13.3
 docarray[full]==0.41.0
 fastapi==0.115.12
 opentelemetry-api==1.32.1

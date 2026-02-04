@@ -1,4 +1,4 @@
-aiohttp==3.11.18
+aiohttp==3.13.3
 dateparser==1.2.1
 docarray[full]==0.41.0
 einops==0.8.1
