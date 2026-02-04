@@ -1,7 +1,7 @@
 docarray[full]==0.41.0
 fastapi==0.115.12
 langchain==0.2.9
-langchain-community==0.2.7
+langchain-community==0.3.27
 langchain-huggingface==0.0.3
 numpy==1.26.4
 opentelemetry-api==1.32.1
