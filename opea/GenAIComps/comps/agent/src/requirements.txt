@@ -3,7 +3,7 @@ fastapi==0.115.12
 finnhub-python==2.4.22
 huggingface-hub==0.30.2
 langchain==0.3.23
-langchain-community==0.3.21
+langchain-community==0.3.27
 langchain-google-community==2.0.7
 langchain-huggingface==0.1.2
 langchain-openai==0.3.14
