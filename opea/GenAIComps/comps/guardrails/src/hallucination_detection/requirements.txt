@@ -1,7 +1,7 @@
 aiohttp==3.13.3
 docarray[full]==0.41.0
 langchain==0.3.23
-langchain-community==0.3.27
+langchain-community==0.4.1
 langchain-huggingface==0.1.2
 langchain-openai==0.3.14
 langchainhub==0.1.21
@@ -10,6 +10,6 @@ opentelemetry-exporter-otlp==1.32.1
 opentelemetry-sdk==1.32.1
 prometheus-fastapi-instrumentator==7.1.0
 shortuuid==1.0.13
-transformers==4.53.0
+transformers==5.0.0
 uvicorn==0.34.2
 vllm==0.8.3
