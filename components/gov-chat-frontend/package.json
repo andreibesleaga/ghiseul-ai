@@ -10,7 +10,7 @@
     "@fortawesome/fontawesome-free": "^6.7.2",
     "apexcharts": "^4.5.0",
     "assert": "^2.1.0",
-    "axios": "^0.30.2",
+    "axios": "^1.13.5",
     "browserify-zlib": "^0.2.0",
     "buffer-browserify": "^0.2.5",
     "chart.js": "^3.9.1",
