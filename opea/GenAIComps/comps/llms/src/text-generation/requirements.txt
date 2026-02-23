@@ -9,9 +9,9 @@ openai==1.57.4
 opentelemetry-api==1.32.1
 opentelemetry-exporter-otlp==1.32.1
 opentelemetry-sdk==1.32.1
-pillow==11.3.0
+pillow==12.1.1
 predictionguard==2.8.1
 prometheus-fastapi-instrumentator==7.1.0
 shortuuid==1.0.13
-transformers==5.1.0
+transformers==5.2.0
 uvicorn==0.34.2
