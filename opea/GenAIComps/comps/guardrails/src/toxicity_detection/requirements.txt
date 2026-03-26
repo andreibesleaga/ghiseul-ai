@@ -11,6 +11,6 @@ opentelemetry-sdk==1.32.1
 predictionguard==2.8.1
 prometheus-fastapi-instrumentator==7.1.0
 pyyaml==6.0.2
-requests==2.32.4
+requests==2.33.0
 shortuuid==1.0.13
 uvicorn==0.34.2
