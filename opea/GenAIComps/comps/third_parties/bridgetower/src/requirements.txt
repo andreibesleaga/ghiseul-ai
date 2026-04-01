@@ -1,4 +1,4 @@
-aiohttp==3.13.3
+aiohttp==3.13.4
 docarray[full]==0.41.0
 fastapi==0.115.12
 huggingface-hub==0.30.2
