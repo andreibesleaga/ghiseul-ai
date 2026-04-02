@@ -45,7 +45,7 @@ opentelemetry-exporter-otlp==1.27.0
 opentelemetry-sdk==1.27.0
 pandas==2.2.3
 pgvector==0.2.5
-pillow==12.1.1
+pillow==12.2.0
 pinecone-client==6.0.0
 prometheus-fastapi-instrumentator==7.1.0
 protobuf==6.33.5
