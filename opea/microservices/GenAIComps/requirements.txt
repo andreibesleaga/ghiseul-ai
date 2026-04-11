@@ -12,7 +12,7 @@ opentelemetry-exporter-otlp==1.32.1
 opentelemetry-sdk==1.32.1
 pillow==11.3.0
 prometheus-fastapi-instrumentator==7.1.0
-pypdf==6.9.2
+pypdf==6.10.0
 python-arango==8.1.6
 python-multipart==0.0.20
 pyyaml==6.0.2
