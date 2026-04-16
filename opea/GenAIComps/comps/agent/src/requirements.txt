@@ -10,7 +10,7 @@ langchain-openai==0.3.14
 langchain-redis==0.2.0
 langchainhub==0.1.21
 langgraph==1.0.10rc1
-langsmith==0.3.32
+langsmith==0.7.31
 mysql-connector-python==9.3.0
 numpy==1.26.4
 opentelemetry-api==1.32.1
