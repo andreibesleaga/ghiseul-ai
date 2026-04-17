@@ -6,7 +6,7 @@ langchain==0.3.23
 langchain-community==0.3.27
 langchain-google-community==2.0.7
 langchain-huggingface==0.1.2
-langchain-openai==0.3.14
+langchain-openai==1.1.14
 langchain-redis==0.2.0
 langchainhub==0.1.21
 langgraph==1.0.10rc1
