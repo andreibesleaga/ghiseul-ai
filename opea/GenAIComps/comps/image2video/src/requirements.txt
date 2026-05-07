@@ -1,6 +1,6 @@
 accelerate==0.33.0
 datasets==3.5.0
-diffusers==0.31.0
+diffusers==0.38.0
 docarray[full]==0.41.0
 fastapi==0.115.12
 opencv-python==4.11.0.86
