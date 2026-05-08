@@ -1,6 +1,6 @@
 accelerate==1.6.0
 datasets==3.5.0
-diffusers==0.33.1
+diffusers==0.38.0
 docarray[full]==0.41.0
 fastapi==0.115.12
 opentelemetry-api==1.32.1
