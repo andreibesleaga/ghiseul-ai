@@ -3,7 +3,7 @@ beautifulsoup4==4.13.4
 cairosvg==2.7.1
 decord==0.6.0
 docarray[full]==0.41.0
-docling==2.61.1
+docling==2.91.0
 docx2txt==0.9
 easyocr==1.7.2
 einops==0.8.1
