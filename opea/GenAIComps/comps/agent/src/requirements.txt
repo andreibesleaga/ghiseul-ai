@@ -18,7 +18,7 @@ opentelemetry-exporter-otlp==1.32.1
 opentelemetry-sdk==1.32.1
 pandas==2.2.3
 prometheus-fastapi-instrumentator==7.1.0
-pyarrow==19.0.1
+pyarrow==23.0.1
 pydantic==2.11.3
 rank-bm25==0.2.2
 redis==5.2.1
