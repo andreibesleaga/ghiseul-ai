@@ -1,7 +1,7 @@
 docarray[full]==0.41.0
 fastapi==0.115.12
 hanging-threads==2.0.7
-langchain==1.3.1
+langchain==1.3.9
 langchain-community==0.3.27
 langchain-neo4j==0.4.0
 neo4j==5.28.1
