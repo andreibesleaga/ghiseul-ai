@@ -9,5 +9,5 @@ pillow==12.3.0
 predictionguard==2.8.1
 prometheus-fastapi-instrumentator==7.1.0
 shortuuid==1.0.13
-transformers==5.3.0
+transformers==5.5.0
 uvicorn==0.34.2
