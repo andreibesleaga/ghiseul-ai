@@ -1,5 +1,5 @@
 bs4==0.0.2
-chromadb==0.6.3
+chromadb==1.5.9
 docarray[full]==0.41.0
 fastapi==0.115.9
 google-api-python-client==2.167.0

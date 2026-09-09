@@ -12,5 +12,5 @@ prometheus-fastapi-instrumentator==7.1.0
 pyyaml==6.0.2
 requests==2.34.2
 shortuuid==1.0.13
-transformers==5.5.0
+transformers==5.10.1
 uvicorn==0.34.2

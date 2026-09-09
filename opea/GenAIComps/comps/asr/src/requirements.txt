@@ -11,6 +11,6 @@ pydantic==2.7.2
 pydub==0.25.1
 python-multipart==0.0.32
 shortuuid==1.0.13
-transformers==5.5.0
+transformers==5.10.1
 uvicorn==0.34.2
 zhconv==1.4.3
