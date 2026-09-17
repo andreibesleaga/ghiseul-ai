@@ -1,6 +1,6 @@
-accelerate==1.6.0
+accelerate==1.15.0
 beautifulsoup4==4.13.4
-cairosvg==2.7.1
+cairosvg==2.9.0
 decord==0.6.0
 docarray[full]==0.41.0
 docling==2.94.0
@@ -21,7 +21,7 @@ langchain-elasticsearch==0.3.2
 langchain-experimental==0.3.4
 langchain-huggingface==0.1.2
 langchain-milvus==0.1.9
-langchain-openai==1.6.0
+langchain-openai==1.6.2
 langchain-pinecone==0.2.5
 langchain-redis==0.2.0
 langchain-text-splitters==1.1.2
@@ -32,7 +32,7 @@ llama-index-embeddings-text-embeddings-inference==0.3.2
 llama-index-graph-stores-neo4j==0.4.6
 llama-index-llms-openai==0.3.37
 llama-index-llms-openai-like==0.3.4
-markdown==3.8
+markdown==3.8.1
 moviepy==2.1.2
 neo4j==5.28.1
 numpy==1.26.4
